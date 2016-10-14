@@ -47,4 +47,12 @@ class Home extends Controller
         require APP . 'view/home/example_two.php';
         require APP . 'view/_templates/footer.php';
     }
+	
+	public function proto_index() 
+	{
+		// load views
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/proto_index.php';
+        require APP . 'view/_templates/footer.php';
+	}
 }
