@@ -1,4 +1,5 @@
 <?php
+require "../../model/modelTest.php";
 $model = new modelTest();
 ?>
 
