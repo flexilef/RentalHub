@@ -1,1 +1,1 @@
-FInal Project Repository for the class CSC 648/848
+CSC 848/648 final project repository of Team 16 
