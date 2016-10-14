@@ -16,7 +16,7 @@ production:
 
     - cat output.txt
     # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
-    - sudo ssh-add output.txt
+    - ssh-add output.txt
 
     # For Docker builds disable host key checking. Be aware that by adding that
     # you are suspectible to man-in-the-middle attacks.
