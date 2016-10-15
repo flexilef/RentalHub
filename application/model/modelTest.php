@@ -15,11 +15,12 @@ class ModelTest
     }
 	
 	public function getAllModels() {
-		$sql = "SELECT * FROM model_table_test";
+		$sql = "SELECT * FROM model_test";
+    
 		$query = $this->db->prepare($sql);
-		
-		echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 		$query->execute();	
+    
+    return $query->fetchAll();
 	}
 	
 	/*

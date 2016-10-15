@@ -56,5 +56,5 @@ define('DB_TYPE', 'mysql');
 define('DB_HOST', '127.0.0.1');
 define('DB_NAME', 'student_fchanlee');
 define('DB_USER', 'fchanlee');
-define('DB_PASS', 'mariposa123');
+define('DB_PASS', 'love4germany');
 define('DB_CHARSET', 'utf8');

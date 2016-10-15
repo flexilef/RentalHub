@@ -25,5 +25,5 @@
         <a href="<?php echo URL; ?>home/exampleone">subpage</a>
         <a href="<?php echo URL; ?>home/exampletwo">subpage 2</a>
         <a href="<?php echo URL; ?>songs">songs</a>
-		<a href="<?php echo URL; ?>home/proto_index">Proto-Index</a>
+        <a href="<?php echo URL; ?>proto_controller">Proto-Index</a>
     </div>
