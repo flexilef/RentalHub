@@ -22,6 +22,14 @@ class ModelTest
     
     return $query->fetchAll();
 	}
+  
+  public function insertModel($name) {
+    echo "inserted " . $name . ".";
+  }
+  
+  public function getModel($name) {
+    
+  }
 	
 	/*
 	public function insertModel() {
