@@ -13,6 +13,13 @@
     <input type="submit" name="submit_insert_model" value="Submit">
   </form>
   
-  <?php echo URL; ?>
+  <form action="<?php echo URL . "/proto_controller/deleteModel"; ?>" method="GET">
+    <h3>Delete a model with name:</h3>
+    <input type="text" name="name">
+    <input type="submit" name="submit_delete_model" value="Submit">
+  </form>
+  
+  
+  <?php //echo "URL" . URL; ?>
   
 </div>

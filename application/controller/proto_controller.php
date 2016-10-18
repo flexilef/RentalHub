@@ -10,7 +10,6 @@ class Proto_Controller extends Controller {
   }
 
   public function index() {
-    //$this->model = new modelTest($this->db);
     $results = $this->model->getAllModels();
 
     require APP . 'view/_templates/header.php';
@@ -19,20 +18,23 @@ class Proto_Controller extends Controller {
   }
   
   public function insertModel() {
-    //insert a new model entry to the model_test table
-    if(isset($_POST["submit_insert_model"])) {
-      //call model to add song
+    if(isset($_POST["submit_insert_model"]) 
+      && isset($_POST["name"])) {
       $name = $_POST["name"];
       $this->model->insertModel($name);
     }
+    
+    header('Location:' . URL . 'proto_controller/index');
   }
   
-  public function getAllModels() {
-    //returns all the rows in the model_test table
-  }
-  
-  public function getModel() {
-    //returns the models with $name
+  public function deleteModel() {
+    if(isset($_GET["submit_delete_model"]) 
+      && isset($_GET["name"])) {
+      $name = $_GET["name"];
+      $this->model->deleteModel($name);
+    }
+    
+    header("Location:" . URL . "proto_controller/index");
   }
 }
 
