@@ -53,6 +53,18 @@ class Model
         $query->execute($parameters);
     }
 
+    public function uploadImage($final_file, $file_type, $new_size)
+    {
+        $sql="INSERT INTO image_uploads(image_name,image_type,image_size) VALUES('$final_file','$file_type','$new_size')";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':image_name' => $final_file, ':image_type' => $file_type, ':image_size' => $new_size);
+
+        // useful for debugging: you can see the SQL behind above construction by using:
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
+
+        $query->execute($parameters);
+    }
+
     /**
      * Delete a song in the database
      * Please note: this is just an example! In a real application you would not simply let everybody
