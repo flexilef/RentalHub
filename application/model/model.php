@@ -53,11 +53,11 @@ class Model
         $query->execute($parameters);
     }
 
-    public function uploadImage($final_file, $file_type, $new_size)
+    public function uploadImage($myname)
     {
-        $sql="INSERT INTO image_uploads(image_name,image_type,image_size) VALUES('$final_file','$file_type','$new_size')";
+        $sql="INSERT INTO image_uploads(image_name) VALUES('$myname')";
         $query = $this->db->prepare($sql);
-        $parameters = array(':image_name' => $final_file, ':image_type' => $file_type, ':image_size' => $new_size);
+        $parameters = array(':image_name' => $myname);
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();

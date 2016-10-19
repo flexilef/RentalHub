@@ -27,23 +27,17 @@ class Home extends Controller
         if(isset($_POST['btn-upload']))
         {
 
-        if($_FILES['image']['name'])
-        {
-            $save_path="uploads"; // Folder where you wanna move the file.
-            $myname = strtolower($_FILES['image']['tmp_name']); //You are renaming the file here
-            move_uploaded_file($_FILES['image']['tmp_name'], $save_path.$myname); // Move the uploaded file to the desired folder
-        }
+            if($_FILES['image']['name'])
+            {
+                $save_path="uploads"; // Folder where you wanna move the file.
+                $myname = strtolower($_FILES['image']['tmp_name']); //You are renaming the file here
+                // Move the uploaded file to the desired folder
 
-        $inser_into_db="INSERT INTO `f16g16`.`image_uploads` (`image_name`) VALUES('$myname'))";
-
-
-//            if(move_uploaded_file($file_loc,$folder.$final_file))
-//            {
-//                $this->model->uploadImage($final_file, $file_type,  $new_size);
-//            }
-//            else
-//            {
-//            }
+                if(move_uploaded_file($_FILES['image']['tmp_name'], $save_path.$myname))
+                {
+                    $this->model->uploadImage($myname);
+                }
+            }
         }
 
         // where to go after song has been added
