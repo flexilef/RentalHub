@@ -27,29 +27,23 @@ class Home extends Controller
         if(isset($_POST['btn-upload']))
         {
 
-            $file = rand(1000,100000)."-".$_FILES['file']['name'];
-            $file_loc = $_FILES['file']['tmp_name'];
-            $file_size = $_FILES['file']['size'];
-            $file_type = $_FILES['file']['type'];
-            $folder="uploads/";
+        if($_FILES['image']['name'])
+        {
+            $save_path="uploads"; // Folder where you wanna move the file.
+            $myname = strtolower($_FILES['image']['tmp_name']); //You are renaming the file here
+            move_uploaded_file($_FILES['image']['tmp_name'], $save_path.$myname); // Move the uploaded file to the desired folder
+        }
 
-            // new file size in KB
-            $new_size = $file_size/1024;
-            // new file size in KB
+        $inser_into_db="INSERT INTO `f16g16`.`image_uploads` (`image_name`) VALUES('$myname'))";
 
-            // make file name in lower case
-            $new_file_name = strtolower($file);
-            // make file name in lower case
 
-            $final_file=str_replace(' ','-',$new_file_name);
-
-            if(move_uploaded_file($file_loc,$folder.$final_file))
-            {
-                $this->model->uploadImage($final_file, $file_type,  $new_size);
-            }
-            else
-            {
-            }
+//            if(move_uploaded_file($file_loc,$folder.$final_file))
+//            {
+//                $this->model->uploadImage($final_file, $file_type,  $new_size);
+//            }
+//            else
+//            {
+//            }
         }
 
         // where to go after song has been added
