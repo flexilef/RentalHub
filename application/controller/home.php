@@ -29,7 +29,7 @@ class Home extends Controller
 
             if($_FILES['image']['name'])
             {
-                $save_path="uploads"; // Folder where you wanna move the file.
+                $save_path="uploads/"; // Folder where you wanna move the file.
                 $myname = strtolower($_FILES['image']['tmp_name']); //You are renaming the file here
                 // Move the uploaded file to the desired folder
 
