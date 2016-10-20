@@ -129,7 +129,7 @@ class Model
         return $query->fetch()->amount_of_songs;
     }
 
-    function debug_to_console( $data ) {
+    public function debug_to_console( $data ) {
 
         if ( is_array( $data ) )
             $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
