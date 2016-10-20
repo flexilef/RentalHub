@@ -43,7 +43,6 @@ class Model
      */
     public function addSong($artist, $track, $link)
     {
-        debug_to_console( "in add song model" );
         $sql = "INSERT INTO song (artist, track, link) VALUES (:artist, :track, :link)";
         $query = $this->db->prepare($sql);
         $parameters = array(':artist' => $artist, ':track' => $track, ':link' => $link);
@@ -52,7 +51,6 @@ class Model
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
         $query->execute($parameters);
-        debug_to_console( "query executed" );
     }
 
     /**
@@ -127,15 +125,5 @@ class Model
 
         // fetch() is the PDO method that get exactly one result
         return $query->fetch()->amount_of_songs;
-    }
-
-    public function debug_to_console( $data ) {
-
-        if ( is_array( $data ) )
-            $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
-        else
-            $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
-
-        echo $output;
     }
 }
