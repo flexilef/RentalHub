@@ -1,11 +1,28 @@
 <div class="container">
 
   <h3>Displaying images:</h3>
-  <p>
+  <div class="slideshow-container">
+
     <?php foreach ($imageresults as $image) { ?>
+    <div class="mySlides fade">
         <img class="myImg" width="300px" height="200px" src="./../uploads/<?php echo $image->image_name?>">
+    </div>
   <?php } ?>
-  </p>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+  </div>
+  <br>
+  <?php $count = 1?>
+
+  <?php foreach ($imageresults as $image) { ?>
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(<?php echo $count?>)"></span>
+    </div>
+    <?php $count += 1?>
+  <?php } ?>
+
   <div id="myModal" class="modal">
     <span class="close">×</span>
     <img class="modal-content" id="img01">
