@@ -54,4 +54,13 @@ class ModelTest
 
         $query->execute($parameters);
     }
+
+    public function getAllImages() {
+        $sql = "SELECT * FROM image_uploads";
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
 }
