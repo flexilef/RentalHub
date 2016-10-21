@@ -3,10 +3,14 @@
   <h3>Displaying images:</h3>
   <p>
     <?php foreach ($imageresults as $image) { ?>
-        <a href=""><img width="100px" height="100px" src="./../uploads/<?php echo $image->image_name?>"></a>
+        <a href=""><img id="myImg" width="300px" height="200px" src="./../uploads/<?php echo $image->image_name?>"></a>
   <?php } ?>
   </p>
-
+  <div id="myModal" class="modal">
+    <span class="close">×</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
 
 <!--	<h3>Displaying all rows in model_test:</h3>-->
 <!--  <p>-->
