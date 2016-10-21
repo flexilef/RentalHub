@@ -3,7 +3,7 @@
   <h3>Displaying images:</h3>
   <p>
     <?php foreach ($imageresults as $image) { ?>
-        <img src="./../uploads/<?php echo $image->image_name?>">
+        <a href=""><img width="100px" height="100px" src="./../uploads/<?php echo $image->image_name?>"></a>
   <?php } ?>
   </p>
 
