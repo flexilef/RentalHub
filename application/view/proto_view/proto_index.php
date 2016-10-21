@@ -5,7 +5,7 @@
 
     <?php foreach ($imageresults as $image) { ?>
     <div class="mySlides fade">
-        <img class="myImg" width="300px" height="200px" src="./../uploads/<?php echo $image->image_name?>">
+        <img class="myImg" width="100%" height="200px" src="./../uploads/<?php echo $image->image_name?>">
     </div>
   <?php } ?>
 
