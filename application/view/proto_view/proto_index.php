@@ -2,8 +2,8 @@
 
   <h3>Displaying images:</h3>
   <p>
-    <?php foreach ($results as $result) { ?>
-        <img src="./../uploads/<?php echo $result->image_name?>">
+    <?php foreach ($imageresults as $image) { ?>
+        <img src="./../uploads/<?php echo $image->image_name?>">
   <?php } ?>
   </p>
 
