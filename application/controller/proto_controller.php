@@ -41,7 +41,7 @@ class Proto_Controller extends Controller {
         if($_FILES['image']['name'])
         {
             $save_path=APP."uploads/"; // Folder where you wanna move the file.
-            $imagename = strtolower($_FILES['image']['tmp_name']); //You are renaming the file here
+            $imagename = strtolower($_FILES['image']['name']); //You are renaming the file here
             move_uploaded_file($_FILES['image']['tmp_name'], $save_path.$imagename); // Move the uploaded file to the desired folder
             $this->model->uploadImage($imagename);
         }
