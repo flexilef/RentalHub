@@ -45,7 +45,7 @@ class Proto_Controller extends Controller {
             $image_loc = $_FILES['image']['tmp_name'];
             $image_size = $_FILES['image']['size'];
             $image_type = $_FILES['image']['type'];
-            $folder=APP."uploads/";
+            $folder=APP."../public/uploads/";
 
             // new file size in KB
             $new_image_size = $image_size/1024;
