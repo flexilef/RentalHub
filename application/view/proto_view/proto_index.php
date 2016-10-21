@@ -3,7 +3,7 @@
   <h3>Displaying images:</h3>
   <p>
     <?php foreach ($imageresults as $image) { ?>
-        <img src="/home/f16g16/public_html/final_project/application/uploads/"<?php $image->image_name?>">
+        <img src="./../uploads/<?php echo $image->image_name?>">
   <?php } ?>
   </p>
 
