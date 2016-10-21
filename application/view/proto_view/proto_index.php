@@ -59,3 +59,10 @@
   <?php //echo "URL" . URL; ?>
   
 </div>
+
+<script>
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  };
+</script>
