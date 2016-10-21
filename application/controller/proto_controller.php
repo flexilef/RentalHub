@@ -57,7 +57,7 @@ class Proto_Controller extends Controller {
             $final_image=str_replace(' ','-',$new_image_name);
 
             move_uploaded_file($_FILES['image']['tmp_name'], $folder.$final_image); // Move the uploaded file to the desired folder
-            $this->model->uploadImage($final_image);
+            $this->model->uploadImage($final_image, $image_type, $new_image_size);
         }
 
         header('Location:' . URL . 'proto_controller/index');
