@@ -16,12 +16,13 @@
   <br>
   <?php $count = 1?>
 
+  <div style="text-align:center">
   <?php foreach ($imageresults as $image) { ?>
-    <div style="text-align:center">
       <span class="dot" onclick="currentSlide(<?php echo $count?>)"></span>
-    </div>
     <?php $count += 1?>
   <?php } ?>
+  </div>
+
 
   <div id="myModal" class="modal">
     <span class="close">×</span>
