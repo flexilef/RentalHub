@@ -42,7 +42,7 @@ $(function() {
 var modal = document.getElementById('myModal');
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementsByClassName('myImg');
+var imgs = document.getElementsByClassName('myImg');
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
 var myFunction = function() {
@@ -51,8 +51,8 @@ var myFunction = function() {
     captionText.innerHTML = this.alt;
 };
 
-for (var i = 0; i < classname.length; i++) {
-    classname[i].addEventListener('click', myFunction, false);
+for (var i = 0; i < imgs.length; i++) {
+    imgs[i].addEventListener('click', myFunction, false);
 }
 
 // Get the <span> element that closes the modal
