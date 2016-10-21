@@ -1,4 +1,4 @@
-window.onload = function(){
+$(document).ready(function(){
     $(function() {
 
         // just a super-simple JS demo
@@ -91,4 +91,4 @@ window.onload = function(){
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";
     }
-};
+});
