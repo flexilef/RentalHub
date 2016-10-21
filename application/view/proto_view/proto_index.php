@@ -3,7 +3,7 @@
   <h3>Displaying images:</h3>
   <p>
     <?php foreach ($imageresults as $image) { ?>
-        <a href=""><img id="myImg" width="300px" height="200px" src="./../uploads/<?php echo $image->image_name?>"></a>
+        <img class="myImg" width="300px" height="200px" src="./../uploads/<?php echo $image->image_name?>">
   <?php } ?>
   </p>
   <div id="myModal" class="modal">
