@@ -18,7 +18,11 @@
     <input type="text" name="name">
     <input type="submit" name="submit_delete_model" value="Submit">
   </form>
-  
+
+  <form action="<?php echo URL . "/proto_controller/uploadImage"; ?>" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" />
+    <input type="submit" name="upload_image" value="Upload" />
+  </form>
   
   <?php //echo "URL" . URL; ?>
   

@@ -3,5 +3,5 @@ echo "deploying to sfsuswe.com"
 
 ssh -v f16g16@sfsuswe.com <<f16g16
     cd ~/public_html/final_project
-    git pull gitlab felix-dev
+    git pull gitlab upload-image
 f16g16

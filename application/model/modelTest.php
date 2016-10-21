@@ -44,4 +44,14 @@ class ModelTest
     
     echo "Deleted: " . $name;
   }
+
+    public function uploadImage($imagename) {
+        $sql = "INSERT INTO image_uploads (image_name)" .
+            "VALUES (:image_name)";
+
+        $query = $this->db->prepare($sql);
+        $parameters = array(':image_name' => $imagename);
+
+        $query->execute($parameters);
+    }
 }
