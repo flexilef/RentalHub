@@ -51,6 +51,8 @@
 <!--  </form>-->
 
   <form action="<?php echo URL . "/proto_controller/uploadImage"; ?>" method="post" enctype="multipart/form-data">
+    <h3>Rental Space Title</h3>
+    <input type="text" name="rentalTitle"/>
     <h3>Upload Pictures</h3>
     <input type="file" name="image" />
     <input type="submit" name="upload_image" value="Upload" />
