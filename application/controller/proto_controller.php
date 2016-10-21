@@ -40,10 +40,24 @@ class Proto_Controller extends Controller {
     public function uploadImage() {
         if($_FILES['image']['name'])
         {
-            $save_path=APP."uploads/"; // Folder where you wanna move the file.
-            $imagename = strtolower($_FILES['image']['name']); //You are renaming the file here
-            move_uploaded_file($_FILES['image']['tmp_name'], $save_path.$imagename); // Move the uploaded file to the desired folder
-            $this->model->uploadImage($imagename);
+            $image = rand(1000,100000)."-".$_FILES['image']['name'];
+            $image_loc = $_FILES['image']['tmp_name'];
+            $image_size = $_FILES['image']['size'];
+            $image_type = $_FILES['image']['type'];
+            $folder=APP."uploads/";
+
+            // new file size in KB
+            $new_image_size = $image_size/1024;
+            // new file size in KB
+
+            // make file name in lower case
+            $new_image_name = strtolower($image);
+            // make file name in lower case
+
+            $final_image=str_replace(' ','-',$new_image_name);
+
+            move_uploaded_file($_FILES['image']['tmp_name'], $folder.$final_image); // Move the uploaded file to the desired folder
+            $this->model->uploadImage($final_image);
         }
 
         header('Location:' . URL . 'proto_controller/index');
