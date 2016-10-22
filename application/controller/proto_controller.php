@@ -75,7 +75,7 @@ class Proto_Controller extends Controller {
               $this->imageModel->uploadImage($final_image, $image_type, $new_image_size, $rental_listing_id);
 
           }
-          $imageresults = $this->imageModel->getAllImages($rental_listing_id);
+          $this->imageresults = $this->imageModel->getAllImages($rental_listing_id);
       }
         header('Location:' . URL . 'proto_controller/index');
     }
