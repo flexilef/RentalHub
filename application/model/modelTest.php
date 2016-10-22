@@ -56,9 +56,10 @@ class ModelTest
     }
 
     public function getAllImages($rental_listing_id) {
-        $sql = "SELECT * FROM image_uploads WHERE `rental_listing_id` = $rental_listing_id";
+        $sql = "SELECT * FROM image_uploads WHERE rental_listing_id = :rental_listing_id";
 
         $query = $this->db->prepare($sql);
+        $parameters = array(':rental_listing_id' => $rental_listing_id);
         $query->execute();
 
         return $query->fetchAll();
