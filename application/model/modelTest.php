@@ -45,12 +45,12 @@ class ModelTest
     echo "Deleted: " . $name;
   }
 
-    public function uploadImage($final_image, $image_type, $new_image_size) {
-        $sql = "INSERT INTO image_uploads (image_name, image_type, image_size)" .
-            "VALUES (:image_name, :image_type, :image_size)";
+    public function uploadImage($final_image, $image_type, $new_image_size, $rental_listing_id) {
+        $sql = "INSERT INTO image_uploads (image_name, image_type, image_size, rental_listing_id)" .
+            "VALUES (:image_name, :image_type, :image_size, :rental_listing_id)";
 
         $query = $this->db->prepare($sql);
-        $parameters = array(':image_name' => $final_image, ':image_type' => $image_type, ':image_size' => $new_image_size);
+        $parameters = array(':image_name' => $final_image, ':image_type' => $image_type, ':image_size' => $new_image_size, 'rental_listing_id' => $rental_listing_id);
 
         $query->execute($parameters);
     }

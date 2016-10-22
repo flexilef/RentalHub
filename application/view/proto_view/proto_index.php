@@ -1,3 +1,6 @@
+<?php
+  $image_upload_count = 1;
+?>
 <div class="container">
 
   <h3>Displaying images:</h3>
@@ -5,7 +8,7 @@
 
     <?php foreach ($imageresults as $image) { ?>
     <div class="mySlides fade">
-        <img class="myImg" width="100%" height="200px" src="<?php echo APP . "uploads/"; ?><!--./../uploads/--><?php echo $image->image_name?>">
+        <img class="myImg" width="100%" height="200px" src="./../uploads/<?php echo $image->image_name?>">
     </div>
   <?php } ?>
 
@@ -50,12 +53,14 @@
 <!--    <input type="submit" name="submit_delete_model" value="Submit">-->
 <!--  </form>-->
 
-  <form action="<?php echo URL . "/proto_controller/uploadImage"; ?>" method="post" enctype="multipart/form-data">
+  
+  <form action="<?php echo URL . "/proto_controller/submitPost"; ?>" method="post" enctype="multipart/form-data">
     <h3>Rental Space Title</h3>
-    <input type="text" name="rentalTitle"/>
+    <input type="text" name="rental_title"/>
     <h3>Upload Pictures</h3>
     <input type="file" name="image" />
-    <input type="submit" name="upload_image" value="Upload" />
+    <br>
+    <input type="submit" name="submit_post" value="Submit" />
   </form>
   
   <?php //echo "URL" . URL; ?>
