@@ -3,6 +3,23 @@
 ?>
 <div class="container">
 
+  <form action="<?php echo URL . "proto_controller/submitSearch"; ?>" method="post">
+    <h3>Search For a Rental Space</h3>
+    <input type="text" name="rental_search"/>
+    <input type="submit" name="submit_search" value="Search"/>
+  </form>
+  
+  <h4>Displaying Search Results</h4>
+  <p><?php 
+      if(isset($searchResults)) { 
+        echo var_dump($searchResults);
+        foreach($searchResults as $result) {
+          echo "<p>Title:" . $result['title'] . "</p>";
+        } 
+      } 
+      ?>
+  </p>
+
   <?php if (isset($imageresults)) { ?>
     <h3>Displaying images:</h3>
     <div class="slideshow-container">

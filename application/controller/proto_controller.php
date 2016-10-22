@@ -6,7 +6,8 @@ class Proto_Controller extends Controller {
   
   private $imageModel;
   private $rentalListingModel;
-    public $imageresults;
+  public $imageresults;
+  public $searchResults;
   
   function __construct() {
     parent::__construct();
@@ -16,7 +17,7 @@ class Proto_Controller extends Controller {
   }
 
   public function index() {
-      require APP . 'view/_templates/header.php';
+    require APP . 'view/_templates/header.php';
     require APP . "view/proto_view/proto_index.php";
     require APP . 'view/_templates/footer.php';
   }
@@ -43,6 +44,27 @@ class Proto_Controller extends Controller {
             $this->model->uploadImage($final_image, $image_type, $new_image_size);
         }
     }
+    
+  public function submitSearch() {
+    if(isset($_POST["submit_search"])) {
+      if(isset($_POST["rental_search"])) {
+        $search = $_POST["rental_search"];
+        
+        //$sql = "SELECT id from rental_listing WHERE title LIKE '%{:search}%'";
+        $sql = "SELECT title FROM rental_listing";
+
+        $query = $this->db->prepare($sql);
+        $parameters = array(":search" => $search);
+        $query->execute($parameters);
+        
+        $searchResults = $query->fetchAll(PDO::FETCH_ASSOC);
+               
+        require APP . 'view/_templates/header.php';
+        require APP . "view/proto_view/proto_index.php";
+        require APP . 'view/_templates/footer.php';
+      }
+    }
+  }
     
   public function submitPost() {
     if(isset($_POST["submit_post"])) {
