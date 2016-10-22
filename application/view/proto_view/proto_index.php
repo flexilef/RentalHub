@@ -19,7 +19,7 @@
   <br>
   <?php $count = 1?>
 
-  <?php if ($imageresults != "") { ?>
+  <?php if (isset($imageresults)) { ?>
   <div style="text-align:center">
   <?php foreach ($imageresults as $image) { ?>
       <span class="dot" onclick="currentSlide(<?php echo $count?>)"></span>

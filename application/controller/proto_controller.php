@@ -15,7 +15,6 @@ class Proto_Controller extends Controller {
   }
 
   public function index() {
-      $imageresults = "";
       require APP . 'view/_templates/header.php';
     require APP . "view/proto_view/proto_index.php";
     require APP . 'view/_templates/footer.php';
