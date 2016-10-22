@@ -60,7 +60,7 @@ class ModelTest
 
         $query = $this->db->prepare($sql);
         $parameters = array(':rental_listing_id' => $rental_listing_id);
-        $query->execute();
+        $query->execute($parameters);
 
         return $query->fetchAll();
     }
