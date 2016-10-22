@@ -6,6 +6,7 @@ class Proto_Controller extends Controller {
   
   private $imageModel;
   private $rentalListingModel;
+    public $imageresults;
   
   function __construct() {
     parent::__construct();
