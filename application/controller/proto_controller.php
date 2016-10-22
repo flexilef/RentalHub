@@ -15,8 +15,6 @@ class Proto_Controller extends Controller {
   }
 
   public function index() {
-    $imageresults = $this->imageModel->getAllImages();
-
     require APP . 'view/_templates/header.php';
     require APP . "view/proto_view/proto_index.php";
     require APP . 'view/_templates/footer.php';
@@ -77,8 +75,8 @@ class Proto_Controller extends Controller {
 
           }
       }
-      
-      header('Location:' . URL . 'proto_controller/index');
+        $imageresults = $this->imageModel->getAllImages($rental_listing_id);
+        header('Location:' . URL . 'proto_controller/index');
     }
   }
 }

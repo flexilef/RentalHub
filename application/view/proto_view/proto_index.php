@@ -19,20 +19,14 @@
   <br>
   <?php $count = 1?>
 
+  <?php if ($imageresults) { ?>
   <div style="text-align:center">
   <?php foreach ($imageresults as $image) { ?>
       <span class="dot" onclick="currentSlide(<?php echo $count?>)"></span>
     <?php $count += 1?>
   <?php } ?>
   </div>
-
-
-  <div id="myModal" class="modal">
-    <span class="close">×</span>
-    <img class="modal-content" id="img01">
-    <div id="caption"></div>
-  </div>
-  
+  <?php }else { ?>
   <form action="<?php echo URL . "/proto_controller/submitPost"; ?>" method="post" enctype="multipart/form-data">
     <h3>Rental Space Title</h3>
     <input type="text" name="rental_title"/>
@@ -41,6 +35,13 @@
     <br>
     <input type="submit" name="submit_post" value="Submit" />
   </form>
+  <?php } ?>
+
+  <div id="myModal" class="modal">
+    <span class="close">×</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
   
   <?php //echo "URL" . URL; ?>
   
