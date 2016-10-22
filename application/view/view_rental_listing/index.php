@@ -1,9 +1,3 @@
-/**
- * Created by PhpStorm.
- * User: Abhi
- * Date: 10/22/16
- * Time: 1:56 PM
- */
 <h3>Displaying images:</h3>
     <div class="slideshow-container">
 
