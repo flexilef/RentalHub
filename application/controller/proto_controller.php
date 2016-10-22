@@ -15,7 +15,7 @@ class Proto_Controller extends Controller {
   }
 
   public function index() {
-    //$results = $this->imageModel->getAllModels();
+    $imageresults = "";
     $imageresults = $this->imageModel->getAllImages();
 
     require APP . 'view/_templates/header.php';
