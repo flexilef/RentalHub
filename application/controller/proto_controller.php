@@ -22,28 +22,6 @@ class Proto_Controller extends Controller {
     require APP . "view/proto_view/proto_index.php";
     require APP . 'view/_templates/footer.php';
   }
-  
-  /*
-  public function insertModel() {
-    if(isset($_POST["submit_insert_model"]) 
-      && isset($_POST["name"])) {
-      $name = $_POST["name"];
-      $this->model->insertModel($name);
-    }
-    
-    header('Location:' . URL . 'proto_controller/index');
-  }
-  
-  public function deleteModel() {
-    if(isset($_GET["submit_delete_model"]) 
-      && isset($_GET["name"])) {
-      $name = $_GET["name"];
-      $this->model->deleteModel($name);
-    }
-    
-    header("Location:" . URL . "proto_controller/index");
-  }
-  */
 
   public function uploadImage() {
         if($_FILES['image']['name'])
