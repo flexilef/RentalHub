@@ -12,11 +12,14 @@
   <h4>Displaying Search Results</h4>
   <p><?php 
       if(isset($searchResults)) { 
-        echo var_dump($searchResults);
         foreach($searchResults as $result) {
-          echo "<p>Title:" . $result['title'] . "</p>";
+          $title = $result['title'];
+          $image_name = $result['image_name'];
+          
+          echo "<h5>Title:" . $result['title'] . "</h5>";
+          echo "<img class=\"myImg\" width=\"100%\" height=\"200px\" src=\"./../uploads/$image_name\">";
         } 
-      } 
+      }
       ?>
   </p>
 

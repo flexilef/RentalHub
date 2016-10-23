@@ -49,17 +49,18 @@ class Proto_Controller extends Controller {
     if(isset($_POST["submit_search"])) {
       if(isset($_POST["rental_search"])) {
         $search = $_POST["rental_search"];
-        echo var_dump($search);
         
-        $sql = "SELECT title FROM rental_listing WHERE title LIKE CONCAT('%', :search, '%')";
-        echo var_dump($sql);
+        $sql = "SELECT rental_listing.title, image_uploads.image_name ".
+               "FROM image_uploads JOIN rental_listing " .
+               "ON image_uploads.rental_listing_id = rental_listing.id " .
+               "WHERE rental_listing.title LIKE CONCAT('%', :search, '%')";
 
         $query = $this->db->prepare($sql);
         $parameters = array(':search' => $search);
         $query->execute($parameters);
         
         $searchResults = $query->fetchAll(PDO::FETCH_ASSOC);
-               
+        
         require APP . 'view/_templates/header.php';
         require APP . "view/proto_view/proto_index.php";
         require APP . 'view/_templates/footer.php';
