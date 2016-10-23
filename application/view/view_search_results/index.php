@@ -1,6 +1,5 @@
 <?php
 if(isset($rentalId_to_images)) { ?>
-<?php echo $rentalId_to_images[0]; ?>
 <div class="container">
     <h3>Displaying Search Results</h3>
     <div class="slideshow-container">
