@@ -9,7 +9,7 @@ class Proto_Controller extends Controller {
   public $imageresults;
   public $searchResults;
   
-  function __construct() {
+ function __construct() {
     parent::__construct();
     
     $this->imageModel = new modelTest($this->db);
@@ -94,13 +94,12 @@ class Proto_Controller extends Controller {
 
               $final_image=str_replace(' ','-',$new_image_name);
 
-              move_uploaded_file($_FILES['image']['tmp_name'], $folder.$final_image); // Move the uploaded file to the desired folder
+              move_uploaded_file($_FILES['images']['tmp_name'][$name], $folder.$final_image); // Move the uploaded file to the desired folder
               $this->imageModel->uploadImage($final_image, $image_type, $new_image_size, $rental_listing_id);
 
           }
-          $this->imageresults = $this->imageModel->getAllImages($rental_listing_id);
       }
-        header('Location:' . URL . 'proto_controller/index');
+        header('Location:' . URL . 'view_rental_listing/index?rental_listing_id='.$rental_listing_id);
     }
   }
 }
