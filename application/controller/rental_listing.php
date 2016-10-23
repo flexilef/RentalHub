@@ -1,5 +1,5 @@
 <?php
- require APP . 'model/modelTest.php';
+ require APP . 'model/imageUploadsModel.php';
 class View_Rental_Listing extends Controller
 {
    private $imageModel;
@@ -7,7 +7,7 @@ class View_Rental_Listing extends Controller
   function __construct() {
     parent::__construct();
 
-    $this->imageModel = new modelTest($this->db);
+    $this->imageModel = new imageUploadsModel($this->db);
   }
 	 public function index() {
 

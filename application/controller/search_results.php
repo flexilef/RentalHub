@@ -1,5 +1,5 @@
 <?php
-
+require APP . 'model/imageUploadsModel.php';
 /**
  * Created by PhpStorm.
  * User: Abhi
@@ -12,7 +12,7 @@ class Search_Results extends Controller
     function __construct() {
         parent::__construct();
 
-        $this->imageModel = new modelTest($this->db);
+        $this->imageModel = new imageUploadsModel($this->db);
     }
     public function index() {
 
