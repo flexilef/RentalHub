@@ -1,6 +1,6 @@
 <?php
  require APP . 'model/imageUploadsModel.php';
-class View_Rental_Listing extends Controller
+class Rental_Listing extends Controller
 {
    private $imageModel;
 
