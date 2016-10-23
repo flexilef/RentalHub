@@ -1,5 +1,6 @@
 <?php
 require APP . 'model/imageUploadsModel.php';
+require APP . 'model/rentalListingModel.php';
 /**
  * Created by PhpStorm.
  * User: Abhi
@@ -13,6 +14,7 @@ class Search_Results extends Controller
         parent::__construct();
 
         $this->imageModel = new ImageUploadsModel($this->db);
+	$this->rentalListingModel = new RentalListingModel($this->db);
     }
     public function index() {
 
@@ -36,7 +38,7 @@ class Search_Results extends Controller
             }
         }
         require APP . 'view/_templates/header.php';
-        require APP . "view/view_search_result/index.php";
+        require APP . "view/view_search_results/index.php";
         require APP . 'view/_templates/footer.php';
     }
 }
