@@ -12,7 +12,7 @@ class Proto_Controller extends Controller {
  function __construct() {
     parent::__construct();
     
-    $this->imageModel = new imageUploadsModel($this->db);
+    $this->imageModel = new ImageUploadsModel($this->db);
     $this->rentalListingModel = new rentalListingModel($this->db);
   }
 

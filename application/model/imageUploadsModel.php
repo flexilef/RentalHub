@@ -1,6 +1,6 @@
 <?php
 
-class ModelTest
+class ImageUploadsModel
 {
     /**
      * @param object $db A PDO database connection
