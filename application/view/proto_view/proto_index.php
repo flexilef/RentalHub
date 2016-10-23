@@ -8,6 +8,7 @@
   
   <h4>Displaying Search Results</h4>
   <p><?php 
+  /*
       if(isset($searchResults)) { 
         foreach($searchResults as $result) {
           $title = $result['title'];
@@ -16,6 +17,21 @@
           echo "<h5>Title:" . $result['title'] . "</h5>";
           echo "<img class=\"myImg\" width=\"100%\" height=\"200px\" src=\"./../uploads/$image_name\">";
         } 
+      }
+      */
+      if(isset($rentalId_to_images)) {
+        foreach($rentalIds as $id) {
+          $title = $rentalId_to_title[$id];
+          
+          echo "<h5>Title: " . $title. "</h5>";
+          echo "<br>";
+          
+          $images = $rentalId_to_images[$id];
+          foreach($images as $image_name) {
+            echo "<img class=\"myImg\" width=\"50px\" height=\"50px\" src=\"./../uploads/$image_name\">";
+            echo "    ";
+          }
+        }
       }
       ?>
   </p>

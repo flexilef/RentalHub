@@ -50,7 +50,7 @@ class Proto_Controller extends Controller {
       if(isset($_POST["rental_search"])) {
         $search = $_POST["rental_search"];
         
-        $sql = "SELECT rental_listing.title, image_uploads.image_name ".
+        $sql = "SELECT rental_listing.id, rental_listing.title, image_uploads.image_name ".
                "FROM image_uploads JOIN rental_listing " .
                "ON image_uploads.rental_listing_id = rental_listing.id " .
                "WHERE rental_listing.title LIKE CONCAT('%', :search, '%')";
@@ -60,6 +60,17 @@ class Proto_Controller extends Controller {
         $query->execute($parameters);
         
         $searchResults = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        $rentalIds = array();
+        $rentalId_to_images = array();
+        $rentalId_to_title = array();
+        foreach($searchResults as $result) {
+          $rentalIds[] = $result['id']; 
+          $rentalId_to_title[$result['id']] = $result['title'];
+          $rentalId_to_images[$result['id']][] = $result['image_name'];
+        }
+        
+        $rentalIds = array_unique($rentalIds);
         
         require APP . 'view/_templates/header.php';
         require APP . "view/proto_view/proto_index.php";
@@ -79,28 +90,27 @@ class Proto_Controller extends Controller {
       //upload images
       if($_FILES['images']['name'])
       {
-          foreach ($_FILES['images']['name'] as $name => $value) {
-              $image = stripslashes($_FILES['images']['name'][$name]);
-              $image = rand(1000,100000)."-".$_FILES['images']['name'][$name];
-              $image_loc = $_FILES['images']['tmp_name'][$name];
-              $image_size = $_FILES['images']['size'][$name];
-              $image_type = $_FILES['images']['type'][$name];
-              $folder=APP."../public/uploads/";
+        foreach ($_FILES['images']['name'] as $name => $value) {
+          $image = stripslashes($_FILES['images']['name'][$name]);
+          $image = rand(1000,100000)."-".$_FILES['images']['name'][$name];
+          $image_loc = $_FILES['images']['tmp_name'][$name];
+          $image_size = $_FILES['images']['size'][$name];
+          $image_type = $_FILES['images']['type'][$name];
+          $folder=APP."../public/uploads/";
 
-              // new file size in KB
-              $new_image_size = $image_size/1024;
+          // new file size in KB
+          $new_image_size = $image_size/1024;
 
-              // make file name in lower case
-              $new_image_name = strtolower($image);
+          // make file name in lower case
+          $new_image_name = strtolower($image);
 
-              $final_image=str_replace(' ','-',$new_image_name);
+          $final_image=str_replace(' ','-',$new_image_name);
+          move_uploaded_file($_FILES['images']['tmp_name'][$name], $folder.$final_image); // Move the uploaded file to the desired folder
+          $this->imageModel->uploadImage($final_image, $image_type, $new_image_size, $rental_listing_id);
 
-              move_uploaded_file($_FILES['images']['tmp_name'][$name], $folder.$final_image); // Move the uploaded file to the desired folder
-              $this->imageModel->uploadImage($final_image, $image_type, $new_image_size, $rental_listing_id);
-
-          }
+        }
       }
-        header('Location:' . URL . 'view_rental_listing/index?rental_listing_id='.$rental_listing_id);
+      header('Location:' . URL . 'view_rental_listing/index?rental_listing_id='.$rental_listing_id);
     }
   }
 }
