@@ -12,5 +12,15 @@
         <span class="close">×</span>
         <img class="modal-content" id="img01">
         <div id="caption"></div>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        <br>
+        <?php $count = 1?>
+        <div style="text-align:center">
+            <?php foreach ($imageresults as $image) { ?>
+                <span class="dot" onclick="currentSlide(<?php echo $count?>)"></span>
+                <?php $count += 1?>
+            <?php } ?>
+        </div>
     </div>
 </div>
