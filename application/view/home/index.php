@@ -1,4 +1,4 @@
 <div class="container">
-    <h2>You are in the View: application/view/home/index.php (everything in the box comes from this file)</h2>
-    <p>In a real application this could be the homepage.</p>
+    <h2>CSC 848/6484 Software Engineering</h2>
+    <h3>Section-2 Group 16</h3>
 </div>
