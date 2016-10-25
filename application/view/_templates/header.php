@@ -21,8 +21,8 @@
 
     <form class="search" action="<?php echo URL . "search_results/index"; ?>" method="post">
         <h3>Search For a Rental Space</h3>
-        <input width="75%" height="50px" type="text" name="rental_search"/>
-        <input width="20%" height="50px" type="submit" name="submit_search" value="Search"/>
+        <input style="width:75%;" type="text" name="rental_search"/>
+        <input style="width:20%;" type="submit" name="submit_search" value="Search"/>
     </form>
 
     <!-- navigation -->

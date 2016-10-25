@@ -9,6 +9,11 @@
     </div>
 
     <div id="myModal" class="modal">
+        <div class="slideshow-container">
+        <?php foreach ($imageresults as $image) { ?>
+            <img class="myImg" src="./../uploads/<?php echo $image->image_name?>">
+            <?php echo "    "; ?>
+        <?php } ?>
         <span class="close">×</span>
         <img class="modal-content" id="img01">
         <div id="caption"></div>
@@ -21,6 +26,7 @@
                 <span class="dot" onclick="currentSlide(<?php echo $count?>)"></span>
                 <?php $count += 1?>
             <?php } ?>
+        </div>
         </div>
     </div>
 </div>
