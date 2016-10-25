@@ -318,6 +318,8 @@ body {font-family: Verdana,sans-serif;margin:0}
     background: #222;
     color: #fff;
     height: 30px;
+    margin-top: 15px;
+    text-align: center;
 }
 
 .container input[type="text"] {
