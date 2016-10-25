@@ -18,7 +18,7 @@ if(isset($rentalId_to_images)) { ?>
             <?php $images = $rentalId_to_images[$id]; ?>
             <?php foreach($images as $image_name) { ?>
             <div class="mySlides fade">
-            <img src="./../uploads/<?php echo $image_name; ?>">
+            <img width="100%" height="100%" src="./../uploads/<?php echo $image_name; ?>">
             </div>
             <?php } ?>
             <span class="close">×</span>

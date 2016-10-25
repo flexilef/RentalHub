@@ -299,3 +299,16 @@ body {font-family: Verdana,sans-serif;margin:0}
     height: 50px;
     font-size: 30px;
 }
+
+.post input[type="submit"] {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 2px solid #222;
+    background: #222;
+    color: #fff;
+    height: 50px;
+}
