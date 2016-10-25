@@ -15,11 +15,13 @@ if(isset($rentalId_to_images)) { ?>
         <?php } ?>
     <div id="myModal" class="modal">
         <div class="slideshow-container">
-            <?php $images = $rentalId_to_images[$id]; ?>
-            <?php foreach($images as $image_name) { ?>
-            <div class="mySlides fade">
-            <img width="100%" height="600px" src="./../uploads/<?php echo $image_name; ?>">
-            </div>
+            <?php foreach ($rentalIds as $id) { ?>
+                <?php $images = $rentalId_to_images[$id]; ?>
+                <?php foreach($images as $image_name) { ?>
+                <div class="mySlides fade">
+                <img width="100%" height="600px" src="./../uploads/<?php echo $image_name; ?>">
+                </div>
+                <?php } ?>
             <?php } ?>
             <span class="close">×</span>
             <a class="prev" onclick="plusSlides(-1)">❮</a>
