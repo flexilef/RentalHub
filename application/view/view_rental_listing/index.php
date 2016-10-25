@@ -12,11 +12,10 @@
         <div class="slideshow-container">
         <?php foreach ($imageresults as $image) { ?>
             <div class="mySlides fade">
-            <img width="800px" height="700px" class="myImg" src="./../uploads/<?php echo $image->image_name?>">
+            <img width="100%" height="600px" class="myImg" src="./../uploads/<?php echo $image->image_name?>">
             </div>
         <?php } ?>
         <span class="close">×</span>
-        <img class="modal-content" id="img01">
         <div id="caption"></div>
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
