@@ -11,8 +11,9 @@
     <div id="myModal" class="modal">
         <div class="slideshow-container">
         <?php foreach ($imageresults as $image) { ?>
-            <img class="myImg" src="./../uploads/<?php echo $image->image_name?>">
-            <?php echo "    "; ?>
+            <div class="mySlides fade">
+            <img width="800px" height="700px" class="myImg" src="./../uploads/<?php echo $image->image_name?>">
+            </div>
         <?php } ?>
         <span class="close">×</span>
         <img class="modal-content" id="img01">

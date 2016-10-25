@@ -5,6 +5,6 @@
       <h3>Upload Pictures</h3>
       <input multiple="true" type="file" name="images[]" />
       <br>
-      <input class="post" type="submit" name="submit_post" value="Submit" />
+      <input type="submit" name="submit_post" value="Submit" />
     </form>
 </div>
