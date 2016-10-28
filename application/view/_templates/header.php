@@ -24,7 +24,7 @@
         <div>
             <input style="width:75%;" type="text" name="rental_search"/>
             <input style="width:20%;" type="submit" name="submit_search" value="Search"/>
-        </div>
+        </div>  
         </form>
 
     <!-- navigation -->
