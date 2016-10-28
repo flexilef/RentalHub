@@ -1,6 +1,7 @@
 <?php
 require APP . 'model/imageUploadsModel.php';
-class Rental_Listing extends Controller
+
+class RentalListing extends Controller
 {
     private $image_model;
 
@@ -20,7 +21,7 @@ class Rental_Listing extends Controller
         }
 
         require APP . 'view/_templates/header.php';
-        require APP . "view/view_rental_listing/index.php";
+        require APP . "view/viewRentalListing/index.php";
         require APP . 'view/_templates/footer.php';
     }
 }

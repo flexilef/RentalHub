@@ -39,7 +39,7 @@ class SearchResults extends Controller
         }
 
         require APP . 'view/_templates/header.php';
-        require APP . "view/view_search_results/index.php";
+        require APP . "view/viewSearchResults/index.php";
         require APP . 'view/_templates/footer.php';
     }
 }

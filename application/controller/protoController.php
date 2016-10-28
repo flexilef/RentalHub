@@ -21,7 +21,7 @@ class ProtoController extends Controller
     public function index()
     {
         require APP . 'view/_templates/header.php';
-        require APP . "view/proto_view/proto_index.php";
+        require APP . "view/protoView/index.php";
         require APP . 'view/_templates/footer.php';
     }
 
@@ -33,7 +33,7 @@ class ProtoController extends Controller
         if(isset($_POST["rental_title"]))
         {
           //need to have a rental_listing before we can add image_uploads
-          $this->rental_listing_model->insert_rental_listing($_POST["rental_title"]);
+          $this->rental_listing_model->insertRentalListing($_POST["rental_title"]);
           $rental_listing_id = $this->rental_listing_model->getLatestId();
         }
 
@@ -59,7 +59,7 @@ class ProtoController extends Controller
                 $this->image_model->uploadImage($final_image, $image_type, $new_image_size, $rental_listing_id);
             }
         }
-        header('Location:' . URL . 'rental_listing/index?rental_listing_id='.$rental_listing_id);
+        header('Location:' . URL . 'rentalListing/index?rental_listing_id='.$rental_listing_id);
         }
     }
 }
