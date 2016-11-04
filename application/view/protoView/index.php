@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="<?php echo URL . "/proto_controller/submitPost"; ?>" method="post" enctype="multipart/form-data">
+  <form action="<?php echo URL . "/protoController/submitPost"; ?>" method="post" enctype="multipart/form-data">
       <h3>Rental Space Title</h3>
       <input type="text" name="rental_title"/>
       <h3>Upload Pictures</h3>
