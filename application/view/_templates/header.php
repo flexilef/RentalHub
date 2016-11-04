@@ -19,16 +19,16 @@
         SFSU Rental Hub
     </div>
 
-    <form class="search" action="<?php echo URL . "search_results/index"; ?>" method="post">
+    <form class="search" action="<?php echo URL . "searchResults/index"; ?>" method="post">
         <h3>Search For a Rental Space</h3>
         <div>
             <input style="width:75%;" type="text" name="rental_search"/>
             <input style="width:20%;" type="submit" name="submit_search" value="Search"/>
-        </div>
+        </div>  
         </form>
 
     <!-- navigation -->
     <div class="navigation">
         <a href="<?php echo URL; ?>">home</a>
-        <a href="<?php echo URL; ?>proto_controller/index">Post Rental Listing</a>
+        <a href="<?php echo URL; ?>protoController/index">Post Rental Listing</a>
     </div>
