@@ -22,7 +22,7 @@ class SearchResults extends Controller
                 $search = $_POST["rental_search"];
 
                 $search_results = $this->rental_listing_model->searchResults($search);
-
+                
                 $rental_ids = array();
                 $rental_id_to_images = array();
                 $rental_id_to_title = array();

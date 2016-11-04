@@ -1,16 +1,16 @@
 <?php
-if(isset($rentalId_to_images)) 
+if(isset($rental_id_to_images)) 
 { ?>
     <div class="container">
     <h3>Displaying Search Results</h3>
     <div class="slideshow-container">
         <?php 
-            foreach ($rentalIds as $id) 
+            foreach ($rental_ids as $id) 
             { ?>
-                <?php $title = $rentalId_to_title[$id]; ?>
+                <?php $title = $rental_id_to_title[$id]; ?>
                 <h5>Title: <?php echo $title?></h5>
                 <br>
-                <?php $images = $rentalId_to_images[$id]; ?>
+                <?php $images = $rental_id_to_images[$id]; ?>
                 <?php 
                     foreach($images as $image_name) 
                     { ?>
