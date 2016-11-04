@@ -4,12 +4,12 @@
       <input type="text" name="rental_title" placeholder="Great One Bedroom Apartment"/>
 
       <h3>Rental Space Description</h3>
-      <input type="text" name="rental_description" placeholder="A wonderful apartment with a view of..."/>
+      <input type="text" name="rental_description" placeholder="A wonderful apartment with a view of Lake Merced, and walking distance from SFSU."/>
 
       <h3>Rental Address</h3>
       <input type="text" name="rental_address" placeholder="123 Wall Street"/>
 
-      <h3>Rental Monthly Price</h3>
+      <h3>Rental Monthly Price in US Dollars</h3>
       <input type="number" name="rental_price" placeholder="1234"/>
 
       <h3>Type of Rental Space</h3>
