@@ -321,7 +321,7 @@ body {font-family: Verdana,sans-serif;margin:0}
     margin-top: 15px;
 }
 
-.container input[type="text"] {
+.container input[type="text"], input[type="number"] {
     height: 30px;
     display: inline-block;
     padding: 10px 15px;
