@@ -28,38 +28,47 @@ class ProtoController extends Controller
 
     public function submitPost()
     {
-      if(isset($_POST["submit_post"]))
-      {
-        if(isset($_POST["rental_title"]))
-        {
-          //need to have a rental_listing before we can add image_uploads
-          $this->rental_listing_model->insertRentalListing($_POST["rental_title"]);
-          $rental_listing_id = $this->rental_listing_model->getLatestId();
-        }
+        if(isset($_POST["submit_post"]))
+        {           
+            $allowAnimals = 0;
+            if(isset($_POST["rental_animals"]))
+                $allowAnimals = 1;
+                       
+            $this->rental_listing_model->insertRentalListing($_POST["rental_title"], $_POST["rental_description"], 
+            $_POST["rental_address"], $_POST["rental_price"], $_POST["rental_type"], $_POST["rental_occupants"], 
+            $allowAnimals);
+                    
+            $rental_listing_id = $this->rental_listing_model->getLatestId();
+            
+            //upload images
+            if($_FILES['images']['name'])
+            {
+                foreach ($_FILES['images']['name'] as $name => $value) {
+                    $image = stripslashes($_FILES['images']['name'][$name]);
+                    $image = rand(1000,100000)."-".$_FILES['images']['name'][$name];
+                    $image_loc = $_FILES['images']['tmp_name'][$name];
+                    $image_size = $_FILES['images']['size'][$name];
+                    $image_type = $_FILES['images']['type'][$name];
+                    $folder = APP."../public/uploads/";
 
-        //upload images
-        if($_FILES['images']['name'])
-        {
-            foreach ($_FILES['images']['name'] as $name => $value) {
-                $image = stripslashes($_FILES['images']['name'][$name]);
-                $image = rand(1000,100000)."-".$_FILES['images']['name'][$name];
-                $image_loc = $_FILES['images']['tmp_name'][$name];
-                $image_size = $_FILES['images']['size'][$name];
-                $image_type = $_FILES['images']['type'][$name];
-                $folder = APP."../public/uploads/";
+                    // new file size in KB
+                    $new_image_size = $image_size/1024;
 
-                // new file size in KB
-                $new_image_size = $image_size/1024;
+                    // make file name in lower case
+                    $new_image_name = strtolower($image);
 
-                // make file name in lower case
-                $new_image_name = strtolower($image);
-
-                $final_image=str_replace(' ','-',$new_image_name);
-                move_uploaded_file($_FILES['images']['tmp_name'][$name], $folder.$final_image); // Move the uploaded file to the desired folder
-                $this->image_model->uploadImage($final_image, $image_type, $new_image_size, $rental_listing_id);
+                    $final_image=str_replace(' ','-',$new_image_name);
+                    move_uploaded_file($_FILES['images']['tmp_name'][$name], $folder.$final_image); // Move the uploaded file to the desired folder
+                    $this->image_model->uploadImage($final_image, $image_type, $new_image_size, $rental_listing_id);
+                }
             }
-        }
-        header('Location:' . URL . 'rentalListing/index?rental_listing_id='.$rental_listing_id);
+            else
+            {
+                //have a default image for postings that don't have images. Else, make it strict to post with pics
+                //Right now there is a bug: search results don't show postings without images (join/on)
+            }
+            
+            header('Location:' . URL . 'rentalListing/index?rental_listing_id='.$rental_listing_id);
         }
     }
 }

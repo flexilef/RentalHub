@@ -31,13 +31,14 @@ class RentalListingModel
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-  public function insertRentalListing($title)
+  public function insertRentalListing($title, $description, $address, $price, $type, $number_occupants, $allow_animals)
   {
-      $sql = "INSERT INTO rental_listing (title)" .
-      "VALUES (:title)";
+      $sql = "INSERT INTO rental_listing (title, description, address, price, type, number_occupants, allow_animals)" .
+      "VALUES (:title, :description, :address, :price, :type, :number_occupants, :allow_animals)";
 
       $query = $this->db->prepare($sql);
-      $parameters = array(':title' => $title);
+      $parameters = array(':title' => $title, ':description' => $description, ':address' => $address,
+      ':price' => $price, ':type' => $type, ':number_occupants' => $number_occupants, ':allow_animals' => $allow_animals);
 
       $query->execute($parameters);
   }
