@@ -36,6 +36,9 @@ class SearchResults extends Controller
 
                 $rental_ids = array_unique($rental_ids);
             }
+            
+            $improved_results = $this->rental_listing_model->improvedSearch($search);
+            var_dump($improved_results);
         }
 
         require APP . 'view/_templates/header.php';
