@@ -2,6 +2,11 @@
 
 class RentalListingModel
 {
+    const SEARCH_WEIGHT_TYPE = 4;
+    const SEARCH_WEIGHT_ADDRESS = 3;
+    const SEARCH_WEIGHT_TITLE = 2;
+    const SEARCH_WEIGHT_DESCRIPTION = 1;
+        
     /**
      * @param object $db A PDO database connection
      */
@@ -15,6 +20,8 @@ class RentalListingModel
         {
             exit('Database connection could not be established.');
         }
+        
+        $indices = array(array());
     }
     
     public function getDescription($id)
@@ -134,40 +141,53 @@ class RentalListingModel
         
     }
 
-    /*
-    SELECT *, 
+/* Example query created:
+SELECT *, 
 	(CASE
-    	WHEN `rental_listing`.`type` LIKE '%bedroom%' THEN 1 
-     END +
-     CASE WHEN `rental_listing`.`title` LIKE '%bedroom%' THEN 2
-    END) as Weight
-       
+    	WHEN `rental_listing`.`type` LIKE '%bedroom%' THEN 3 ELSE 0
+    END +
+    CASE WHEN `rental_listing`.`title` LIKE '%bedroom%' THEN 2 ELSE 0
+    END +
+    CASE WHEN `rental_listing`.`description` LIKE '%bedroom%' THEN 1 ELSE 0
+    END) as Weight   
 FROM `rental_listing`
 ORDER BY Weight DESC
 */
-    public function improvedSearch($search)
+    public function searchRentalListings($search_string)
     {
-        $keywords = explode(" ", $search);
-        var_dump($keywords);
+        $search_tokens = explode(" ", $search_string);
+        $parameters = array();
         
-        foreach($keywords as $keyword)
+        foreach($search_tokens as $keyword)
         {
-            $case_type_queries[] = "CASE WHEN rental_listing.type LIKE CONCAT('%', :keyword, '%') THEN 3 ELSE 0 END";
-            $case_title_queries[] = "CASE WHEN rental_listing.title LIKE CONCAT('%', :keyword, '%') THEN 2 ELSE 0 END";
-            $case_description_queries[] = "CASE WHEN rental_listing.description LIKE CONCAT('%', :keyword, '%') THEN 1 ELSE 0 END";
+            $case_type_queries[] = "CASE WHEN rental_listing.type LIKE CONCAT('%', :{$keyword}, '%') THEN " .
+            self::SEARCH_WEIGHT_TYPE . " ELSE 0 END";
+            $case_address_queries[] = "CASE WHEN rental_listing.address LIKE CONCAT('%', :{$keyword}, '%') THEN " .
+            self::SEARCH_WEIGHT_ADDRESS . " ELSE 0 END";
+            $case_title_queries[] = "CASE WHEN rental_listing.title LIKE CONCAT('%', :{$keyword}, '%') THEN " .
+            self::SEARCH_WEIGHT_TITLE . " ELSE 0 END";
+            $case_description_queries[] = "CASE WHEN rental_listing.description LIKE CONCAT('%', :{$keyword}, '%') THEN " .
+            self::SEARCH_WEIGHT_DESCRIPTION ." ELSE 0 END";
             
-            $parameters = array(':keyword' => $keyword);
+            $parameters[':'.$keyword] = $keyword;
         }
         
-        $sql = "SELECT rental_listing.id, rental_listing.title, (" . implode(" + ", $case_type_queries) .
+        $sql = "SELECT rental_listing.id, rental_listing.title, " .
+        "(" . implode(" + ", $case_type_queries) .
+        "+" . implode(" + ", $case_address_queries) .
         "+" . implode(" + ", $case_title_queries) .
         "+" . implode(" + ", $case_description_queries) .
-        ") as Weight FROM rental_listing ORDER BY Weight DESC";
-        
-        var_dump($sql);
+        ") as Weight " .
+        "FROM rental_listing " .
+        "HAVING Weight > 0 " .
+        "ORDER BY Weight DESC";
         
         $query = $this->db->prepare($sql);
         $query->execute($parameters);
+        
+        var_dump($sql);
+        var_dump($search_tokens);
+        var_dump($parameters);
         
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -197,6 +217,7 @@ ORDER BY Weight DESC
         $query->execute($parameters);
     }
 
+    //TODO: rewrite this function to use $this->db->lastInsertId()?
     public function getLatestId()
     {
         $sql = "SELECT id FROM rental_listing ORDER BY id DESC LIMIT 1";

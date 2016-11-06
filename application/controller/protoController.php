@@ -7,8 +7,6 @@ class ProtoController extends Controller
 
     private $image_model;
     private $rental_listing_model;
-    public $image_results;
-    public $search_results;
 
     function __construct()
     {
@@ -37,7 +35,7 @@ class ProtoController extends Controller
             $this->rental_listing_model->insertRentalListing($_POST["rental_title"], $_POST["rental_description"], 
             $_POST["rental_address"], $_POST["rental_price"], $_POST["rental_type"], $_POST["rental_occupants"], 
             $allowAnimals);
-                    
+            
             $rental_listing_id = $this->rental_listing_model->getLatestId();
             
             //upload images
@@ -68,7 +66,8 @@ class ProtoController extends Controller
                 //Right now there is a bug: search results don't show postings without images (join/on)
             }
             
-            header('Location:' . URL . 'rentalListing/index?rental_listing_id='.$rental_listing_id);
+            //uncomment for production. Commented out in order to view variable dumps
+            //header('Location:' . URL . 'rentalListing/index?rental_listing_id='.$rental_listing_id);
         }
     }
 }

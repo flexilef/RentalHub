@@ -1,5 +1,4 @@
 <?php
-require APP . 'model/imageUploadsModel.php';
 require APP . 'model/rentalListingModel.php';
 
 class SearchResults extends Controller
@@ -9,7 +8,6 @@ class SearchResults extends Controller
     {
         parent::__construct();
 
-        $this->image_model = new ImageUploadsModel($this->db);
         $this->rental_listing_model = new RentalListingModel($this->db);
     }
 
@@ -37,7 +35,7 @@ class SearchResults extends Controller
                 $rental_ids = array_unique($rental_ids);
             }
             
-            $improved_results = $this->rental_listing_model->improvedSearch($search);
+            $improved_results = $this->rental_listing_model->searchRentalListings($search);
             var_dump($improved_results);
         }
 
