@@ -20,8 +20,6 @@ class RentalListingModel
         {
             exit('Database connection could not be established.');
         }
-        
-        $indices = array(array());
     }
     
     public function getDescription($id)
@@ -128,7 +126,16 @@ class RentalListingModel
         $parameters = array(':id' => $id);
         $query->execute($parameters);
             
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        $image_names = array();
+        foreach($result as $image)
+        {
+            $image_names[] = $image['image_name'];
+        }
+        
+        var_dump($image_names);
+        return $image_names;
     }
     
     public function getOwner($id)
@@ -172,7 +179,7 @@ ORDER BY Weight DESC
             $parameters[':'.$keyword] = $keyword;
         }
         
-        $sql = "SELECT rental_listing.id, rental_listing.title, " .
+        $sql = "SELECT rental_listing.id, rental_listing.title, rental_listing.price, " .
         "(" . implode(" + ", $case_type_queries) .
         "+" . implode(" + ", $case_address_queries) .
         "+" . implode(" + ", $case_title_queries) .
@@ -191,6 +198,7 @@ ORDER BY Weight DESC
         
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+    
     public function searchResults($search)
     {
         $sql = "SELECT rental_listing.id, rental_listing.title, image_uploads.image_name ".

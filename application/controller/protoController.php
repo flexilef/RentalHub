@@ -66,8 +66,7 @@ class ProtoController extends Controller
                 //Right now there is a bug: search results don't show postings without images (join/on)
             }
             
-            //uncomment for production. Commented out in order to view variable dumps
-            //header('Location:' . URL . 'rentalListing/index?rental_listing_id='.$rental_listing_id);
+            header('Location:' . URL . 'rentalListing/index?rental_listing_id='.$rental_listing_id);
         }
     }
 }
