@@ -28,6 +28,9 @@ if(isset($rental_id_to_images))
                 } 
             ?>
                 <hr>
+               <div class="navigation">
+                    <a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$id; ?>">View Details</a>
+                </div>
         <?php 
             } 
         ?>
