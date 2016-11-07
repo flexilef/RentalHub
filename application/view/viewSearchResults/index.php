@@ -17,7 +17,7 @@ if(isset($rental_id_to_images))
                         <img class="myImg" width="100px" height="100px" src="./../uploads/<?php echo $image_name; ?>">
                 <?php 
                     } ?>
-                <div class="navigation" style="color: white">
+                <div class="navigation">
                     <a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$id; ?>">View Details</a>
                 </div>
         <?php 
