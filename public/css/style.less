@@ -2,35 +2,41 @@ body {
     font-family: Arial;
     font-size: 14px;
 }
+
 .logo {
     font-size: 100px;
     font-weight: bolder;
     letter-spacing: -6px;
     color: #222;
     margin: 20px 30px;
+
+    .number {
+        color: #222;
+        opacity: 0.1;
+    }
 }
-.logo .number {
-    color: #222;
-    opacity: 0.1;
-}
+
 .navigation {
     margin-left: 33px;
+
+    a {
+        display: inline-block;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: 2px solid #222;
+        background: #222;
+        color: #fff;
+    }
+
+    &:hover {
+        color: #222;
+        background: transparent;
+    }
 }
-.navigation a {
-    display: inline-block;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: 2px solid #222;
-    background: #222;
-    color: #fff;
-}
-.navigation a:hover {
-    color: #222;
-    background: transparent;
-}
+
 .container {
     border: 1px solid #ddd;
     padding: 20px;
@@ -38,55 +44,91 @@ body {
     /*background-image: url("./../uploads/background.jpg");*/
     width: 100%;
     height: 100%;
+
+    table {
+        font-size: 11px;
+        margin-top: 20px;
+
+        thead td {
+            background-color: #f5f5f5;
+            padding: 4px 10px;
+        }
+
+        tbody td {
+            padding: 4px 10px;
+        }
+    }
+
+    .box {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        margin-top: 30px;
+    }
+
+    input {
+        background-color: #f5f5f5;
+        border: 0;
+        padding: 5px 10px;
+    }
+
+    input[type="submit"] {
+        background-color: #ccc;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #222;
+        color: #fff;
+    }
+
+    button {
+        background-color: #ccc;
+        border: 0;
+        padding: 5px 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #222;
+            color: #fff;
+        }
+    }
+
+    input[type="submit"] {
+        display: inline-block;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: 2px solid #222;
+        background: #222;
+        color: #fff;
+        height: 50px;
+        margin-top: 15px;
+    }
+
+    input[type="text"], input[type="number"] {
+        height: 30px;
+        display: inline-block;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: 2px solid #222;
+    }
 }
-.container table {
-    font-size: 11px;
-    margin-top: 20px;
-}
-.container table thead td {
-    background-color: #f5f5f5;
-    padding: 4px 10px;
-}
-.container table tbody td {
-    padding: 4px 10px;
-}
-.container .box {
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-    margin-top: 30px;
-}
-.container input {
-    background-color: #f5f5f5;
-    border: 0;
-    padding: 5px 10px;
-}
-.container input[type="submit"] {
-    background-color: #ccc;
-    cursor: pointer;
-}
-.container input[type="submit"]:hover {
-    background-color: #222;
-    color: #fff;
-}
-.container button {
-    background-color: #ccc;
-    border: 0;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-.container button:hover {
-    background-color: #222;
-    color: #fff;
-}
+
 .footer {
     padding: 20px;
     margin: 33px;
     text-align: right;
     font-size: 11px;
     opacity: 0.5;
-}
-.footer a {
-    color: #454545;
+
+    a {
+        color: #454545;
+    }
 }
 
 
@@ -278,53 +320,28 @@ body {font-family: Verdana,sans-serif;margin:0}
     font-weight: bolder;
     color: #222;
     margin: 20px 30px;
-}
 
-.search input[type="submit"] {
-    display: inline-block;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: 2px solid #222;
-    background: #222;
-    color: #fff;
-    height: 50px;
-}
+    input[type="submit"] {
+        display: inline-block;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: 2px solid #222;
+        background: #222;
+        color: #fff;
+        height: 50px;
+    }
 
-.search input[type="text"] {
-    height: 50px;
-    display: inline-block;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: 2px solid #222;
-}
-
-.container input[type="submit"] {
-    display: inline-block;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: 2px solid #222;
-    background: #222;
-    color: #fff;
-    height: 50px;
-    margin-top: 15px;
-}
-
-.container input[type="text"], input[type="number"] {
-    height: 30px;
-    display: inline-block;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: 2px solid #222;
+    input[type="text"] {
+        height: 50px;
+        display: inline-block;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: 2px solid #222;
+    }
 }

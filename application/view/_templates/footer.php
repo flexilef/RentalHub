@@ -15,5 +15,8 @@
 
     <!-- our JavaScript -->
     <script src="<?php echo URL; ?>js/application.js"></script>
+
+    <!-- include less compiler -->
+    <script src="<?php echo URL; ?>js/less.min.js"></script>
 </body>
 </html>
