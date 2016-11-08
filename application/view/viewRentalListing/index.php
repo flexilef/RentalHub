@@ -1,5 +1,22 @@
 <div class="container">
-    <h3>Displaying images:</h3>
+    <h2>Rental Space Details</h2>
+    <h3>Type:</h3>
+    <div><?php echo $rental_listing_type?></div>
+    <h3>Description:</h3>
+    <div><?php echo $rental_listing_description?></div>
+    <h3>Address:</h3>
+    <div><?php echo $rental_listing_address?></div>
+    <h3>Distance:</h3>
+    <div><?php echo $rental_listing_distance?></div>
+    <h3>Price:</h3>
+    <div><?php echo $rental_listing_price?></div>
+    <h3>Occupants:</h3>
+    <div><?php echo $rental_listing_occupants?></div>
+    <h3>Owner:</h3>
+    <div><?php echo $rental_listing_owner?></div>
+    <h3>Pets:</h3>
+    <div><?php echo $rental_listing_pets?></div>
+    <h3>Pictures:</h3>
     <div class="slideshow-container">
         <?php 
             foreach ($image_results as $image) 
