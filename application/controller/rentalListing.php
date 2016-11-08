@@ -1,5 +1,6 @@
 <?php
 require APP . 'model/imageUploadsModel.php';
+require APP . 'model/rentalListingModel.php';
 
 class RentalListing extends Controller
 {
