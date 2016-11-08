@@ -11,7 +11,7 @@
     <!-- See more here: http://stackoverflow.com/q/2105327/1114320 -->
 
     <!-- CSS -->
-    <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">
+    <link href="<?php echo URL; ?>css/style.less" rel="stylesheet/less">
 </head>
 <body>
     <!-- logo -->
@@ -24,7 +24,7 @@
         <div>
             <input style="width:75%;" type="text" name="rental_search"/>
             <input style="width:20%;" type="submit" name="submit_search" value="Search"/>
-        </div>  
+        </div>
         </form>
 
     <!-- navigation -->
