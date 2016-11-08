@@ -34,7 +34,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['description'];
+        return $result;
     }
     
     public function getType($id)
@@ -49,7 +49,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['type'];
+        return $result;
     }
     
     public function getPrice($id)
@@ -64,7 +64,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['price'];
+        return $result;
     }
     
     public function getAddress($id)
@@ -79,7 +79,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['address'];
+        return $result;
     }
     
     //Returns an integer
@@ -95,7 +95,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['number_occupants'];
+        return $result;
     }
     
     //Returns 1 for true, 0 for false
@@ -111,7 +111,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['allow_animals'];
+        return $result;
     }
     
     //Returns an associative array of images associated with a rental listing with id of $id
@@ -131,7 +131,7 @@ class RentalListingModel
         $image_names = array();
         foreach($result as $image)
         {
-            $image_names[] = $image['image_name'];
+            $image_names[] = $image;
         }
         
         var_dump($image_names);
