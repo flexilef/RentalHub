@@ -23,7 +23,6 @@ class ProtoController extends Controller
         require APP . 'view/_templates/footer.php';
     }
 
-
     public function submitPost()
     {
         if(isset($_POST["submit_post"]))
