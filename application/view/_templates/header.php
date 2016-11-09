@@ -31,4 +31,9 @@
     <div class="navigation">
         <a href="<?php echo URL; ?>">home</a>
         <a href="<?php echo URL; ?>protoController/index">Post Rental Listing</a>
+        <b style="font-size: 20pt; color: red">
+            <br><br>
+            Disclaimer: SFSU/FAU/Fulda Software Engineering Project, Fall 2016.
+            For Demonstration Only
+        </b>
     </div>
