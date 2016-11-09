@@ -34,7 +34,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['description'];
+        return $result[0]['description'];
     }
     
     public function getType($id)
@@ -49,7 +49,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['type'];
+        return $result[0]['type'];
     }
     
     public function getPrice($id)
@@ -64,7 +64,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['price'];
+        return $result[0]['price'];
     }
     
     public function getAddress($id)
@@ -79,7 +79,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['address'];
+        return $result[0]['address'];
     }
     
     //Returns an integer
@@ -95,7 +95,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['number_occupants'];
+        return $result[0]['number_occupants'];
     }
     
     //Returns 1 for true, 0 for false
@@ -111,7 +111,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result['allow_animals'];
+        return $result[0]['allow_animals'];
     }
     
     //Returns an associative array of images associated with a rental listing with id of $id
@@ -134,7 +134,7 @@ class RentalListingModel
             $image_names[] = $image['image_name'];
         }
         
-        var_dump($image_names);
+        //var_dump($image_names);
         return $image_names;
     }
     
@@ -192,9 +192,9 @@ ORDER BY Weight DESC
         $query = $this->db->prepare($sql);
         $query->execute($parameters);
         
-        var_dump($sql);
-        var_dump($search_tokens);
-        var_dump($parameters);
+        //var_dump($sql);
+        //var_dump($search_tokens);
+        //var_dump($parameters);
         
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
