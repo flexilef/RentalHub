@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MINI</title>
+    <title>SFSU Rental Hub</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -31,4 +31,9 @@
     <div class="navigation">
         <a href="<?php echo URL; ?>">home</a>
         <a href="<?php echo URL; ?>protoController/index">Post Rental Listing</a>
+	<b style="font-size: 20pt; color: red">
+            <br><br>
+            Disclaimer: SFSU/FAU/Fulda Software Engineering Project, Fall 2016.
+            For Demonstration Only
+ 	</b>
     </div>
