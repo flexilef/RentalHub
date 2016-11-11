@@ -46,10 +46,8 @@
                             <div class="input-group-addon"><i class="fa fa-paw"></i></div>
                             <select class="form-control">
                                 <option value="">Any</option>
-                                <option value="">Dogs</option>
-                                <option value="">Cats</option>
-                                <option value="">Birds</option>
-                                <option value="">Dinosaurs</option>
+                                <option value="">Yes</option>
+                                <option value="">No</option>
                             </select>
                         </div>
                     </div>
