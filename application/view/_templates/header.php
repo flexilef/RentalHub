@@ -11,6 +11,9 @@
 
     <!-- CSS -->
     <link href="<?php echo URL; ?>css/style.less" rel="stylesheet/less">
+
+    <!-- Extra icons -->
+    <script src="https://use.fontawesome.com/c8d876cc7d.js"></script>
 </head>
 <header>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
