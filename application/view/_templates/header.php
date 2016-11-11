@@ -9,16 +9,6 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    <!-- JS -->
-    <!-- please note: The JavaScript files are loaded in the footer to speed up page construction -->
-    <!-- See more here: http://stackoverflow.com/q/2105327/1114320 -->
-
     <!-- CSS -->
     <link href="<?php echo URL; ?>css/style.less" rel="stylesheet/less">
 </head>
@@ -46,10 +36,61 @@
         <div class="collapse navbar-collapse pull-right">
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo URL; ?>protoController/index">Post a Listing</a></li>
-                <li><a href="#">Sign Up</a></li>
-                <li><a href="#">Sign In</a></li>
+                <li><a href="#" type="button" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a></li>
+                <li><a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal">Sign In</a></li>
             </ul>
         </div>
     </nav>
+    <!-- Modal for Sign In -->
+    <div id="sign-in-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sign In</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <form class="sign-in-form">
+                    <input type="email" name="email" placeholder="You@Provider.com">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="submit" name="sign-in" class="modal-submit" value="Sign In">
+                </form>
+                <div class="modal-footer">
+                    Don't have an account? <a href="#" type="button" data-toggle="modal" data-target="#sign-up-modal" data-dismiss="modal">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for Sign Up -->
+    <div id="sign-up-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sign Up</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <form class="sign-up-form">
+                    <p>Email:</p>
+                    <input type="email" name="email" placeholder="You@Provider.com">
+                    Password:
+                    <p class="disclaimer">Must have at least 8 characters</p>
+                    <input type="password" name="password"/>
+                    Verify Password:
+                    <input type="password" name="verify-password"/>
+                    <br><br>
+                    <input type="radio" name="registration-type" value="student"/> I am a student who wants to rent.
+                    <br><br>
+                    <input type="radio" name="registration-type" value="landlord"/> I am a landlord who wants to post.
+                    <br><br>
+                    <input type="submit" name="register" class="modal-submit" value="Register">
+                </form>
+                <div class="modal-footer">
+                    Already have an account? <a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal" data-dismiss="modal">Sign In</a>
+            </div>
+        </div>
+    </div>
 </header>
 <body>
