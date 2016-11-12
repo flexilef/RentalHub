@@ -207,10 +207,6 @@ ORDER BY Weight DESC
         //var_dump($parameters);
         
         $results = $query->fetchAll(PDO::FETCH_ASSOC);
-        //var_dump($results);
-        
-        //usort($results, array($this, "cmp"));
-        //var_dump($results);
         
         return $results;
     }
