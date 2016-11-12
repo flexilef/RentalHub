@@ -147,6 +147,16 @@ class RentalListingModel
     {
         
     }
+      
+/*      
+    public function cmp($a, $b)
+    {
+        if($a['price'] < $b['price'])
+            return -1;
+        
+        return 1;
+    }*/
+    
 
 /* Example query created:
 SELECT *, 
@@ -196,7 +206,13 @@ ORDER BY Weight DESC
         //var_dump($search_tokens);
         //var_dump($parameters);
         
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        //var_dump($results);
+        
+        //usort($results, array($this, "cmp"));
+        //var_dump($results);
+        
+        return $results;
     }
     
     public function searchResults($search)

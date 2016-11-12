@@ -10,6 +10,14 @@ class SearchResults extends Controller
 
         $this->rental_listing_model = new RentalListingModel($this->db);
     }
+    
+    public function cmp($a, $b)
+    {
+        if($a['price'] < $b['price'])
+            return -1;
+        
+        return 1;
+    }
 
     public function index()
     {
@@ -21,6 +29,8 @@ class SearchResults extends Controller
 
                 //$search_results = $this->rental_listing_model->searchResults($search);
                 $search_results = $this->rental_listing_model->searchRentalListings($search_string);
+                var_dump($search_results);
+                usort($search_results, array($this, "cmp"));
                 var_dump($search_results);
 
                 $rental_ids = array();
@@ -44,4 +54,6 @@ class SearchResults extends Controller
         require APP . "view/viewSearchResults/index.php";
         require APP . 'view/_templates/footer.php';
     }
+    
+    
 }
