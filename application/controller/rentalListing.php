@@ -1,5 +1,6 @@
 <?php
 require APP . 'model/imageUploadsModel.php';
+require APP . 'model/rentalListingModel.php';
 
 class RentalListing extends Controller
 {
@@ -9,7 +10,8 @@ class RentalListing extends Controller
     {
         parent::__construct();
 
-        $this->imageModel = new ImageUploadsModel($this->db);
+        $this->image_model = new ImageUploadsModel($this->db);
+        $this->rental_listing_model = new RentalListingModel($this->db);
     }
 
     public function index()
@@ -17,7 +19,15 @@ class RentalListing extends Controller
         if($_GET)
         {
             $rental_listing_id =  $_GET['rental_listing_id']; // print_r($_GET);
-            $image_results = $this->imageModel->getAllImages($rental_listing_id);
+            $image_results = $this->image_model->getAllImages($rental_listing_id);
+            $rental_listing_description = $this->rental_listing_model->getDescription($rental_listing_id);
+            $rental_listing_address = $this->rental_listing_model->getAddress($rental_listing_id);
+            $rental_listing_distance = $this->rental_listing_model->getDistance($rental_listing_id);
+            $rental_listing_occupants = $this->rental_listing_model->getNumberOfOccupants($rental_listing_id);
+            $rental_listing_owner = $this->rental_listing_model->getOwner($rental_listing_id);
+            $rental_listing_price = $this->rental_listing_model->getPrice($rental_listing_id);
+            $rental_listing_type = $this->rental_listing_model->getType($rental_listing_id);
+            $rental_listing_pets = $this->rental_listing_model->isPets($rental_listing_id);
         }
 
         require APP . 'view/_templates/header.php';
