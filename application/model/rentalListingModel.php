@@ -189,38 +189,50 @@ class RentalListingModel
 */
     public function searchRentalListings($search_string)
     {
-        $search_tokens = explode(" ", $search_string);
-        $parameters = array();
-        
-        foreach($search_tokens as $keyword)
+        if(!empty($search_string))
         {
-            $case_type_queries[] = "CASE WHEN rental_listing.type LIKE CONCAT('%', :{$keyword}, '%') THEN " .
-            self::SEARCH_WEIGHT_TYPE . " ELSE 0 END";
-            $case_address_queries[] = "CASE WHEN rental_listing.address LIKE CONCAT('%', :{$keyword}, '%') THEN " .
-            self::SEARCH_WEIGHT_ADDRESS . " ELSE 0 END";
-            $case_title_queries[] = "CASE WHEN rental_listing.title LIKE CONCAT('%', :{$keyword}, '%') THEN " .
-            self::SEARCH_WEIGHT_TITLE . " ELSE 0 END";
-            $case_description_queries[] = "CASE WHEN rental_listing.description LIKE CONCAT('%', :{$keyword}, '%') THEN " .
-            self::SEARCH_WEIGHT_DESCRIPTION ." ELSE 0 END";
+            $search_tokens = explode(" ", $search_string);
+            $parameters = array();
             
-            $parameters[':'.$keyword] = $keyword;
-        }
+            foreach($search_tokens as $keyword)
+            {
+                $case_type_queries[] = "CASE WHEN rental_listing.type LIKE CONCAT('%', :{$keyword}, '%') THEN " .
+                self::SEARCH_WEIGHT_TYPE . " ELSE 0 END";
+                $case_address_queries[] = "CASE WHEN rental_listing.address LIKE CONCAT('%', :{$keyword}, '%') THEN " .
+                self::SEARCH_WEIGHT_ADDRESS . " ELSE 0 END";
+                $case_title_queries[] = "CASE WHEN rental_listing.title LIKE CONCAT('%', :{$keyword}, '%') THEN " .
+                self::SEARCH_WEIGHT_TITLE . " ELSE 0 END";
+                $case_description_queries[] = "CASE WHEN rental_listing.description LIKE CONCAT('%', :{$keyword}, '%') THEN " .
+                self::SEARCH_WEIGHT_DESCRIPTION ." ELSE 0 END";
+                
+                $parameters[':'.$keyword] = $keyword;
+            }
         
-        $sql = "SELECT id, title, price, date_posted, " .
-        "(" . implode(" + ", $case_type_queries) .
-        "+" . implode(" + ", $case_address_queries) .
-        "+" . implode(" + ", $case_title_queries) .
-        "+" . implode(" + ", $case_description_queries) .
-        ") as Weight " .
-        "FROM rental_listing " .
-        "HAVING Weight > 0 " .
-        "ORDER BY Weight DESC";
+        
+            $sql = "SELECT id, title, price, date_posted, " .
+            "(" . implode(" + ", $case_type_queries) .
+            "+" . implode(" + ", $case_address_queries) .
+            "+" . implode(" + ", $case_title_queries) .
+            "+" . implode(" + ", $case_description_queries) .
+            ") as Weight " .
+            "FROM rental_listing " .
+            "HAVING Weight > 0 " .
+            "ORDER BY Weight DESC";
+            
+            //var_dump($search_tokens);
+        }
+        else
+        {
+            $sql = "SELECT id, title, price, date_posted " .
+            "FROM rental_listing";
+            
+            $parameters = array();
+        }
         
         $query = $this->db->prepare($sql);
         $query->execute($parameters);
         
         //var_dump($sql);
-        //var_dump($search_tokens);
         //var_dump($parameters);
         
         $results = $query->fetchAll(PDO::FETCH_ASSOC);

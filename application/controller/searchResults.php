@@ -81,7 +81,7 @@ class SearchResults extends Controller
             {
                 $this->setSearchResults($_POST["rental_search"]);
 
-                $this->sortByDatePostedDesc();
+                $this->sortByPriceDesc();
                                 
                 $this->assignViewVariables();           
             }
