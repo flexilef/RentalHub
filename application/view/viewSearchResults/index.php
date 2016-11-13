@@ -34,11 +34,6 @@ if(isset($rental_id_to_images))
         <?php 
             } 
         ?>
-        <div id="myModal" class="modal">
-            <span class="close">×</span>
-            <img class="modal-content" id="img01">
-            <div id="caption"></div>
-        </div>
     </div>
 
 <?php 
