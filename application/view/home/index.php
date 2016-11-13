@@ -7,9 +7,9 @@
         <a href="https://commons.wikimedia.org/wiki/File:San_Francisco_(Evening).jpg">Basil D Soufi, Wikimedia</a>
     </div>
     <h4 style="font-size: 20pt">
-        SFSU Rental Hub aims to provide an easy way for SFSU students to find 
+        SFSU Rental Hub aims to provide an easy way for SFSU students to find
         available housing, posted by residents of the Bay Area.
-    </h4>  
+    </h4>
     <div style="position: relative">
         <table style="float: left; border-collapse: collapse; margin-left:25px; margin-right: 25px">
             <td style="border: 1px solid black">
