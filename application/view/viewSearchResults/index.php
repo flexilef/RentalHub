@@ -12,9 +12,11 @@ if(isset($this->rental_id_to_images))
             <?php 
                 $title = $this->rental_id_to_title[$id]; 
                 $price = $this->rental_id_to_price[$id];
+                $date_posted = $this->rental_id_to_date_posted[$id];
             ?>
-                <h4>Title: <?php echo $title ?></h4>
-                <h5>Price: <?php echo $price ?></h5>
+                <h4>Title: <?php echo $title; ?></h4>
+                <h5>Price: <?php echo $price; ?></h5>
+                <h5>Date Posted: <?php echo $date_posted; ?></h5>
                 <br>
             <?php
                 //index 0 because there is only one element in this associative array

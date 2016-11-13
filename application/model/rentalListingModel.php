@@ -22,6 +22,21 @@ class RentalListingModel
         }
     }
     
+    public function getTitle($id)
+    {
+        $sql = "SELECT title ".
+            "FROM rental_listing " .
+            "WHERE rental_listing.id = :id";
+        
+        $query = $this->db->prepare($sql);
+        $parameters = array(':id' => $id);
+        $query->execute($parameters);
+            
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $result[0]['title'];
+    }
+    
     public function getDescription($id)
     {
         $sql = "SELECT description ".
@@ -37,9 +52,9 @@ class RentalListingModel
         return $result[0]['description'];
     }
     
-    public function getType($id)
+    public function getAddress($id)
     {
-        $sql = "SELECT type ".
+        $sql = "SELECT address ".
             "FROM rental_listing " .
             "WHERE rental_listing.id = :id";
         
@@ -49,9 +64,10 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result[0]['type'];
+        return $result[0]['address'];
     }
     
+    //returns an integer
     public function getPrice($id)
     {
         $sql = "SELECT price ".
@@ -67,9 +83,9 @@ class RentalListingModel
         return $result[0]['price'];
     }
     
-    public function getAddress($id)
+    public function getType($id)
     {
-        $sql = "SELECT address ".
+        $sql = "SELECT type ".
             "FROM rental_listing " .
             "WHERE rental_listing.id = :id";
         
@@ -79,7 +95,7 @@ class RentalListingModel
             
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return $result[0]['address'];
+        return $result[0]['type'];
     }
     
     //Returns an integer
@@ -99,7 +115,7 @@ class RentalListingModel
     }
     
     //Returns 1 for true, 0 for false
-    public function isPets($id) 
+    public function arePetsAllowed($id) 
     {
         $sql = "SELECT allow_animals ".
             "FROM rental_listing " .
@@ -112,6 +128,21 @@ class RentalListingModel
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
         return $result[0]['allow_animals'];
+    }
+    
+    public function getDatePosted($id)
+    {
+        $sql = "SELECT date_posted ".
+            "FROM rental_listing " .
+            "WHERE rental_listing.id = :id";
+        
+        $query = $this->db->prepare($sql);
+        $parameters = array(':id' => $id);
+        $query->execute($parameters);
+            
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $result[0]['date_posted'];
     }
     
     //Returns an array of images names associated with a rental listing with id of $id
@@ -148,16 +179,13 @@ class RentalListingModel
     }
 
 /* Example query created:
-SELECT *, 
-	(CASE
-    	WHEN `rental_listing`.`type` LIKE '%bedroom%' THEN 3 ELSE 0
-    END +
-    CASE WHEN `rental_listing`.`title` LIKE '%bedroom%' THEN 2 ELSE 0
-    END +
-    CASE WHEN `rental_listing`.`description` LIKE '%bedroom%' THEN 1 ELSE 0
-    END) as Weight   
-FROM `rental_listing`
-ORDER BY Weight DESC
+    SELECT *, 
+	(CASE WHEN `rental_listing`.`type` LIKE '%bedroom%' THEN 3 ELSE 0 END +
+     CASE WHEN `rental_listing`.`title` LIKE '%bedroom%' THEN 2 ELSE 0 END +
+     CASE WHEN `rental_listing`.`description` LIKE '%bedroom%' THEN 1 ELSE 0 END) as Weight   
+    FROM `rental_listing`
+    HAVING Weight > 0
+    ORDER BY Weight DESC
 */
     public function searchRentalListings($search_string)
     {
@@ -199,20 +227,6 @@ ORDER BY Weight DESC
         
         return $results;
     }
-    
-    public function searchResults($search)
-    {
-        $sql = "SELECT rental_listing.id, rental_listing.title, image_uploads.image_name ".
-            "FROM image_uploads JOIN rental_listing " .
-            "ON image_uploads.rental_listing_id = rental_listing.id " .
-            "WHERE rental_listing.title LIKE CONCAT('%', :search, '%')";
-
-        $query = $this->db->prepare($sql);
-        $parameters = array(':search' => $search);
-        $query->execute($parameters);
-
-        return $query->fetchAll(PDO::FETCH_ASSOC);
-    }
 
     public function insertRentalListing($title, $description, $address, $price, $type, $number_occupants, $allow_animals)
     {
@@ -226,7 +240,6 @@ ORDER BY Weight DESC
         $query->execute($parameters);
     }
 
-    //TODO: rewrite this function to use $this->db->lastInsertId()?
     public function getLatestId()
     {
         $sql = "SELECT id FROM rental_listing ORDER BY id DESC LIMIT 1";
@@ -238,5 +251,17 @@ ORDER BY Weight DESC
             return $query->fetch(PDO::FETCH_COLUMN);
 
         return 1;
+    }
+    
+    public function deleteRentalListing($id)
+    {
+        $sql = "DELETE " .
+        "FROM rental_listing " .
+        "WHERE rental_listing.id = :id";
+        
+        $query = $this->db->prepare($sql);
+        $parameters = array(':id' => $id);
+        
+        $query->execute($parameters);
     }
 }
