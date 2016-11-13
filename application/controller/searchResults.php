@@ -66,7 +66,7 @@ class SearchResults extends Controller
     private function sortByDatePostedDesc()
     {
         usort($this->search_results, function($arrayA, $arrayB) {
-            if(strcasecmp($arrayA['date_posted'], $arrayB['date_posted']) < 0)
+            if(strtotime($arrayA['date_posted']) < strtotime($arrayB['date_posted']))
                 return -1;
         
             return 1;
@@ -81,7 +81,7 @@ class SearchResults extends Controller
             {
                 $this->setSearchResults($_POST["rental_search"]);
 
-                $this->sortByPriceDesc();
+                $this->sortByDatePostedDesc();
                                 
                 $this->assignViewVariables();           
             }
