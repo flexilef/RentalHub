@@ -1,6 +1,7 @@
 body {
     font-family: Arial;
     font-size: 14px;
+    padding-top: 50px;
 }
 
 .logo {
@@ -41,8 +42,6 @@ body {
     border: 1px solid #ddd;
     padding: 20px;
     margin: 33px;
-    /*background-image: url("./../uploads/background.jpg");*/
-    width: 100%;
     height: 100%;
 
     table {
@@ -119,18 +118,13 @@ body {
     }
 }
 
-.footer {
-    padding: 20px;
-    margin: 33px;
-    text-align: right;
-    font-size: 11px;
-    opacity: 0.5;
-
-    a {
-        color: #454545;
-    }
+footer {
+    text-align: center;
+    height: 60px;
+    background-color: #f5f5f5;
+    margin-top:50px;
+    padding-top:20px;
 }
-
 
 .myImg {
     border-radius: 5px;
@@ -140,8 +134,81 @@ body {
 
 .myImg:hover {opacity: 0.7;}
 
-/* The Modal (background) */
-.modal {
+.modal-content {
+    padding: 30px;
+    max-width: 350px;
+    width: 100% !important;
+    background-color: #F7F7F7;
+    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    font-family: roboto;
+
+    .modal-title {
+        text-align: center;
+        font-size: 1.8em;
+        font-family: roboto;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+    input[type=email], input[type=password] {
+        height: 44px;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 10px;
+        -webkit-appearance: none;
+        background: #fff;
+        border: 1px solid #d9d9d9;
+        border-top: 1px solid #c0c0c0;
+        /* border-radius: 2px; */
+        padding: 0 8px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+
+    input[type=email]:hover, input[type=password]:hover {
+        border: 1px solid #b9b9b9;
+        border-top: 1px solid #a0a0a0;
+        -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .modal-submit {
+        border: 0px;
+        color: #fff;
+        text-shadow: 0 1px rgba(0,0,0,0.1);
+        background-color: #4d90fe;
+        padding: 17px 0px;
+        font-family: roboto;
+        font-size: 14px;
+    }
+
+    .modal-submit:hover {
+        border: 0px;
+        text-shadow: 0 1px rgba(0,0,0,0.3);
+        background-color: #357ae8;
+    }
+
+    .modal-footer {
+        font-size: 12px;
+    }
+
+    .disclaimer {
+        font-size: 12px;
+        color: #999;
+    }
+}
+
+/* The Image Modal (background) */
+.image-modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -156,7 +223,7 @@ body {
 }
 
 /* Modal Content (image) */
-.modal-content {
+.image-modal-content {
     margin: auto;
     display: block;
     width: 80%;
@@ -176,7 +243,7 @@ body {
 }
 
 /* Add Animation */
-.modal-content, #caption {
+.image-modal-content, #caption {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
@@ -194,7 +261,7 @@ body {
 }
 
 /* The Close Button */
-.close {
+.image-close {
     position: absolute;
     top: 15px;
     right: 35px;
@@ -204,8 +271,8 @@ body {
     transition: 0.3s;
 }
 
-.close:hover,
-.close:focus {
+.image-close:hover,
+.image-close:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
@@ -293,19 +360,19 @@ body {font-family: Verdana,sans-serif;margin:0}
 }
 
 /* Fading animation */
-.fade {
+.image-fade {
     -webkit-animation-name: fade;
     -webkit-animation-duration: 1.5s;
     animation-name: fade;
     animation-duration: 1.5s;
 }
 
-@-webkit-keyframes fade {
+@-webkit-keyframes image-fade {
     from {opacity: .4}
     to {opacity: 1}
 }
 
-@keyframes fade {
+@keyframes image-fade {
     from {opacity: .4}
     to {opacity: 1}
 }
