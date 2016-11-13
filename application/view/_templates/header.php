@@ -29,9 +29,9 @@
         <div class="col-sm-3 col-md-3">
             <form class="navbar-form" action="<?php echo URL . "searchResults/index"; ?>" method="post">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" name="rental_search" class="form-control" placeholder="Search">
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        <button type="submit" name="submit_search" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </div>
             </form>
