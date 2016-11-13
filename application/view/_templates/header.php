@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">SFSU Rental Hub</a>
+            <a class="navbar-brand" href="<?php echo URL; ?>">SFSU Rental Hub</a>
         </div>
         <div class="col-sm-3 col-md-3">
             <form class="navbar-form" action="<?php echo URL . "searchResults/index"; ?>" method="post">
