@@ -17,7 +17,7 @@ if(isset($this->rental_id_to_images))
                 <h5>Price: <?php echo $price ?></h5>
                 <br>
             <?php
-                //index 0 because there is only one id in this associative array
+                //index 0 because there is only one element in this associative array
                 $image_array = $this->rental_id_to_images[$id][0]; ?>
             <?php 
                 foreach($image_array as $image)

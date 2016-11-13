@@ -13,29 +13,20 @@ class SearchResults extends Controller
     {
         parent::__construct();
 
-        $this->rental_listing_model = new RentalListingModel($this->db);
-    }
-    
-    public function cmp($a, $b)
-    {
-        if($a['price'] < $b['price'])
-            return -1;
-        
-        return 1;
-    }
-    
-    public function getResults($search_string) 
-    {
-        $this->search_results = $this->rental_listing_model->searchRentalListings($search_string);              
-    }
-    
-    public function assignValueToVariables()
-    {
         $this->rental_ids = array();
         $this->rental_id_to_images = array();
         $this->rental_id_to_title = array();
         $this->rental_id_to_price = array();
-
+        $this->rental_listing_model = new RentalListingModel($this->db);
+    }
+    
+    private function setSearchResults($search_string) 
+    {
+        $this->search_results = $this->rental_listing_model->searchRentalListings($search_string);              
+    }
+    
+    private function assignViewVariables()
+    {
         foreach($this->search_results as $result)
         {
             $this->rental_ids[] = $result['id'];
@@ -46,6 +37,40 @@ class SearchResults extends Controller
 
         $this->rental_ids = array_unique($this->rental_ids);
     }
+    
+    /*
+    private function comparePriceFields($arrayA, $arrayB)
+    {
+        if($arrayA['price'] < $arrayB['price'])
+            return -1;
+        
+        return 1;
+    }
+    */
+    
+    //uses an anonymous function instead so we don't create separate functions
+    //for each type of sorting
+    //TODO: ascending/descending?
+    private function sortByPrice()
+    {
+        //usort($this->search_results, array($this, "comparePriceFields"));
+        usort($this->search_results, function($arrayA, $arrayB) {
+            if($arrayA['price'] < $arrayB['price'])
+                return -1;
+        
+            return 1;
+        });
+    }
+    
+    private function sortByTitle()
+    {
+        usort($this->search_results, function($arrayA, $arrayB) {
+            if(strcasecmp($arrayA['title'], $arrayB['title']) < 0)
+                return -1;
+        
+            return 1;
+        });
+    }
 
     public function index()
     {
@@ -53,17 +78,20 @@ class SearchResults extends Controller
         {
             if(isset($_POST["rental_search"]))
             {
-                $this->getResults($_POST["rental_search"]);
+                $this->setSearchResults($_POST["rental_search"]);
                 
                 //TODO:
                 //add sort by functions that call usort according to user action
                 //ie. change cmp to sortByPrice()
                 //We will have if($_POST['user_action'] == 'sort_by_price') sortByPrice();
                 var_dump($this->search_results);
-                usort($this->search_results, array($this, "cmp"));
+                //$this->sortByPrice();
+                $this->sortByTitle();
                 var_dump($this->search_results);
                 
-                $this->assignValueToVariables();           
+                var_dump(strcasecmp("Great one bedroom", "a new bedroom"));
+                
+                $this->assignViewVariables();           
             }
         }
 

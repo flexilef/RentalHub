@@ -24,7 +24,7 @@ class RentalListingModel
     
     public function getDescription($id)
     {
-        $sql = "SELECT rental_listing.description ".
+        $sql = "SELECT description ".
             "FROM rental_listing " .
             "WHERE rental_listing.id = :id";
         
@@ -39,7 +39,7 @@ class RentalListingModel
     
     public function getType($id)
     {
-        $sql = "SELECT rental_listing.type ".
+        $sql = "SELECT type ".
             "FROM rental_listing " .
             "WHERE rental_listing.id = :id";
         
@@ -54,7 +54,7 @@ class RentalListingModel
     
     public function getPrice($id)
     {
-        $sql = "SELECT rental_listing.price ".
+        $sql = "SELECT price ".
             "FROM rental_listing " .
             "WHERE rental_listing.id = :id";
         
@@ -69,7 +69,7 @@ class RentalListingModel
     
     public function getAddress($id)
     {
-        $sql = "SELECT rental_listing.address ".
+        $sql = "SELECT address ".
             "FROM rental_listing " .
             "WHERE rental_listing.id = :id";
         
@@ -85,7 +85,7 @@ class RentalListingModel
     //Returns an integer
     public function getNumberOfOccupants($id)
     {
-        $sql = "SELECT rental_listing.number_occupants ".
+        $sql = "SELECT number_occupants ".
             "FROM rental_listing " .
             "WHERE rental_listing.id = :id";
         
@@ -101,7 +101,7 @@ class RentalListingModel
     //Returns 1 for true, 0 for false
     public function isPets($id) 
     {
-        $sql = "SELECT rental_listing.allow_animals ".
+        $sql = "SELECT allow_animals ".
             "FROM rental_listing " .
             "WHERE rental_listing.id = :id";
         
@@ -114,11 +114,10 @@ class RentalListingModel
         return $result[0]['allow_animals'];
     }
     
-    //Returns an associative array of images associated with a rental listing with id of $id
-    //To access array of images, use $result = getImages(id); $result['image_name'];
+    //Returns an array of images names associated with a rental listing with id of $id
     public function getImages($id)
     {
-        $sql = "SELECT image_uploads.image_name ".
+        $sql = "SELECT image_name ".
             "FROM image_uploads " .
             "WHERE image_uploads.rental_listing_id = :id";
         
@@ -147,16 +146,6 @@ class RentalListingModel
     {
         
     }
-      
-/*      
-    public function cmp($a, $b)
-    {
-        if($a['price'] < $b['price'])
-            return -1;
-        
-        return 1;
-    }*/
-    
 
 /* Example query created:
 SELECT *, 
@@ -189,7 +178,7 @@ ORDER BY Weight DESC
             $parameters[':'.$keyword] = $keyword;
         }
         
-        $sql = "SELECT rental_listing.id, rental_listing.title, rental_listing.price, " .
+        $sql = "SELECT id, title, price, date_posted, " .
         "(" . implode(" + ", $case_type_queries) .
         "+" . implode(" + ", $case_address_queries) .
         "+" . implode(" + ", $case_title_queries) .
