@@ -1,20 +1,20 @@
 <div class="container">
-    <h2>CSC 848/648 Software Engineering</h2>
-    <h3>Section-2 Group 16</h3>
-    <img src="public/img/San_Francisco_(Evening).jpg" alt="sf" style="width: 90%; height: 90%">  <!--https://commons.wikimedia.org/wiki/File:San_Francisco_(Evening).jpg-->
-    <div>
-        Source:
-        <a href="https://commons.wikimedia.org/wiki/File:San_Francisco_(Evening).jpg">Basil D Soufi, Wikimedia</a>
-    </div>
-    <h4 style="font-size: 20pt">
-        SFSU Rental Hub aims to provide an easy way for SFSU students to find
-        available housing, posted by residents of the Bay Area.
-    </h4>
+	<h2>CSC 848/648 Software Engineering</h2>
+	<h3>Section-2 Group 16</h3>
+	<img src="public/img/San_Francisco_(Evening).jpg" alt="sf" style="width: 90%; height: 90%">  <!--https://commons.wikimedia.org/wiki/File:San_Francisco_(Evening).jpg-->
+	<div>
+		Source:
+		<a href="https://commons.wikimedia.org/wiki/File:San_Francisco_(Evening).jpg">Basil D Soufi, Wikimedia</a>
+	</div>
+	<h4 style="font-size: 20pt">
+		SFSU Rental Hub aims to provide an easy way for SFSU students to find
+		available housing, posted by residents of the Bay Area.
+	</h4>
 	<br><br>
 	<div class="row" style="display: flex; justify-content: space-around; align-items: center">
-        <div class="col-xs-18 col-sm-6 col-md-3">
+		<div class="col-xs-18 col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<img src="public/uploads/14370-design-of-modern-apartment-free-desktop-wallpapers-download.jpg" class="imgsize">
+				<img class="myImg" src="public/uploads/14370-design-of-modern-apartment-free-desktop-wallpapers-download.jpg">
 				<div class="caption">
 					<h4 class="title">
 						<?php
@@ -32,10 +32,10 @@
 					<a href="#" class="btn btn-default btn-lg pull-right" role="button">Rent</a>
 				</div>
 			</div>
-        </div>
+		</div>
 		<div class="col-xs-18 col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<img src="public/uploads/31892-luxury_vacation_apartment-t2.jpg" class="imgsize">
+				<img class="myImg" src="public/uploads/31892-luxury_vacation_apartment-t2.jpg">
 				<div class="caption">
 					<h4 class="title">
 						<?php
@@ -53,10 +53,10 @@
 					<a href="#" class="btn btn-default btn-lg pull-right" role="button">Rent</a>
 				</div>
 			</div>
-        </div>
+		</div>
 		<div class="col-xs-18 col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<img src="public/uploads/57821-furniture_sofa_interior_design_style_comfort_68132_1920x1080.jpg" class="imgsize">
+				<img class="myImg" src="public/uploads/57821-furniture_sofa_interior_design_style_comfort_68132_1920x1080.jpg">
 				<div class="caption">
 					<h4 class="title">
 						<?php
@@ -74,6 +74,11 @@
 					<a href="#" class="btn btn-default btn-lg pull-right" role="button">Rent</a>
 				</div>
 			</div>
-        </div>
+		</div>
+		<div id="myModal" class="image-modal">
+			<span class="close">×</span>
+			<img class="image-modal-content" id="img01">
+			<div id="caption"></div>
+		</div>
 	</div>
 </div>
