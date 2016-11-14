@@ -75,10 +75,5 @@
 				</div>
 			</div>
 		</div>
-		<div id="myModal" class="image-modal">
-			<span class="close">×</span>
-			<img class="image-modal-content" id="img01">
-			<div id="caption"></div>
-		</div>
 	</div>
 </div>
