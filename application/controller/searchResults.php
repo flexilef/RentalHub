@@ -23,6 +23,12 @@ class SearchResults extends Controller
 
         $this->rental_listing_model = new RentalListingModel($this->db);
     }
+
+    public function sortSearchResultsByPriceInAsc(){
+        $this->sortByPriceAsc();
+
+        $this->assignViewVariables();
+    }
     
     private function setSearchResults($search_string) 
     {
@@ -49,6 +55,16 @@ class SearchResults extends Controller
             if($arrayA['price'] < $arrayB['price'])
                 return -1;
         
+            return 1;
+        });
+    }
+
+    private function sortByPriceAsc()
+    {
+        usort($this->search_results, function($arrayA, $arrayB) {
+            if($arrayA['price'] > $arrayB['price'])
+                return -1;
+
             return 1;
         });
     }
