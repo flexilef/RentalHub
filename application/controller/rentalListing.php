@@ -27,7 +27,7 @@ class RentalListing extends Controller
             $rental_listing_owner = $this->rental_listing_model->getOwner($rental_listing_id);
             $rental_listing_price = $this->rental_listing_model->getPrice($rental_listing_id);
             $rental_listing_type = $this->rental_listing_model->getType($rental_listing_id);
-            $rental_listing_pets = $this->rental_listing_model->isPets($rental_listing_id);
+            $rental_listing_pets = $this->rental_listing_model->arePetsAllowed($rental_listing_id);
         }
 
         require APP . 'view/_templates/header.php';
