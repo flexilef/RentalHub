@@ -1,4 +1,5 @@
 <div class="container">
+<<<<<<< HEAD
     <div class="row">
         <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
             <div class="well">
@@ -98,7 +99,7 @@
                     <div id="caption"></div>
                 </div>
             </div>
-
+		</div>
         <?php
         } else {
         ?>

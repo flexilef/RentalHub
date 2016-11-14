@@ -42,7 +42,7 @@ body {
     border: 1px solid #ddd;
     padding: 20px;
     margin: 33px;
-    height: 100%;
+    min-height: 100%;
 
     table {
         font-size: 11px;
@@ -411,4 +411,34 @@ body {font-family: Verdana,sans-serif;margin:0}
         font-weight: bold;
         border: 2px solid #222;
     }
+}
+
+.thumbnail {
+    padding: 0;
+	word-wrap: break-word;
+}
+
+.cardImg {
+	width: 300px !important;
+	height: 200px !important;
+	cursor: pointer;
+    transition: 0.3s;
+}
+
+.cardImg:hover {opacity: 0.7;}
+
+.title {
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.desc {
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 }
