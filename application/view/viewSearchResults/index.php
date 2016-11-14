@@ -73,7 +73,7 @@
 							$image_array = $rental_id_to_images[$id][0];
 							$firstimage = $image_array[0];
 						?>
-                        <img class="myImg" src="./../uploads/<?php echo $firstimage; ?>">
+                        <img class="cardImg" src="./../uploads/<?php echo $firstimage; ?>">
 						<div class="caption">
 							<h4 class="title">
 								<?php

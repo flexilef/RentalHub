@@ -14,7 +14,7 @@
 	<div class="row" style="display: flex; justify-content: space-around; align-items: center">
 		<div class="col-xs-18 col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<img class="myImg" src="public/uploads/14370-design-of-modern-apartment-free-desktop-wallpapers-download.jpg">
+				<img class="cardImg" src="public/uploads/14370-design-of-modern-apartment-free-desktop-wallpapers-download.jpg">
 				<div class="caption">
 					<h4 class="title">
 						<?php
@@ -35,7 +35,7 @@
 		</div>
 		<div class="col-xs-18 col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<img class="myImg" src="public/uploads/31892-luxury_vacation_apartment-t2.jpg">
+				<img class="cardImg" src="public/uploads/31892-luxury_vacation_apartment-t2.jpg">
 				<div class="caption">
 					<h4 class="title">
 						<?php
@@ -56,7 +56,7 @@
 		</div>
 		<div class="col-xs-18 col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<img class="myImg" src="public/uploads/57821-furniture_sofa_interior_design_style_comfort_68132_1920x1080.jpg">
+				<img class="cardImg" src="public/uploads/57821-furniture_sofa_interior_design_style_comfort_68132_1920x1080.jpg">
 				<div class="caption">
 					<h4 class="title">
 						<?php
