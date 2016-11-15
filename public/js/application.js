@@ -66,7 +66,7 @@ $(function() {
 
 function confirmDeleteModal(id){
     $('#contactModal').modal();
-    $('#okayButton').html('<a class="btn btn-success" onclick="contactOwner(id)">Okay</a>');
+    $('#okayButton').html('<a class="btn btn-success" onclick="contactOwner('+id+')">Okay</a>');
 }
 function contactOwner(id){
     // do your stuffs with id
