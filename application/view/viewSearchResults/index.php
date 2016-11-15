@@ -110,7 +110,7 @@
 									echo $price;
 								?>
 							</p>
-							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$id + '&search_string='.$this->search_string; ?>" class="btn btn-info btn-lg" role="button">View</a>
+							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$id . '&search_string='.$this->search_string; ?>" class="btn btn-info btn-lg" role="button">View</a>
 							<a href="#" class="btn btn-default btn-lg pull-right" role="button">Rent</a>
 						</div>
 					</div>
