@@ -64,6 +64,16 @@ $(function() {
     });
 });
 
+function confirmDeleteModal(){
+    $('#contactModal').modal();
+    $('#okayButton').html('<a class="btn btn-success" onclick="contactOwner()">Okay</a>');
+}
+function contactOwner(){
+    // do your stuffs with id
+    $("#successMessage").html("Details shared with owner");
+    $('#contactModal').modal('hide'); // now close modal
+}
+
 // Get the modal
 var modal = document.getElementById('myModal');
 

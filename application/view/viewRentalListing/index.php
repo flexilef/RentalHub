@@ -33,6 +33,8 @@
         <?php
             } ?>
     </div>
+    <a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal()">Rent</a>
+    <div id="successMessage" style="font-size:20px;color:green;font-weight:bold;"></div>
 
     <div id="myModal" class="image-modal">
         <div class="slideshow-container">
@@ -61,3 +63,25 @@
         </div>
     </div>
 </div>
+
+<!----modal starts here--->
+<div id="contactModal" class="modal fade" role='dialog'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Share Contact Details </h4>
+            </div>
+            <div class="modal-body">
+                <p>Your contact details will be shared by the owner.</p>
+                <p>Click Ok to continue </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <span id= 'okayButton'></span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--Modal ends here--->
