@@ -4,7 +4,7 @@ require APP . 'model/rentalListingModel.php';
 class SearchResults extends Controller
 {
     private $search_results;
-    
+    private $search_string;
     private $rental_ids;
     private $rental_id_to_title;
     private $rental_id_to_price;
@@ -23,21 +23,10 @@ class SearchResults extends Controller
 
         $this->rental_listing_model = new RentalListingModel($this->db);
     }
-
-    public function sortSearchResultsByPrice(){
-        if($_GET)
-        {
-            if ($_GET['price'] == 'desc'){
-
-                $this->sortByPriceAsc();
-
-                $this->assignViewVariables();
-            }
-        }
-    }
     
     private function setSearchResults($search_string) 
     {
+        $this->search_string = $search_string;
         $this->search_results = $this->rental_listing_model->searchRentalListings($search_string);              
     }
     
@@ -97,6 +86,32 @@ class SearchResults extends Controller
 
     public function index()
     {
+        require APP . 'view/_templates/header.php';
+        require APP . "view/viewSearchResults/index.php";
+        require APP . 'view/_templates/footer.php';
+
+        if(isset($_GET['price']))
+        {
+            if ($_GET['price'] == 'asc'){
+
+                $this->setSearchResults($_GET['search_string']);
+
+                $this->sortByPriceAsc();
+
+                $this->assignViewVariables();
+                return;
+            }
+            if ($_GET['price'] == 'desc'){
+
+                $this->setSearchResults($_GET['search_string']);
+
+                $this->sortByPriceDesc();
+
+                $this->assignViewVariables();
+                return;
+            }
+        }
+
         if(isset($_POST["submit_search"]))
         {
             if(isset($_POST["rental_search"]))
@@ -108,9 +123,5 @@ class SearchResults extends Controller
                 $this->assignViewVariables();           
             }
         }
-
-        require APP . 'view/_templates/header.php';
-        require APP . "view/viewSearchResults/index.php";
-        require APP . 'view/_templates/footer.php';
     }
 }
