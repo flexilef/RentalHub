@@ -19,6 +19,7 @@ class RentalListing extends Controller
         if($_GET)
         {
             $rental_listing_id =  $_GET['rental_listing_id']; // print_r($_GET);
+            $search_string = $_GET['search_string'];
             $image_results = $this->image_model->getAllImages($rental_listing_id);
             $rental_listing_description = $this->rental_listing_model->getDescription($rental_listing_id);
             $rental_listing_address = $this->rental_listing_model->getAddress($rental_listing_id);

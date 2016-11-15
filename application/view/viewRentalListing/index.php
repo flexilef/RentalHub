@@ -1,4 +1,5 @@
 <div class="container">
+    <a href="<?php echo  URL . 'searchResult/index?back_search_string='.$search_string; ?>" class="btn btn-info btn-lg" role="button">Back To Search</a>
     <h2>Rental Space Details</h2>
     <h3>Type:</h3>
     <div><?php echo $rental_listing_type?></div>

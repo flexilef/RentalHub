@@ -119,6 +119,15 @@ class SearchResults extends Controller
 
     public function index()
     {
+        if(isset($_GET['back_search_string']))
+        {
+            $this->setSearchResults($_GET['back_search_string']);
+
+            $this->sortByPriceDesc();
+
+            $this->assignViewVariables();
+        }
+
         if(isset($_GET['price']))
         {
             if ($_GET['price'] == 'asc'){
