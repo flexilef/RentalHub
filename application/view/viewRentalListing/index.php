@@ -33,7 +33,7 @@
         <?php
             } ?>
     </div>
-    <a href="#" class="btn btn-success btn-lg pull-right" role="button" onclick="confirmDeleteModal('successMessage')">Rent</a>
+    <a href="#" class="btn btn-success btn-lg pull-right" role="button" onclick="confirmDeleteModal('#successMessage')">Rent</a>
     <div id="successMessage" style="font-size:20px;color:green;font-weight:bold;"></div>
 
     <div id="myModal" class="image-modal">
