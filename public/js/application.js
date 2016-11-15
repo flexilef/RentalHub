@@ -38,10 +38,10 @@ $(function() {
 
     $('#sorting').change(function() {
         if ($(this).val() === '3') {
-            document.getElementById("filter").href = document.getElementById("filter").href + 'price=asc'
+            document.getElementById("filter").href = document.getElementById("filter").href + '&price=asc'
         }
         if ($(this).val() === '2') {
-            document.getElementById("filter").href = document.getElementById("filter").href + 'price=desc'
+            document.getElementById("filter").href = document.getElementById("filter").href + '&price=desc'
         }
     });
 });
@@ -51,6 +51,7 @@ var modal = document.getElementById('myModal');
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
 var imgs = document.getElementsByClassName('myImg');
+var cardimgs = document.getElementsByClassName('cardImg');
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
 var myFunction = function() {
@@ -61,6 +62,10 @@ var myFunction = function() {
 
 for (var i = 0; i < imgs.length; i++) {
     imgs[i].addEventListener('click', myFunction, false);
+}
+
+for (var i = 0; i < cardimgs.length; i++) {
+    cardimgs[i].addEventListener('click', myFunction, false);
 }
 
 // Get the <span> element that closes the modal
@@ -93,8 +98,8 @@ function showSlides(n) {
         slides[i].style.display = "none";
     }
     for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
+        dots[i].className = dots[i].className.replace(" activeDot", "");
     }
     slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
+    dots[slideIndex-1].className += " activeDot";
 }
