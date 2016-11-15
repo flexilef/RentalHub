@@ -64,13 +64,13 @@ $(function() {
     });
 });
 
-function confirmDeleteModal(){
+function confirmDeleteModal(id){
     $('#contactModal').modal();
-    $('#okayButton').html('<a class="btn btn-success" onclick="contactOwner()">Okay</a>');
+    $('#okayButton').html('<a class="btn btn-success" onclick="contactOwner(id)">Okay</a>');
 }
-function contactOwner(){
+function contactOwner(id){
     // do your stuffs with id
-    $("#successMessage").html("Details shared with owner");
+    $(id).html("Details shared with owner");
     $('#contactModal').modal('hide'); // now close modal
 }
 

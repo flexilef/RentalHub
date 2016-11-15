@@ -1,5 +1,5 @@
 <div class="container">
-    <?php if (isset($_GET['back_search_string']))
+    <?php if (isset($_GET['search_string']))
     {
         ?>
         <a href="<?php echo URL . 'searchResults/index?back_search_string=' . $search_string; ?>"
@@ -33,7 +33,7 @@
         <?php
             } ?>
     </div>
-    <a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal()">Rent</a>
+    <a href="#" class="btn btn-success btn-lg pull-right" role="button" onclick="confirmDeleteModal()">Rent</a>
     <div id="successMessage" style="font-size:20px;color:green;font-weight:bold;"></div>
 
     <div id="myModal" class="image-modal">
