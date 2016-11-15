@@ -12,68 +12,40 @@
 	</h4>
 	<br><br>
 	<div class="row" style="display: flex; justify-content: space-around; align-items: center">
-		<div class="col-xs-18 col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img class="cardImg" src="public/uploads/14370-design-of-modern-apartment-free-desktop-wallpapers-download.jpg">
-				<div class="caption">
-					<h4 class="title">
+		<div class="row" style="display: flex; flex-wrap: wrap; justify-content: center">
+			<?php
+			for ($i = 0; $i<3; $i++ )
+			{
+				?>
+				<div class="col-xs-18 col-sm-6 col-md-3" style="width: 35%">
+					<div class="thumbnail">
 						<?php
-							$string = 'big room';
-							echo $string;
+						//index 0 because there is only one id in this associative array
+						$image_array = $this->rental_id_to_images[$this->rental_ids[$i]][0];
+						$firstimage = $image_array[0];
 						?>
-					</h4>
-					<p class="desc">
-						<?php
-							$string = 'asdf wefawef lkn dcadc iaflnsf licn ianskn inasfinsaf iini cqppe cidv iqwqcncq ncn inasicnasc inv nevu nevunev asimf ansf siijq pkqpk ;lasnfn kasfknkn ijc iqfk';
-							echo $string;
-						?>
-					</p>
-					<a href="#" class="btn btn-info btn-lg" role="button">View</a>
-					<a href="#" class="btn btn-default btn-lg pull-right" role="button">Rent</a>
+						<img class="cardImg" src="./../uploads/<?php echo $firstimage; ?>">
+						<div class="caption">
+							<h4 class="title">
+								<?php
+								$title = $this->rental_id_to_title[$this->rental_ids[$i]];
+								echo $title;
+								?>
+							</h4>
+							<p class="desc">
+								<?php
+								$price = $this->rental_id_to_price[$this->rental_ids[$i]];
+								echo $price;
+								?>
+							</p>
+							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$this->rental_ids[$i]; ?>" class="btn btn-info btn-lg" role="button">View</a>
+							<a href="#" class="btn btn-default btn-lg pull-right" role="button">Rent</a>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-xs-18 col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img class="cardImg" src="public/uploads/31892-luxury_vacation_apartment-t2.jpg">
-				<div class="caption">
-					<h4 class="title">
-						<?php
-							$string = 'apartment near sfsu';
-							echo $string;
-						?>
-					</h4>
-					<p class="desc">
-						<?php
-							$string = 'kaus asdpokq od osnc isinsf insn insininsc ubf wdakv aisnc ir ivbwinfc isc inscbw jnasjn nso asnvwi ucb uuasjcbasjcb kaus uahsdb iasdasd inw omdnjdvna okcmo ojcjndan iajsnasf kasndkn';
-							echo $string;
-						?>
-					</p>
-					<a href="#" class="btn btn-info btn-lg" role="button">View</a>
-					<a href="#" class="btn btn-default btn-lg pull-right" role="button">Rent</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-18 col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img class="cardImg" src="public/uploads/57821-furniture_sofa_interior_design_style_comfort_68132_1920x1080.jpg">
-				<div class="caption">
-					<h4 class="title">
-						<?php
-							$string = 'super awesome apartment with super awesome neighbors';
-							echo $string;
-						?>
-					</h4>
-					<p class="desc">
-						<?php
-							$string = 'big room one bedroom one closet one desk super cool dogs and cats allowed close to san francisco state university only takes 15 minutes to get to campus';
-							echo $string;
-						?>
-					</p>
-					<a href="#" class="btn btn-info btn-lg" role="button">View</a>
-					<a href="#" class="btn btn-default btn-lg pull-right" role="button">Rent</a>
-				</div>
-			</div>
+				<?php
+			}
+			?>
 		</div>
 	</div>
 </div>

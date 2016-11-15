@@ -1,5 +1,11 @@
 <div class="container">
-    <a href="<?php echo  URL . 'searchResults/index?back_search_string='.$search_string; ?>" class="btn btn-info btn-lg" role="button">Back To Search</a>
+    <?php if (isset($_GET['back_search_string'])) {
+        ?>
+        <a href="<?php echo URL . 'searchResults/index?back_search_string=' . $search_string; ?>"
+           class="btn btn-info btn-lg" role="button">Back To Search</a>
+        <?php
+    }
+    ?>
     <h2>Rental Space Details</h2>
     <h3>Type:</h3>
     <div><?php echo $rental_listing_type?></div>
@@ -17,7 +23,7 @@
     <div><?php echo $rental_listing_owner?></div>
     <h3>Pets:</h3>
     <div><?php echo $rental_listing_pets?></div>
-    <h3>Pictures:</h3>
+    <h3>Pictures: Click to image slide show</h3>
     <div class="slideshow-container">
         <?php
             foreach ($image_results as $image)
