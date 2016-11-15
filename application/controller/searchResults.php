@@ -103,6 +103,16 @@ class SearchResults extends Controller
             }
         }
 
+        if($_GET)
+        {
+            if ($_GET['price'] == 'desc'){
+
+                $this->sortByPriceAsc();
+
+                $this->assignViewVariables();
+            }
+        }
+
         require APP . 'view/_templates/header.php';
         require APP . "view/viewSearchResults/index.php";
         require APP . 'view/_templates/footer.php';

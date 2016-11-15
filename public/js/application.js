@@ -38,18 +38,10 @@ $(function() {
 
     $('#sorting').change(function() {
         if ($(this).val() === '3') {
-            $.ajax(url + "/searchResults/sortSearchResultsByPriceInAsc")
-                .done(function(result) {
-                    console.log('ajax call successful');
-                    // this will be executed if the ajax-call was successful
-                    // here we get the feedback from the ajax-call (result) and show it in #javascript-ajax-result-box
-                })
-                .fail(function() {
-                    // this will be executed if the ajax-call had failed
-                })
-                .always(function() {
-                    // this will ALWAYS be executed, regardless if the ajax-call was success or not
-                });
+            document.getElementById("filter").href = document.getElementById("filter").href + 'price=asc'
+        }
+        if ($(this).val() === '2') {
+            document.getElementById("filter").href = document.getElementById("filter").href + 'price=desc'
         }
     });
 });
