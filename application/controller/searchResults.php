@@ -10,6 +10,13 @@ class SearchResults extends Controller
     private $rental_id_to_price;
     private $rental_id_to_date_posted;
     private $rental_id_to_images;
+    private $lowest_price;
+    private $highest_price;
+    private $oldest_date;
+    private $newest_date;
+    private $alphabetical_title;
+    private $reverse_alphabetical_title;
+
 
     function __construct()
     {
@@ -46,6 +53,7 @@ class SearchResults extends Controller
     
     private function sortByPriceDesc()
     {
+        $this->lowest_price = 'selected';
         usort($this->search_results, function($arrayA, $arrayB) {
             if($arrayA['price'] < $arrayB['price'])
                 return -1;
@@ -56,6 +64,7 @@ class SearchResults extends Controller
 
     private function sortByPriceAsc()
     {
+        $this->highest_price = 'selected';
         usort($this->search_results, function($arrayA, $arrayB) {
             if($arrayA['price'] > $arrayB['price'])
                 return -1;
@@ -66,6 +75,7 @@ class SearchResults extends Controller
     
     private function sortByTitleDesc()
     {
+        $this->alphabetical_title = 'selected';
         usort($this->search_results, function($arrayA, $arrayB) {
             if(strcasecmp($arrayA['title'], $arrayB['title']) < 0)
                 return -1;
@@ -76,6 +86,7 @@ class SearchResults extends Controller
 
     private function sortByTitleAsc()
     {
+        $this->reverse_alphabetical_title = 'selected';
         usort($this->search_results, function($arrayA, $arrayB) {
             if(strcasecmp($arrayA['title'], $arrayB['title']) < 0)
                 return -1;
@@ -86,6 +97,7 @@ class SearchResults extends Controller
     
     private function sortByDatePostedDesc()
     {
+        $this->oldest_date = 'selected';
         usort($this->search_results, function($arrayA, $arrayB) {
             if(strtotime($arrayA['date_posted']) < strtotime($arrayB['date_posted']))
                 return -1;
@@ -96,6 +108,7 @@ class SearchResults extends Controller
 
     private function sortByDatePostedAsc()
     {
+        $this->newest_date = 'selected';
         usort($this->search_results, function($arrayA, $arrayB) {
             if(strtotime($arrayA['date_posted']) > strtotime($arrayB['date_posted']))
                 return -1;

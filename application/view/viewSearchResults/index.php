@@ -10,8 +10,8 @@
 							<div class="input-group-addon glyphicon glyphicon-usd"></div>
 							<select id="priceSorting" class="form-control">
 								<option value="1">Any</option>
-								<option value="2">Lowest Price First</option>
-								<option value="3">Highest Price First</option>
+								<option value="2" <?php echo $this->lowest_price; ?>>Lowest Price First</option>
+								<option value="3" <?php echo $this->highest_price; ?>>Highest Price First</option>
 							</select>
 						</div>
 					</div>
@@ -21,8 +21,8 @@
 							<div class="input-group-addon glyphicon glyphicon-calendar"></div>
 							<select id="dateSorting" class="form-control">
 								<option value="1">Any</option>
-								<option value="2">Oldest Post First</option>
-								<option value="3">Newest Post First</option>
+								<option value="2" <?php echo $this->oldest_date; ?>>Oldest Post First</option>
+								<option value="3" <?php echo $this->newest_date; ?>>Newest Post First</option>
 							</select>
 						</div>
 					</div>
@@ -33,8 +33,8 @@
                             <div class="input-group-addon glyphicon glyphicon-text-width"></div>
                             <select id="titleSorting" class="form-control">
                                 <option value="1">Any</option>
-                                <option value="2">Alphabetical Order</option>
-                                <option value="3">Reverse Alphabetical Order</option>
+                                <option value="2" <?php echo $this->alphabetical_title; ?>>Alphabetical Order</option>
+                                <option value="3" <?php echo $this->reverse_alphabetical_title; ?>>Reverse Alphabetical Order</option>
                             </select>
                         </div>
                     </div>
