@@ -2,7 +2,7 @@
     <?php if (isset($_GET['search_string']))
     {
         ?>
-        <a href="<?php echo URL . 'searchResults/index?back_search_string=' . $search_string; ?>"
+        <a href="<?php echo URL . 'searchResults/index?back_search_string=' . $_GET['search_string']; ?>"
            class="btn btn-info btn-lg" role="button">Back To Search</a>
         <?php
     }
