@@ -70,7 +70,8 @@ function confirmDeleteModal(id){
 }
 function contactOwner(id){
     // do your stuffs with id
-    $(id).html("Details shared with owner");
+    var newid = id.nodeName ? id : document.getElementById(id);
+    $(newid).html("Details shared with owner");
     $('#contactModal').modal('hide'); // now close modal
 }
 
