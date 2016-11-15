@@ -111,8 +111,8 @@
 								?>
 							</p>
 							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$id . '&search_string='.$this->search_string; ?>" class="btn btn-info btn-lg" role="button">View</a>
-							<a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('successMessage' + <?php echo $id ?>)">Rent</a>
-                            <div id="'successMessage' + <?php echo $id ?>" style="font-size:20px;color:green;font-weight:bold;"></div>
+							<a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $id ?>')">Rent</a>
+                            <div id="<?php echo $id ?>" style="font-size:20px;color:green;font-weight:bold;"></div>
 						</div>
 					</div>
 				</div>
