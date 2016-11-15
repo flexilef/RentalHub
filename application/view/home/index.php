@@ -39,7 +39,7 @@
 								?>
 							</p>
 							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$this->rental_ids[$i]; ?>" class="btn btn-info btn-lg" role="button">View</a>
-							<a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal(<?php echo $i ?>)">Rent</a>
+							<a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal(<?php echo $this->rental_ids[$i] ?>)">Rent</a>
                             <div id="<?php echo $this->rental_ids[$i] ?>" style="font-size:20px;color:green;font-weight:bold;"></div>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
                 <h4 class="modal-title">Share Contact Details </h4>
             </div>
             <div class="modal-body">
-                <p>Your contact details will be shared by the owner.</p>
+                <p>Your contact details will be shared with the owner.</p>
                 <p>Click Ok to continue </p>
             </div>
             <div class="modal-footer">

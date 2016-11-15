@@ -142,7 +142,7 @@
                 <h4 class="modal-title">Share Contact Details </h4>
             </div>
             <div class="modal-body">
-                <p>Your contact details will be shared by the owner.</p>
+                <p>Your contact details will be shared with the owner.</p>
                 <p>Click Ok to continue </p>
             </div>
             <div class="modal-footer">
