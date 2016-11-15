@@ -8,13 +8,36 @@
 						<label for="location1" class="control-label">Sort Price</label>
 						<div class="input-group">
 							<div class="input-group-addon glyphicon glyphicon-usd"></div>
-							<select id="sorting" class="form-control">
+							<select id="priceSorting" class="form-control">
 								<option value="1">Any</option>
 								<option value="2">Lowest Price First</option>
 								<option value="3">Highest Price First</option>
 							</select>
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="location1" class="control-label">Sort Date</label>
+						<div class="input-group">
+							<div class="input-group-addon glyphicon glyphicon-calendar"></div>
+							<select id="dateSorting" class="form-control">
+								<option value="1">Any</option>
+								<option value="2">Oldest Post First</option>
+								<option value="3">Newest Post First</option>
+							</select>
+						</div>
+					</div>
+
+                    <div class="form-group">
+                        <label for="location1" class="control-label">Sort Title</label>
+                        <div class="input-group">
+                            <div class="input-group-addon glyphicon glyphicon-text-width"></div>
+                            <select id="titleSorting" class="form-control">
+                                <option value="1">Any</option>
+                                <option value="2">Alphabetical Order</option>
+                                <option value="3">Reverse Alphabetical Order</option>
+                            </select>
+                        </div>
+                    </div>
 					<div class="form-group">
 						<label class="control-label">Listing Type</label>
 						<div class="input-group">

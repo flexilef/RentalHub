@@ -73,6 +73,16 @@ class SearchResults extends Controller
             return 1;
         });
     }
+
+    private function sortByTitleAsc()
+    {
+        usort($this->search_results, function($arrayA, $arrayB) {
+            if(strcasecmp($arrayA['title'], $arrayB['title']) < 0)
+                return -1;
+
+            return 1;
+        });
+    }
     
     private function sortByDatePostedDesc()
     {
@@ -84,12 +94,18 @@ class SearchResults extends Controller
         });
     }
 
+    private function sortByDatePostedAsc()
+    {
+        usort($this->search_results, function($arrayA, $arrayB) {
+            if(strtotime($arrayA['date_posted']) > strtotime($arrayB['date_posted']))
+                return -1;
+
+            return 1;
+        });
+    }
+
     public function index()
     {
-        //require APP . 'view/_templates/header.php';
-        //require APP . "view/viewSearchResults/index.php";
-        //require APP . 'view/_templates/footer.php';
-
         if(isset($_GET['price']))
         {
             if ($_GET['price'] == 'asc'){
@@ -110,6 +126,46 @@ class SearchResults extends Controller
             }
         }
 
+        if(isset($_GET['date']))
+        {
+            if ($_GET['date'] == 'asc'){
+
+                $this->setSearchResults($_GET['search_string']);
+
+                $this->sortByDatePostedAsc();
+
+                $this->assignViewVariables();
+            }
+            if ($_GET['date'] == 'desc'){
+
+                $this->setSearchResults($_GET['search_string']);
+
+                $this->sortByDatePostedDesc();
+
+                $this->assignViewVariables();
+            }
+        }
+
+        if(isset($_GET['title']))
+        {
+            if ($_GET['title'] == 'asc'){
+
+                $this->setSearchResults($_GET['search_string']);
+
+                $this->sortByTitleAsc();
+
+                $this->assignViewVariables();
+            }
+            if ($_GET['title'] == 'desc'){
+
+                $this->setSearchResults($_GET['search_string']);
+
+                $this->sortByTitleDesc();
+
+                $this->assignViewVariables();
+            }
+        }
+
         if(isset($_POST["submit_search"]))
         {
             if(isset($_POST["rental_search"]))
@@ -121,7 +177,7 @@ class SearchResults extends Controller
                 $this->assignViewVariables();           
             }
         }
-	require APP . 'view/_templates/header.php';
+	    require APP . 'view/_templates/header.php';
         require APP . "view/viewSearchResults/index.php";
         require APP . 'view/_templates/footer.php';
     }

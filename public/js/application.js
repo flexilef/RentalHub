@@ -36,12 +36,30 @@ $(function() {
         });
     }
 
-    $('#sorting').change(function() {
+    $('#priceSorting').change(function() {
         if ($(this).val() === '3') {
             document.getElementById("filter").href = document.getElementById("filter").href + '&price=asc'
         }
         if ($(this).val() === '2') {
             document.getElementById("filter").href = document.getElementById("filter").href + '&price=desc'
+        }
+    });
+
+    $('#dateSorting').change(function() {
+        if ($(this).val() === '3') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&date=asc'
+        }
+        if ($(this).val() === '2') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&date=desc'
+        }
+    });
+
+    $('#titleSorting').change(function() {
+        if ($(this).val() === '3') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&title=asc'
+        }
+        if ($(this).val() === '2') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&title=desc'
         }
     });
 });
