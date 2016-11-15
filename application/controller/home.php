@@ -1,4 +1,5 @@
 <?php
+require APP . 'model/rentalListingModel.php';
 
 /**
  * Class Home
