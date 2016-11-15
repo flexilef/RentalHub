@@ -86,9 +86,9 @@ class SearchResults extends Controller
 
     public function index()
     {
-        require APP . 'view/_templates/header.php';
-        require APP . "view/viewSearchResults/index.php";
-        require APP . 'view/_templates/footer.php';
+        //require APP . 'view/_templates/header.php';
+        //require APP . "view/viewSearchResults/index.php";
+        //require APP . 'view/_templates/footer.php';
 
         if(isset($_GET['price']))
         {
@@ -99,8 +99,7 @@ class SearchResults extends Controller
                 $this->sortByPriceAsc();
 
                 $this->assignViewVariables();
-                return;
-            }
+          }
             if ($_GET['price'] == 'desc'){
 
                 $this->setSearchResults($_GET['search_string']);
@@ -108,7 +107,6 @@ class SearchResults extends Controller
                 $this->sortByPriceDesc();
 
                 $this->assignViewVariables();
-                return;
             }
         }
 
@@ -123,5 +121,8 @@ class SearchResults extends Controller
                 $this->assignViewVariables();           
             }
         }
+	require APP . 'view/_templates/header.php';
+        require APP . "view/viewSearchResults/index.php";
+        require APP . 'view/_templates/footer.php';
     }
 }

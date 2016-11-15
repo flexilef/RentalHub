@@ -8,10 +8,10 @@
 						<label for="location1" class="control-label">Sort Price</label>
 						<div class="input-group">
 							<div class="input-group-addon glyphicon glyphicon-usd"></div>
-							<select class="form-control">
-								<option value="">Any</option>
-								<option value="">Lowest Price First</option>
-								<option value="">Highest Price First</option>
+							<select id="sorting" class="form-control">
+								<option value="1">Any</option>
+								<option value="2">Lowest Price First</option>
+								<option value="3">Highest Price First</option>
 							</select>
 						</div>
 					</div>
@@ -51,7 +51,7 @@
 							</select>
 						</div>
 					</div>
-					<p class="text-center"><a href="<?php echo  URL . 'searchResults/index?search_string='.$this->search_string; ?>" class="btn btn-danger glyphicon glyphicon-search" role="button"></a></p>
+					<p class="text-center"><a id="filter" href="<?php echo  URL . 'searchResults/index?search_string='.$this->search_string; ?>" class="btn btn-danger glyphicon glyphicon-search" role="button"></a></p>
 				</form>
 			</div>
 		</div>
