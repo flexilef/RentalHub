@@ -24,10 +24,16 @@ class SearchResults extends Controller
         $this->rental_listing_model = new RentalListingModel($this->db);
     }
 
-    public function sortSearchResultsByPriceInAsc(){
-        $this->sortByPriceAsc();
+    public function sortSearchResultsByPrice(){
+        if($_GET)
+        {
+            if ($_GET['price'] == 'desc'){
 
-        $this->assignViewVariables();
+                $this->sortByPriceAsc();
+
+                $this->assignViewVariables();
+            }
+        }
     }
     
     private function setSearchResults($search_string) 
@@ -100,16 +106,6 @@ class SearchResults extends Controller
                 $this->sortByPriceDesc();
                                 
                 $this->assignViewVariables();           
-            }
-        }
-
-        if($_GET)
-        {
-            if ($_GET['price'] == 'desc'){
-
-                $this->sortByPriceAsc();
-
-                $this->assignViewVariables();
             }
         }
 

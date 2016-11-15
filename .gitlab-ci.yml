@@ -26,5 +26,5 @@ production:
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
   - sh cd/deploy.sh
-  branch:
+  only:
   - dev
