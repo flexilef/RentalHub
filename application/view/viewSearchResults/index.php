@@ -1,5 +1,4 @@
 <div class="container">
-<<<<<<< HEAD
     <div class="row">
         <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
             <div class="well">
@@ -67,7 +66,7 @@
                     {
                 ?>
                     <?php
-                        $title = $this->rental_id_to_title[$id]; 
+                        $title = $this->rental_id_to_title[$id];
                         $price = $this->rental_id_to_price[$id];
                         $date_posted = $this->rental_id_to_date_posted[$id];
                     ?>
