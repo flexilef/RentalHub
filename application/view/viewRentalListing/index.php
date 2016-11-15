@@ -1,5 +1,6 @@
 <div class="container">
-    <?php if (isset($_GET['back_search_string'])) {
+    <?php if (isset($_GET['back_search_string']))
+    {
         ?>
         <a href="<?php echo URL . 'searchResults/index?back_search_string=' . $search_string; ?>"
            class="btn btn-info btn-lg" role="button">Back To Search</a>
