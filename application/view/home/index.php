@@ -17,7 +17,7 @@
 			for ($i = 0; $i<3; $i++ )
 			{
 				?>
-				<div class="col-xs-18 col-sm-6 col-md-3" style="width: 35%">
+				<div class="col-xs-18 col-sm-6 col-md-3">
 					<div class="thumbnail">
 						<?php
 						//index 0 because there is only one id in this associative array

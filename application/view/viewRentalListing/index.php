@@ -24,7 +24,7 @@
     <div><?php echo $rental_listing_owner?></div>
     <h3>Pets:</h3>
     <div><?php echo $rental_listing_pets?></div>
-    <h3>Pictures: Click to image slide show</h3>
+    <h3>Pictures: Click on image for slide show</h3>
     <div class="slideshow-container">
         <?php
             foreach ($image_results as $image)
