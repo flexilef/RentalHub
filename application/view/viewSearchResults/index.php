@@ -51,7 +51,7 @@
                             </select>
                         </div>
                     </div>
-                    <p class="text-center"><a href="#" class="btn btn-danger glyphicon glyphicon-search" role="button"></a></p>
+                    <p class="text-center"><a id="filter" href="<?php echo  URL . 'searchResults/index?' ?>" class="btn btn-danger glyphicon glyphicon-search" role="button"></a></p>
                 </form>
             </div>
         </div>
