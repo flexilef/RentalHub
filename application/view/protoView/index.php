@@ -25,6 +25,7 @@
 
       <h3>Upload Pictures of Your Place</h3>
       <div>
+       
           <input multiple="true" type="file" name="images[]" />
           <br>
           <input type="submit" name="submit_post" value="Post" />
