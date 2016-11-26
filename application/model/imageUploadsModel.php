@@ -22,8 +22,11 @@ class ImageUploadsModel {
      */
     public function uploadImage($final_image, $image_type, $new_image_size, $rental_listing_id) {
         
-        //This Line will be Replaced by the Session ID of the User in Future
-        $loginId = 'ADMIN';
+        if (isset($_SESSION['id'])) {
+            $loginId=$_SESSION['id'];
+        }else{
+             $loginId ="ADMIN";
+        }
 
         $sql = "INSERT INTO IMAGE_UPLOADS (IMAGE_NAME, IMAGE_TYPE, IMAGE_SIZE, PROPERTY_ID,CREATED_BY)" .
                 "VALUES (:image_name, :image_type, :image_size, :property_id , :createdBy)";
