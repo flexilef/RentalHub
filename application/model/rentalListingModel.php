@@ -260,8 +260,12 @@ class RentalListingModel {
      * $id : Property ID 
      */
     public function insertRentalListing($title, $description, $address, $price, $type, $number_occupants, $allow_animals) {
-        //This Line will be Replaced by the Session ID of the User in Future
-        $loginId = 'ADMIN';
+      
+        if (isset($_SESSION['id'])) {
+            $loginId = $_SESSION['id'];
+        } else {
+            $loginId = "ADMIN";
+        }
 
         if ($allow_animals == 1) { //Check Whether Is_Pet Allowed Or Not
             $pet_allowed = 'Y';
