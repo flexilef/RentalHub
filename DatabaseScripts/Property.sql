@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2016 at 11:06 PM
+-- Generation Time: Nov 27, 2016 at 12:10 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -96,11 +96,6 @@ CREATE TABLE `image_uploads` (
   `CREATED_BY` varchar(30) NOT NULL DEFAULT 'ADMIN'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `image_uploads`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -125,11 +120,6 @@ CREATE TABLE `property` (
   `CREATED_BY` varchar(30) NOT NULL DEFAULT 'ADMIN'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `property`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -137,14 +127,12 @@ CREATE TABLE `property` (
 --
 
 CREATE TABLE `users` (
-  `USER_ID` int(6) NOT NULL,
+  `ID` int(10) NOT NULL,
   `FULL_NAME` varchar(30) DEFAULT NULL,
   `EMAIL` varchar(250) NOT NULL,
   `PASSWORD` varchar(40) NOT NULL,
-  `RE_PASSWORD` varchar(40) NOT NULL,
   `USER_TYPE_ID` int(10) DEFAULT '4',
   `ACTIVE` char(1) NOT NULL DEFAULT 'Y',
-  `CREATED_BY` varchar(30) NOT NULL,
   `CREATED_DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -188,8 +176,8 @@ ALTER TABLE `property`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`USER_ID`),
-  ADD UNIQUE KEY `id` (`USER_ID`,`EMAIL`),
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `id` (`ID`,`EMAIL`),
   ADD UNIQUE KEY `email` (`EMAIL`);
 
 --
@@ -220,7 +208,7 @@ ALTER TABLE `property`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `USER_ID` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
