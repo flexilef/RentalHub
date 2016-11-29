@@ -1,8 +1,9 @@
 <?php
+
 require APP . 'model/rentalListingModel.php';
 
-class SearchResults extends Controller
-{
+class SearchResults extends Controller {
+
     private $search_results;
     private $search_string;
     private $rental_ids;
@@ -16,31 +17,41 @@ class SearchResults extends Controller
     private $newest_date;
     private $alphabetical_title;
     private $reverse_alphabetical_title;
+ 
 
-
-    function __construct()
-    {
+    function __construct() {
         parent::__construct();
-
         $this->rental_ids = array();
         $this->rental_id_to_title = array();
-        $this->rental_id_to_price = array();      
+        $this->rental_id_to_price = array();
         $this->rental_id_to_date_posted = array();
         $this->rental_id_to_images = array();
-
         $this->rental_listing_model = new RentalListingModel($this->db);
     }
     
-    private function setSearchResults($search_string) 
-    {
-        $this->search_string = $search_string;
-        $this->search_results = $this->rental_listing_model->searchRentalListings($search_string);              
+    /**
+     * Filtered Checks : Get the Query String ,Convert into Key ,Values and
+     * Pass it to the Model Class
+     */
+    private function getQueryString(){
+        
+        $url = $_SERVER["REQUEST_URI"];
+        $query_str = parse_url($url, PHP_URL_QUERY);
+        parse_str($query_str, $query_params);
+        $this->search_results = $this->rental_listing_model->filterRentalListing($query_params);
     }
-    
-    private function assignViewVariables()
-    {
-        foreach($this->search_results as $result)
-        {
+
+    /**
+     * Search Results On Title Field
+     * @param type $search_string
+     */
+    private function getResultsByTitle($search_string) {
+        $this->search_string = $search_string;
+        $this->search_results = $this->rental_listing_model->searchRentalListings($search_string);
+    }
+
+    private function assignViewVariables() {
+        foreach ($this->search_results as $result) {
             $this->rental_ids[] = $result['id'];
             $this->rental_id_to_title[$result['id']] = $result['title'];
             $this->rental_id_to_price[$result['id']] = $result['price'];
@@ -50,157 +61,24 @@ class SearchResults extends Controller
 
         $this->rental_ids = array_unique($this->rental_ids);
     }
-    
-    private function sortByPriceDesc()
-    {
-        $this->lowest_price = 'selected';
-        usort($this->search_results, function($arrayA, $arrayB) {
-            if($arrayA['price'] < $arrayB['price'])
-                return -1;
+
+
+    public function index() {
         
-            return 1;
-        });
-    }
+        //On main search bar @action event , Search only on Title Field.
+        if (isset($_POST["submit_search"]) && isset($_POST["rental_search"])) {
 
-    private function sortByPriceAsc()
-    {
-        $this->highest_price = 'selected';
-        usort($this->search_results, function($arrayA, $arrayB) {
-            if($arrayA['price'] > $arrayB['price'])
-                return -1;
+            $this->getResultsByTitle($_POST["rental_search"]);
+        } else {
+            //On filtered action performed,Pass query string to perform selection
+            $this->getQueryString();
+        }
 
-            return 1;
-        });
-    }
-    
-    private function sortByTitleDesc()
-    {
-        $this->alphabetical_title = 'selected';
-        usort($this->search_results, function($arrayA, $arrayB) {
-            if(strcasecmp($arrayA['title'], $arrayB['title']) < 0)
-                return -1;
         
-            return 1;
-        });
-    }
-
-    private function sortByTitleAsc()
-    {
-        $this->reverse_alphabetical_title = 'selected';
-        usort($this->search_results, function($arrayA, $arrayB) {
-            if(strcasecmp($arrayA['title'], $arrayB['title']) < 0)
-                return -1;
-
-            return 1;
-        });
-    }
-    
-    private function sortByDatePostedDesc()
-    {
-        $this->oldest_date = 'selected';
-        usort($this->search_results, function($arrayA, $arrayB) {
-            if(strtotime($arrayA['date_posted']) < strtotime($arrayB['date_posted']))
-                return -1;
-        
-            return 1;
-        });
-    }
-
-    private function sortByDatePostedAsc()
-    {
-        $this->newest_date = 'selected';
-        usort($this->search_results, function($arrayA, $arrayB) {
-            if(strtotime($arrayA['date_posted']) > strtotime($arrayB['date_posted']))
-                return -1;
-
-            return 1;
-        });
-    }
-
-    public function index()
-    {
-        if(isset($_GET['back_search_string']))
-        {
-            $this->setSearchResults($_GET['back_search_string']);
-
-            $this->sortByPriceDesc();
-
-            $this->assignViewVariables();
-        }
-
-        if(isset($_GET['price']))
-        {
-            if ($_GET['price'] == 'asc'){
-
-                $this->setSearchResults($_GET['search_string']);
-
-                $this->sortByPriceAsc();
-
-                $this->assignViewVariables();
-          }
-            if ($_GET['price'] == 'desc'){
-
-                $this->setSearchResults($_GET['search_string']);
-
-                $this->sortByPriceDesc();
-
-                $this->assignViewVariables();
-            }
-        }
-
-        if(isset($_GET['date']))
-        {
-            if ($_GET['date'] == 'asc'){
-
-                $this->setSearchResults($_GET['search_string']);
-
-                $this->sortByDatePostedAsc();
-
-                $this->assignViewVariables();
-            }
-            if ($_GET['date'] == 'desc'){
-
-                $this->setSearchResults($_GET['search_string']);
-
-                $this->sortByDatePostedDesc();
-
-                $this->assignViewVariables();
-            }
-        }
-
-        if(isset($_GET['title']))
-        {
-            if ($_GET['title'] == 'asc'){
-
-                $this->setSearchResults($_GET['search_string']);
-
-                $this->sortByTitleAsc();
-
-                $this->assignViewVariables();
-            }
-            if ($_GET['title'] == 'desc'){
-
-                $this->setSearchResults($_GET['search_string']);
-
-                $this->sortByTitleDesc();
-
-                $this->assignViewVariables();
-            }
-        }
-
-        if(isset($_POST["submit_search"]))
-        {
-            if(isset($_POST["rental_search"]))
-            {
-                $this->setSearchResults($_POST["rental_search"]);
-
-                $this->sortByPriceDesc();
-                                
-                $this->assignViewVariables();           
-            }
-        }
-	    require APP . 'view/_templates/header.php';
+        $this->assignViewVariables();
+        require APP . 'view/_templates/header.php';
         require APP . "view/viewSearchResults/index.php";
         require APP . 'view/_templates/footer.php';
     }
+
 }
