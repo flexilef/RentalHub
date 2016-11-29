@@ -54,7 +54,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  */
 define('DB_TYPE', 'mysql');
 define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'realestate');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_NAME', 'f16g16');
+define('DB_USER', 'f16g16');
+define('DB_PASS', 'love4germany');
 define('DB_CHARSET', 'utf8');

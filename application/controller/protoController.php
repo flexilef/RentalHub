@@ -41,7 +41,7 @@ class ProtoController extends Controller {
                     $image_loc = $_FILES['images']['tmp_name'][$name];
                     $image_size = $_FILES['images']['size'][$name];
                     $image_type = $_FILES['images']['type'][$name];
-                    $folder = "D://wamp64/www/Property/public/uploads/";
+                    $folder = APP . "../public/uploads/";
 
                     // new file size in KB
                     $new_image_size = $image_size / 1024;
@@ -63,7 +63,7 @@ class ProtoController extends Controller {
         }
     }
 
-  
+
 
 }
 
