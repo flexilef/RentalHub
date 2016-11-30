@@ -24,7 +24,7 @@ class Sinmodel {
      * @param type $landlord
      * Return: Success or Failure i.e true or false
      */
-    public function registerUser($fname, $email, $password, $verify, $student, $landlord) {
+    public function registerUser($fname, $email, $password, $student, $landlord) {
 
         //Set ID for Student or LandLord
         //student ID in defination type detail is 4
