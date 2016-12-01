@@ -40,17 +40,40 @@
                 <ul class="nav navbar-nav">
                     <li><a href="<?php echo URL; ?>protoController/index">Post a Listing</a></li>
                     <li><a href="<?php echo URL; ?>profile/index">Profile & Postings</a></li>
-                    <li><a href="#" type="button" data-toggle="modal" data-target="#sign-up-modal">
-                            Sign Up
-                        </a></li>
-                    <li><a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal">
-                            <?php
-                            if (isset($_SESSION['name'])) {
-                                echo "Welcome " . $_SESSION['name'];
-                            } else {
-                                echo "Sign In";
+                      <?php 
+                            if (!isset($_SESSION['is_auth'])) {?>
+                            <li><a href="#" type="button" data-toggle="modal" data-target="#sign-up-modal">
+                             <?php echo "Sign Up";
                             }
-                            ?></a></li>
+                            ?>
+                        </a>
+                    </li>
+                    
+                     <?php
+                            if (!isset($_SESSION['is_auth'])) {?>
+                             <li><a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal">
+                              <?php   echo "Sign In";
+                            }
+                            ?></a>
+                    </li>
+                    <li> <a href="#" >  
+                          <?php
+                            if (isset($_SESSION['is_auth'])) {
+                                echo "Welcome " . $_SESSION['name'];
+                            }
+                            ?> 
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="<?php echo URL . "sprofile/logout"; ?>">
+                            <?php if (isset($_SESSION['is_auth'])) {
+                                echo "Logout"; 
+                                }
+                            ?>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -87,8 +110,9 @@
                     <div class="modal-body">
                     </div>
                     <form class="sign-up-form" action="<?php echo URL . "sprofile/index"; ?>" method="post" enctype="multipart/form-data">
-                        <p>Full Name:</p>
-                        <input type="text" class="fnameclas" name="fname" placeholder="Ehsan Ali">
+                        <p>Full Name:</p> 
+                        <input type="text" class="form-control" name="fname" placeholder="">
+                        <br/>
                         <p>Email:</p> 
                         <input type="email" name="email" placeholder="You@Provider.com">
                         Password:
@@ -108,4 +132,5 @@
                     </div>
                 </div>
             </div>
+        </div> 
     </header>
