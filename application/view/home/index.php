@@ -1,7 +1,7 @@
 <div class="container">
 	<h2>CSC 848/648 Software Engineering</h2>
 	<h3>Section-2 Group 16</h3>
-	<img src="public/img/San_Francisco_(Evening).jpg" alt="sf" style="width: 90%; height: 90%"> 
+	<img src="public/img/San_Francisco_(Evening)_Compressed.jpg" alt="sf" style="width: 100%; height: 100%"> 
 	<!--https://commons.wikimedia.org/wiki/File:San_Francisco_(Evening).jpg-->
 	<div>
 		Source:
