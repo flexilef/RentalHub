@@ -74,7 +74,7 @@
                             </select>
                         </div>
                     </div>
-                    <p class="text-center"><a id="filter" href="<?php echo URL . 'searchResults/index?search_string=' . $this->search_string; ?>" class="btn btn-danger glyphicon glyphicon-search" role="button"></a></p>
+                    <p class="text-center"><a id="filter" href="<?php echo URL . 'searchResults/index?search_string=' . $this->search_string; ?>" class="btn btn-primary glyphicon glyphicon-search" role="button"></a></p>
                 </form>
             </div>
         </div>
