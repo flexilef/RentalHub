@@ -23,8 +23,8 @@ class RentalListingModel {
      *   $id : Property ID 
      */
     public function getTitle($id) {
-        $sql = " SELECT TITLE " .
-                " FROM PROPERTY " .
+        $sql = "  SELECT TITLE " .
+                " FROM property " .
                 " WHERE ID = :id";
 
         $query = $this->db->prepare($sql);
@@ -43,7 +43,7 @@ class RentalListingModel {
     public function getDescription($id) {
 
         $sql = "  SELECT DESCRIPTION " .
-                "  FROM PROPERTY " .
+                "  FROM property " .
                 "  WHERE ID = :id";
 
         $query = $this->db->prepare($sql);
@@ -64,7 +64,7 @@ class RentalListingModel {
         $sql = " SELECT " .
                 " ADDRESS " .
                 " FROM " .
-                " PROPERTY PROP " .
+                " property PROP " .
                 " WHERE PROP.ID= :id";
 
         $query = $this->db->prepare($sql);
@@ -84,7 +84,7 @@ class RentalListingModel {
 
 
         $sql = " SELECT PRICE " .
-                " FROM PROPERTY " .
+                " FROM property " .
                 " WHERE ID = :id";
 
         $query = $this->db->prepare($sql);
@@ -102,7 +102,7 @@ class RentalListingModel {
      */
     public function getType($id) {
 
-        $sql = " SELECT DT.DESCRIPTION AS TYPE FROM PROPERTY PROPS  , DEFINATION_TYPE_DETAIL DT " .
+        $sql = " SELECT DT.DESCRIPTION AS TYPE FROM property PROPS  , defination_type_detail DT " .
                 " WHERE PROPS.ID=:id " .
                 " AND PROPS.PROP_TYPE_ID=DT.ID";
 
@@ -121,7 +121,7 @@ class RentalListingModel {
      */
     public function getNumberOfOccupants($id) {
         $sql = " SELECT NUMBER_OCCUPANTS " .
-                " FROM PROPERTY  " .
+                " FROM property  " .
                 " WHERE ID= :id";
 
         $query = $this->db->prepare($sql);
@@ -141,7 +141,7 @@ class RentalListingModel {
     public function arePetsAllowed($id) {
 
         $sql = " SELECT (CASE WHEN (IS_PET_ALLOWED='Y') THEN 1 ELSE 0 END ) AS ALLOW_ANIMALS " .
-                " FROM PROPERTY " .
+                " FROM property " .
                 " WHERE ID = :id";
 
 
@@ -160,7 +160,7 @@ class RentalListingModel {
      */
     public function getDatePosted($id) {
         $sql = " SELECT CREATED_DATE AS DATE_POSTED " .
-                " FROM PROPERTY " .
+                " FROM property " .
                 " WHERE ID = :id";
 
         $query = $this->db->prepare($sql);
@@ -178,7 +178,7 @@ class RentalListingModel {
      */
     public function getImages($id) {
         $sql = " SELECT IMAGE_NAME  " .
-                " FROM IMAGE_UPLOADS " .
+                " FROM image_uploads " .
                 " WHERE PROPERTY_ID = :id";
 
 
@@ -208,7 +208,7 @@ class RentalListingModel {
             $search_string = '';
         }
         $sql = " SELECT id , title , price , CREATED_DATE as date_posted" .
-                " FROM PROPERTY where upper(TITLE) LIKE upper('%" . $search_string . "%')";
+                " FROM property where upper(TITLE) LIKE upper('%" . $search_string . "%')";
    
         $parameters = array();
         $query = $this->db->prepare($sql);
@@ -227,7 +227,7 @@ class RentalListingModel {
      public function filterRentalListing($queryParams) {
 
         $sql = " SELECT id , title , price , CREATED_DATE as date_posted" .
-                " FROM PROPERTY where 1=1";
+                " FROM property where 1=1";
 
         if (isset($queryParams["search_string"])) {
             $sql = $sql . " AND  upper(TITLE) LIKE upper('%" . $queryParams["search_string"] . "%')";
@@ -273,7 +273,7 @@ class RentalListingModel {
             $pet_allowed = 'N';
         }
 
-        $sql = " INSERT INTO PROPERTY (USER_ID,TITLE, DESCRIPTION ,ADDRESS, PRICE, 
+        $sql = " INSERT INTO property (USER_ID,TITLE, DESCRIPTION ,ADDRESS, PRICE, 
 		         PROP_TYPE_ID  ,NUMBER_OCCUPANTS , IS_PET_ALLOWED )" .
                 " VALUES (:userId,:title, :description, :address, :price, :type, :number_occupants, :allow_animals)";
 
@@ -291,7 +291,7 @@ class RentalListingModel {
      */
     public function getRentalType($type) {
 
-        $sql = "SELECT ID FROM DEFINATION_TYPE_DETAIL  DT WHERE UPPER(DT.DESCRIPTION) =UPPER(:type)";
+        $sql = "SELECT ID FROM defination_type_detail  DT WHERE UPPER(DT.DESCRIPTION) =UPPER(:type)";
 
         $query = $this->db->prepare($sql);
         $parameters = array(':type' => $type);
@@ -309,7 +309,7 @@ class RentalListingModel {
      * $id : Property ID 
      */
     public function getLatestId() {
-        $sql = "SELECT ID FROM PROPERTY ORDER BY ID DESC LIMIT 1";
+        $sql = "SELECT ID FROM property ORDER BY ID DESC LIMIT 1";
 
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -326,7 +326,7 @@ class RentalListingModel {
      */
     public function deleteRentalListing($id) {
         $sql = "DELETE " .
-                "FROM PROPERTY " .
+                "FROM property " .
                 "WHERE ID = :id";
 
         $query = $this->db->prepare($sql);
