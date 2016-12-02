@@ -30,7 +30,7 @@
             <div class="col-sm-3 col-md-3">
                 <form class="navbar-form" action="<?php echo URL . "searchResults/index"; ?>" method="post">
                     <div class="input-group">
-                        <input type="text" name="rental_search" class="form-control" placeholder="Search">
+                        <input type="text" name="rental_search" class="form-control" placeholder="Zip code, city">
                         <div class="input-group-btn">
                             <button type="submit" name="submit_search" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
