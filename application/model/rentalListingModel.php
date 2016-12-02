@@ -229,23 +229,25 @@ class RentalListingModel {
         $sql = " SELECT id , title , price , CREATED_DATE as date_posted" .
                 " FROM property where 1=1";
 
-        if (isset($queryParams["search_string"])) {
+        if (!empty($queryParams["search_string"])) {
             $sql = $sql . " AND  upper(TITLE) LIKE upper('%" . $queryParams["search_string"] . "%')";
         }
         
-        $sql=$sql. " ORDER BY ID ";
+        $sql=$sql. " ORDER BY ";
 
         if (isset($queryParams["price"])) {
-            $sql = $sql . " ,PRICE " . $queryParams["price"] . " ";
+            $sql = $sql . " PRICE " . $queryParams["price"] . " ,";
         }
 
         if (isset($queryParams["date"])) {
-            $sql = $sql . " ,CREATED_DATE " . $queryParams["date"] . " ";
+            $sql = $sql . " CREATED_DATE " . $queryParams["date"] . " , ";
         }
 
         if (isset($queryParams["title"])) {
-            $sql = $sql . " ,TITLE " . $queryParams["title"] . "";
+            $sql = $sql . " TITLE " . $queryParams["title"] . " , ";
         }
+        
+        $sql=$sql. " ID";
 
         $parameters = array();
         $query = $this->db->prepare($sql);
@@ -254,6 +256,7 @@ class RentalListingModel {
 
         return $results;
     }
+
 
     /**
      * Insert Property Details 
