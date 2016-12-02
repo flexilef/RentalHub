@@ -66,7 +66,7 @@ class SearchResults extends Controller {
     public function index() {
         
         //On main search bar @action event , Search only on Title Field.
-        if (isset($_POST["submit_search"]) && isset($_POST["rental_search"])) {
+        if (isset($_POST["rental_search"])) {
 
             $this->getResultsByTitle($_POST["rental_search"]);
         } else {
