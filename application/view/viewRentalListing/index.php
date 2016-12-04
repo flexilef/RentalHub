@@ -40,7 +40,17 @@
                 ?>
             </div>
         </div>
-        <a href="#" class="btn btn-success btn-lg pull-right" role="button" onclick="confirmDeleteModal('successMessage')">Rent</a>
+        <?php
+        if (isset($_SESSION['is_auth'])) {
+            ?>
+            <a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Rent</a>
+            <?php
+        }else {
+            ?>
+            <a href="#" class="btn btn-default btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Rent</a>
+            <?php
+        }
+        ?>
         <div id="successMessage" style="font-size:20px;color:green;font-weight:bold;"></div>
     </div>
     <div id="myModal" class="image-modal">
@@ -94,3 +104,61 @@
     </div>
 </div>
 <!--Modal ends here--->
+
+<!-- Modal for Sign In -->
+<div id="sign-in-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Sign In</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <form class="sign-in-form"  action="<?php echo URL . "sprofile/index"; ?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="fname">
+                <input type="email" name="email" placeholder="You@Provider.com">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" name="sign-in" class="modal-submit" value="Sign In">
+            </form>
+            <div class="modal-footer">
+                Don't have an account? <a href="#" type="button" data-toggle="modal" data-target="#sign-up-modal" data-dismiss="modal">Register</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Sign Up -->
+<div id="sign-up-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <form class="sign-up-form" action="<?php echo URL . "sprofile/index"; ?>" method="post" enctype="multipart/form-data">
+                <p>Full Name:</p>
+                <input type="text" class="form-control" name="fname" placeholder="">
+                <br/>
+                <p>Email:</p>
+                <input type="email" name="email" placeholder="You@Provider.com">
+                Password:
+                <p class="disclaimer">Must have at least 8 characters</p>
+                <input type="password" name="password"/>
+                Verify Password:
+                <input type="password" name="verifyPassword"/>
+                <br><br>
+                <input type="radio" name="student" value="student"/> I am a student who wants to rent.
+                <br><br>
+                <input type="radio" name="landLord" value="landlord"/> I am a landlord who wants to post.
+                <br><br>
+                <input type="submit" name="register" class="modal-submit" value="Register">
+            </form>
+            <div class="modal-footer">
+                Already have an account? <a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal" data-dismiss="modal">Sign In</a>
+            </div>
+        </div>
+    </div>
+</div>
