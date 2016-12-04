@@ -36,7 +36,7 @@ class RentalListing extends Controller
             $rental_listing_pets = $this->rental_listing_model->arePetsAllowed($rental_listing_id);
 
             // get latitude, longitude and formatted address
-            $data_arr = geocode($rental_listing_address);
+            $data_arr = $this->geocode($rental_listing_address);
             // if able to geocode the address
             if($data_arr){
 
@@ -44,22 +44,12 @@ class RentalListing extends Controller
                 $longitude = $data_arr[1];
                 $formatted_address = $data_arr[2];
             }
+
+            require APP . 'view/_templates/header.php';
+            require APP . "view/viewRentalListing/index.php";
+            require APP . 'view/_templates/footer.php';
         }
-
-	    // get latitude, longitude and formatted address
-        $data_arr = $this->geocode($rental_listing_address);
-        // if able to geocode the address
-        if($data_arr){
-
-            $latitude = $data_arr[0];
-            $longitude = $data_arr[1];
-            $formatted_address = $data_arr[2];
-        }
-
-        require APP . 'view/_templates/header.php';
-        require APP . "view/viewRentalListing/index.php";
-        require APP . 'view/_templates/footer.php';
-	}
+    }
 // function to geocode address, it will return false if unable to geocode address
     public function geocode($address){
 
