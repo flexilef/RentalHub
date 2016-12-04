@@ -115,33 +115,16 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
-<<<<<<< HEAD
-	var myCity = new google.maps.Circle({
-    center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
-    radius: 1000,
-    strokeColor: "#0000FF",
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: "#0000FF",
-    fillOpacity: 0.4
-  });
-  myCity.setMap(map);
+        var myCity = new google.maps.Circle({
+        center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
+        radius: 1000,
+        strokeColor: "#0000FF",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#0000FF",
+        fillOpacity: 0.4
+        });
+        myCity.setMap(map);
     }
     google.maps.event.addDomListener(window, 'load', init_map);
 </script>
-=======
-        marker = new google.maps.Marker({
-            map: map,
-            position: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>)
-        });
-        infowindow = new google.maps.InfoWindow({
-            content: "<?php echo $formatted_address; ?>"
-        });
-        google.maps.event.addListener(marker, "click", function () {
-            infowindow.open(map, marker);
-        });
-        infowindow.open(map, marker);
-    }
-    google.maps.event.addDomListener(window, 'load', init_map);
-</script>
->>>>>>> 642ece6e84b0c2425ff9e790089752c5226d44cc
