@@ -45,7 +45,7 @@
                         <?php
                     }else {
                         ?>
-                        <li><a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal">Post a Listing</a></li>
+                        <li><a href="<?php echo URL; ?>protoController/index" type="button" data-toggle="modal" data-target="#sign-in-modal">Post a Listing</a></li>
                         <?php
                     }
                     ?>
