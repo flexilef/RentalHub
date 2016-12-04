@@ -35,7 +35,7 @@
                  <?php
                 foreach ($image_results as $image) {
                     ?>
-                    <img class="myImg" width="100px" height="100px" src="../../../../Property/public/uploads/<?php echo $image["image_name"] ?>">
+                    <img class="myImg" width="100px" height="100px" src="./../uploads/<?php echo $image["image_name"] ?>">
                 <?php }
                 ?>
             </div>
@@ -50,7 +50,7 @@
             foreach ($image_results as $image) {
                 ?>
                 <div class="mySlides image-fade">
-                    <img width="100%" height="600px" class="myImg"  src="../../../../Property/public/uploads/<?php echo $image["image_name"] ?>">
+                    <img width="100%" height="600px" class="myImg"  src="./../uploads/<?php echo $image["image_name"] ?>">
                 </div>
             <?php }
             ?>
