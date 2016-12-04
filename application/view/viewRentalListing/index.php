@@ -80,9 +80,9 @@
             </div>
         </div>
     </div>
+    <!-- google map will be shown here -->
+    <div id="gmap_canvas" style=" height:400px;">Loading map...</div>
 </div>
-<div id="gmap_canvas" style=" height:400px;">Loading map...</div>
-<!-- google map will be shown here -->
 
 
 <!----modal starts here--->
