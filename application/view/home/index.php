@@ -40,7 +40,7 @@
 								echo $price;
 								?>
 							</p>
-							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$this->rental_ids[$i]; ?>" class="btn btn-info btn-lg" role="button">View</a>
+							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$this->rental_ids[$i]; ?>" target="_blank" class="btn btn-info btn-lg" role="button">View</a>
 							<?php
 							if (isset($_SESSION['is_auth'])) {
 							    ?>

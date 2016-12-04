@@ -108,7 +108,7 @@
                                         echo $price;
                                         ?>
                                     </p>
-                                    <a href="<?php echo URL . 'rentalListing/index?rental_listing_id=' . $id . '&search_string=' . $this->search_string; ?>" class="btn btn-info btn-lg" role="button">View</a>
+                                    <a href="<?php echo URL . 'rentalListing/index?rental_listing_id=' . $id . '&search_string=' . $this->search_string; ?>" target="_blank" class="btn btn-info btn-lg" role="button">View</a>
                                     <?php
                                     if (isset($_SESSION['is_auth'])) {
                                         ?>
