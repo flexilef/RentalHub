@@ -91,7 +91,7 @@
                         <input type="hidden" name="fname">
                         <input type="email" name="email" placeholder="You@Provider.com">
                         <input type="password" name="password" placeholder="Password">
-                        <input type="hidden" name="url" value="<?php echo $_SERVER['QUERY_STRING'];?>" />
+                        <input type="hidden" name="url" value="<?php echo str_replace("&","?",explode('=', $_SERVER['QUERY_STRING'], 2)[1]);?>" />
                         <input type="submit" name="sign-in" class="modal-submit" value="Sign In">
                     </form>
                     <div class="modal-footer">
@@ -126,7 +126,7 @@
                         <br><br>
                         <input type="radio" name="landLord" value="landlord"/> I am a landlord who wants to post.
                         <br><br>
-                        <input type="hidden" name="url" value="<?php echo $_SERVER['QUERY_STRING'];?>" />
+                        <input type="hidden" name="url" value="<?php echo str_replace("&","?",explode('=', $_SERVER['QUERY_STRING'], 2)[1]);?>" />
                         <input type="submit" name="register" class="modal-submit" value="Register">
                     </form>
                     <div class="modal-footer">
