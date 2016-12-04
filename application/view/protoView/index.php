@@ -35,5 +35,9 @@ if (isset($_SESSION['is_auth'])) {?>
     </form>
 </div>
     <?php
+}else {
+    ?>
+    <a href="#" class="btn btn-default btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Rent</a>
+    <?php
 }
 ?>
