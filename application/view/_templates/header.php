@@ -45,7 +45,7 @@
                         <?php
                     }else {
                         ?>
-                        <li><a href="#" class="btn btn-default btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Post a Listing</a></li>
+                        <li><a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal">Post a Listing</a></li>
                         <?php
                     }
                     ?>
