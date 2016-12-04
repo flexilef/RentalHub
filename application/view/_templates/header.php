@@ -14,6 +14,7 @@
 
         <!-- Extra icons -->
         <script src="https://use.fontawesome.com/c8d876cc7d.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
     </head>
     <header>
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
