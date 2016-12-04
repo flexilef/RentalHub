@@ -63,6 +63,14 @@ class Sprofile extends Controller {
             $this->getSessionID($email, $password);
         }
 
+        if ($_POST['url']) {
+            if ($_POST['params']) {
+                header('Location: ' . URL . $_POST['url'] . '?' . $_POST['params']);
+            }else {
+                header('Location: ' . URL . $_POST['url']);
+            }
+        }
+        $params = $_POST['params'];
         // Once the sessions variables have been set, redirect them to the landing page / home page.
         header('Location: ' . URL);
     }

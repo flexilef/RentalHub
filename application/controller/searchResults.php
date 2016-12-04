@@ -64,7 +64,13 @@ class SearchResults extends Controller {
 
 
     public function index() {
-        
+
+        // this will execute when user come back to search result after viewing the result
+        if(isset($_GET['back_search_string']))
+        {
+            $this->getResultsByTitle($_GET['back_search_string']);
+        }
+
         //On main search bar @action event , Search only on Title Field.
         if (isset($_POST["rental_search"])) {
 

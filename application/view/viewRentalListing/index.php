@@ -119,6 +119,8 @@
                 <input type="hidden" name="fname">
                 <input type="email" name="email" placeholder="You@Provider.com">
                 <input type="password" name="password" placeholder="Password">
+                <input type="hidden" name="url" value="<?php echo $_SERVER['REQUEST_URI']?>" />
+                <input type="hidden" name="params" value="<?php echo $_SERVER['QUERY_STRING']?>" />
                 <input type="submit" name="sign-in" class="modal-submit" value="Sign In">
             </form>
             <div class="modal-footer">
