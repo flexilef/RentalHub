@@ -41,7 +41,17 @@
 								?>
 							</p>
 							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$this->rental_ids[$i]; ?>" class="btn btn-info btn-lg" role="button">View</a>
-							<a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Rent</a>
+							<?php
+							if (isset($_SESSION['is_auth'])) {
+							    ?>
+                                <a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Rent</a>
+									<?php
+									}else {
+									?>
+                                <a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal"></a>
+                                <?php
+									}
+									?>
                             <div id="<?php echo $this->rental_ids[$i] ?>" style="font-size:20px;color:green;font-weight:bold;"></div>
 						</div>
 					</div>
@@ -74,3 +84,26 @@
     </div>
 </div>
 <!--Modal ends here--->
+
+<!-- Modal for Sign In -->
+<div id="sign-in-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Sign In</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <form class="sign-in-form"  action="<?php echo URL . "sprofile/index"; ?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="fname">
+                <input type="email" name="email" placeholder="You@Provider.com">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" name="sign-in" class="modal-submit" value="Sign In">
+            </form>
+            <div class="modal-footer">
+                Don't have an account? <a href="#" type="button" data-toggle="modal" data-target="#sign-up-modal" data-dismiss="modal">Register</a>
+            </div>
+        </div>
+    </div>
+</div>
