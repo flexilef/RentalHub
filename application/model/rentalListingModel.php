@@ -23,7 +23,8 @@ class RentalListingModel {
      *   $id : Property ID 
      */
     public function getTitle($id) {
-        $sql = " SELECT TITLE " .
+
+        $sql = "  SELECT TITLE " .
                 " FROM property " .
                 " WHERE ID = :id";
 

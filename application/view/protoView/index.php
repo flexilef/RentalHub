@@ -1,5 +1,7 @@
+<?php
+if (isset($_SESSION['is_auth'])) {?>
 <div class="container">
-  <form action="<?php echo URL . "/protoController/submitPost"; ?>" method="post" enctype="multipart/form-data">
+  <form action="<?php echo URL . "protoController/submitPost"; ?>" method="post" enctype="multipart/form-data">
       <h3>Rental Space Title</h3>
       <input type="text" name="rental_title" placeholder="Great One Bedroom Apartment"/>
 
@@ -32,3 +34,6 @@
       </div>
     </form>
 </div>
+    <?php
+}
+?>
