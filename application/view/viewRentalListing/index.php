@@ -82,6 +82,8 @@
     </div>
 </div>
 <div id="gmap_canvas" style=" height:400px;">Loading map...</div>
+<!-- google map will be shown here -->
+
 
 <!----modal starts here--->
 <div id="contactModal" class="modal fade" role='dialog'>
@@ -113,6 +115,7 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+<<<<<<< HEAD
 	var myCity = new google.maps.Circle({
     center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
     radius: 1000,
@@ -126,3 +129,19 @@
     }
     google.maps.event.addDomListener(window, 'load', init_map);
 </script>
+=======
+        marker = new google.maps.Marker({
+            map: map,
+            position: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>)
+        });
+        infowindow = new google.maps.InfoWindow({
+            content: "<?php echo $formatted_address; ?>"
+        });
+        google.maps.event.addListener(marker, "click", function () {
+            infowindow.open(map, marker);
+        });
+        infowindow.open(map, marker);
+    }
+    google.maps.event.addDomListener(window, 'load', init_map);
+</script>
+>>>>>>> 642ece6e84b0c2425ff9e790089752c5226d44cc
