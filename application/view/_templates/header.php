@@ -38,7 +38,17 @@
             </div>
             <div class="collapse navbar-collapse pull-right">
                 <ul class="nav navbar-nav">
-                    <li><a href="<?php echo URL; ?>protoController/index">Post a Listing</a></li>
+                    <?php
+                    if (isset($_SESSION['is_auth'])) {
+                        ?>
+                        <li><a href="<?php echo URL; ?>protoController/index">Post a Listing</a></li>
+                        <?php
+                    }else {
+                        ?>
+                        <li><a href="#" class="btn btn-default btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Post a Listing</a></li>
+                        <?php
+                    }
+                    ?>
                     <li><a href="<?php echo URL; ?>profile/index">Profile & Postings</a></li>
                       <?php 
                             if (!isset($_SESSION['is_auth'])) {?>
