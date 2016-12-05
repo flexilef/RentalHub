@@ -82,7 +82,7 @@
         if (isset($this->rental_id_to_images)) {
             ?>
             <div>
-                <h3>Displaying Search Results</h3>
+                <h3>Displaying <?php $matches = count($this->rental_ids); echo $matches; ?> Search Result<?php if($matches > 1) echo 's';?></h3>
                 <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center">
                     <?php
                     foreach ($this->rental_ids as $id) {
