@@ -1,5 +1,10 @@
 <?php
 
+    /**
+     * @author ehsan
+     */
+     
+
 require APP . 'model/sinmodel.php';
 
 class Sprofile extends Controller {
