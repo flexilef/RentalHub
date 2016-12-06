@@ -1,5 +1,8 @@
 <?php
-
+    /**
+     * @author osama
+     */
+     
 class ImageUploadsModel {
 
     /**
