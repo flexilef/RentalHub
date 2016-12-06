@@ -1,5 +1,9 @@
 <?php
 
+    /**
+     * @author osama
+     */
+
 class RentalListingModel {
 
     const SEARCH_WEIGHT_TYPE = 4;
