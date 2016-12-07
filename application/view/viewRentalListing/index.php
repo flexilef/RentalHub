@@ -1,4 +1,4 @@
-<div class="container">
+<div>
     <?php
     if (isset($_GET['search_string'])) {
         ?>
@@ -7,48 +7,16 @@
         <?php
     }
     ?>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <?php
-        for ($i = 0; $i < count($image_results); $i++) {
-        ?>
-            <li data-target="#myCarousel" data-slide-to="<?php echo $i ?>"
-                <?php if($i == 0) { ?>
-                    class="active"
-                <?php } ?>>
-            </li>
-        <?php }
-        ?>
-      </ol>
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-          <?php for ($i = 0; $i < count($image_results); $i++) { ?>
-                <div class="item <?php if($i == 0) { ?> active" <?php } ?>">
-                    <img class="carousel-image" src="./../uploads/<?php echo $image_results[$i]["image_name"] ?>" alt="Chania">
-                </div>
-          <?php } ?>
-      </div>
-
-      <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+    <div id="cover-image" style="background-image:url(./../uploads/<?php echo $image_results[0]["image_name"] ?>)">
     </div>
-    <div class="panel panel-primary col-xs-18 col-sm-6 col-md-7">
-        <div class="panel-heading">Information about this Listing</div>
+    <div id="listing-information" class="panel panel-primary col-xs-18 col-sm-6 col-md-7">
+        <div id="listing-title" class="panel-heading">Information about this Listing</div>
         <ul class="list-group">
           <li class="list-group-item">Room Type: <?php echo $rental_listing_type ?></li>
           <li class="list-group-item">Description: <?php echo $rental_listing_description ?></li>
           <li class="list-group-item">Address: <?php echo $rental_listing_address ?></li>
           <li class="list-group-item">Price: $<?php echo $rental_listing_price ?></li>
-          <li class="list-group-item">Occupants<?php echo $rental_listing_occupants ?></li>
+          <li class="list-group-item">Occupants allowed: <?php echo $rental_listing_occupants ?></li>
           <li class="list-group-item">Pets Allowed: <?php echo ($rental_listing_pets ? "Yes" : "No") ?></li>
           <li class="list-group-item">
           <?php
@@ -64,6 +32,8 @@
             ?>
           </li>
         </ul>
+
+
     </div>
     <!-- google map will be shown here -->
     <div id="gmap_canvas" style=" height:400px;">Loading map...</div>
