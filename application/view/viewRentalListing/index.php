@@ -7,10 +7,13 @@
         <?php
     }
     ?>
-    <div id="cover-image" style="background-image:url(./../uploads/<?php echo $image_results[0]["image_name"] ?>)">
+    <div id="listing-photos">
+        <div id="cover-image" style="background-image:url(./../uploads/<?php echo $image_results[0]["image_name"] ?>)">
+        </div>
+        <div id="view-photos-btn" class="btn btn-info btn-lg">View Photos</div>
     </div>
     <div id="listing-information" class="panel panel-primary col-xs-18 col-sm-6 col-md-7">
-        <div id="listing-title" class="panel-heading">Information about this Listing</div>
+        <div id="listing-title" class="panel-heading">About this listing</div>
         <ul class="list-group">
           <li class="list-group-item">Room Type: <?php echo $rental_listing_type ?></li>
           <li class="list-group-item">Description: <?php echo $rental_listing_description ?></li>
@@ -18,13 +21,13 @@
           <li class="list-group-item">Price: $<?php echo $rental_listing_price ?></li>
           <li class="list-group-item">Occupants allowed: <?php echo $rental_listing_occupants ?></li>
           <li class="list-group-item">Pets Allowed: <?php echo ($rental_listing_pets ? "Yes" : "No") ?></li>
-          <li class="list-group-item">
+          <li id="listing-contact" class="list-group-item">
           <?php
             if (isset($_SESSION['is_auth'])) {
                 ?>
-                <a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Rent</a>
+                <a href="#" id="contact-btn" class="btn btn-default btn-lg" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Contact Landlord</a>
                 <?php
-            }else {
+            } else {
                 ?>
                 <a href="#" class="btn btn-default btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Rent</a>
                 <?php
