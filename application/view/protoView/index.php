@@ -1,4 +1,3 @@
-<?php include($_SERVER['DOCUMENT_ROOT'].'./../../config/googleanalytics.php');?>
 <?php
 if (isset($_SESSION['is_auth'])) {?>
 <div class="container">
