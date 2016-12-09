@@ -1,4 +1,4 @@
-<?php include_once("./../../config/googleanalytics.php") ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'./../../config/googleanalytics.php');?>
 <div class="container">
     <?php
     if (isset($_GET['search_string'])) {

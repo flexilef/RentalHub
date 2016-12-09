@@ -1,4 +1,4 @@
-<?php include_once("./../../config/googleanalytics.php") ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'./../../config/googleanalytics.php');?>
 <div class="container">
 	<h2>CSC 848/648 Software Engineering</h2>
 	<h3>Section-2 Group 16</h3>

@@ -1,4 +1,4 @@
-<?php include_once("./../../config/googleanalytics.php") ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'./../../config/googleanalytics.php');?>
 <div class="container">
     <div class="row">
         <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">

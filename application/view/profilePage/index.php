@@ -1,4 +1,4 @@
-<?php include_once("./../../config/googleanalytics.php") ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'./../../config/googleanalytics.php');?>
 <hr>
 <div class="container">
   <div class="row">
