@@ -1,3 +1,4 @@
+<?php include_once("./../../config/googleanalytics.php") ?>
 <hr>
 <div class="container">
   <div class="row">
