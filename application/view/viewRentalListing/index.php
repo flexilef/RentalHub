@@ -43,7 +43,7 @@
 </div>
 
 
-<!----modal starts here--->
+<!--Contact modal starts here--->
 <div id="contactModal" class="modal fade" role='dialog'>
     <div class="modal-dialog">
         <div class="modal-content">
@@ -63,7 +63,36 @@
         </div>
     </div>
 </div>
-<!--Modal ends here--->
+<!--Contact modal ends here--->
+
+<!--Slideshow modal starts here--->
+<div id="myModal" class="image-modal">
+    <div class="slideshow-container">
+    <?php
+        foreach ($image_results as $image)
+        { ?>
+            <div class="mySlides image-fade">
+                <img width="100%" height="600px" class="myImg" src="./../uploads/<?php echo $image["image_name"]?>">
+            </div>
+    <?php
+        } ?>
+        <span class="image-close">×</span>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        <br>
+    <?php $count = 1?>
+        <div style="text-align:center">
+        <?php
+            foreach ($image_results as $image)
+            { ?>
+                <span class="dot" onclick="currentSlide(<?php echo $count ?>)"></span>
+                <?php $count += 1?>
+        <?php
+            } ?>
+        </div>
+    </div>
+</div>
+<!--Slideshow modal ends here--->
 
 <script type="text/javascript">
     function init_map() {

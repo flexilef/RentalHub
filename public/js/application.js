@@ -47,18 +47,21 @@ var imgs = document.getElementsByClassName('myImg');
 var cardimgs = document.getElementsByClassName('cardImg');
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
-var myFunction = function() {
+var displayModal = function() {
     modal.style.display = "block";
     modalImg.src = this.src;
     captionText.innerHTML = this.alt;
 };
 
+var viewPhotosButton = document.getElementById('view-photos-btn');
+viewPhotosButton.addEventListener('click', displayModal, false);
+
 for (var i = 0; i < imgs.length; i++) {
-    imgs[i].addEventListener('click', myFunction, false);
+    imgs[i].addEventListener('click', displayModal, false);
 }
 
 for (var i = 0; i < cardimgs.length; i++) {
-    cardimgs[i].addEventListener('click', myFunction, false);
+    cardimgs[i].addEventListener('click', displayModal, false);
 }
 
 // Get the <span> element that closes the modal
