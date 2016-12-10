@@ -13,6 +13,7 @@
     <!-- Include Jquery from CDN -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
+   
     <!-- our JavaScript -->
     <script src="<?php echo URL; ?>js/application.js"></script>
 
@@ -23,9 +24,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
 
-
+     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.js"></script>
-
+`
     <script>
         $(document).ready(function () {
 
@@ -138,7 +139,7 @@
             $('#send_email_again').click(function (e) {
 
                 e.preventDefault();
-
+                
                 var pid = $(this).attr('data-id');
                 var parent = $(this).parent("td").parent("tr");
 
@@ -164,7 +165,7 @@
                                             parent.fadeOut('slow');
                                         })
                                         .fail(function () {
-                                            bootbox.alert('Something Went Wrog ....');
+                                            bootbox.alert('Something Went Wrong ....');
                                         })
 
 
