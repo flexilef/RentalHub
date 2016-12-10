@@ -17,7 +17,6 @@
         <ul class="list-group">
           <li class="list-group-item">Room Type: <?php echo $rental_listing_type ?></li>
           <li class="list-group-item">Description: <?php echo $rental_listing_description ?></li>
-          <li class="list-group-item">Address: <?php echo $rental_listing_address ?></li>
           <li class="list-group-item">Price: $<?php echo $rental_listing_price ?></li>
           <li class="list-group-item">Occupants allowed: <?php echo $rental_listing_occupants ?></li>
           <li class="list-group-item">Pets Allowed: <?php echo ($rental_listing_pets ? "Yes" : "No") ?></li>
