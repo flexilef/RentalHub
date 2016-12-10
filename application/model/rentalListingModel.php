@@ -232,13 +232,18 @@ class RentalListingModel {
         if (empty($search_string)) {
             $search_string = '';
         }
-        $sql =  " SELECT id , title , price , CREATED_DATE as date_posted" .
-                " FROM property where UPPER(TITLE) LIKE UPPER('%" . $search_string . "%')"
-               ." OR  UPPER(DESCRIPTION) LIKE UPPER('%" . $search_string . "%')"
-               ." OR  UPPER(ADDRESS) LIKE UPPER('%" . $search_string . "%')"
-               ." OR  UPPER(PRICE) LIKE UPPER('%" . $search_string . "%')";
 
-       
+     //  //Change the Price and check
+        $sql = " SELECT id , title , price , CREATED_DATE as date_posted" .
+                " FROM property where UPPER(TITLE) LIKE UPPER('%" . $search_string . "%')";
+        if (is_numeric($search_string)) {//if numeric then check price only
+            $sql = $sql . " OR  UPPER(PRICE) LIKE UPPER('%" . $search_string . "%')";
+        } else {
+            $sql = $sql . " OR  UPPER(DESCRIPTION) LIKE UPPER('%" . $search_string . "%')"
+                        . " OR  UPPER(ADDRESS) LIKE UPPER('%" . $search_string . "%')";
+        }
+
+
         $parameters = array();
         $query = $this->db->prepare($sql);
         $query->execute($parameters);
@@ -256,14 +261,6 @@ class RentalListingModel {
 
         $sql = " SELECT PROP.id AS id , title , price , CREATED_DATE as date_posted" .
                 " FROM property PROP, defination_type_detail DT where 1=1";
-
-        if (!empty($queryParams["search_string"])) { //Mulitple Colums Search
-            $sql = $sql . " OR  UPPER(TITLE) LIKE UPPER('%" . $queryParams["search_string"] . "%')" .
-                    $sql = $sql . " OR  UPPER(DESCRIPTION) LIKE UPPER('%" . $queryParams["search_string"] . "%')" .
-                    $sql = $sql . " OR  UPPER(ADDRESS) LIKE UPPER('%" . $queryParams["search_string"] . "%')" .
-                    $sql = $sql . " OR  UPPER(PRICE) LIKE UPPER('%" . $queryParams["search_string"] . "%')";
-        }
-
 
         if (!empty($queryParams["rentType"])) {
             $sql = $sql . " AND  UPPER(DT.DESCRIPTION) LIKE UPPER('%" . $queryParams["rentType"] . "%')";
