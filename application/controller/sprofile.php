@@ -1,5 +1,9 @@
 <?php
 
+    /**
+     * @author ehsan
+     */
+     
 require APP . 'model/sinmodel.php';
 
 class Sprofile extends Controller {
@@ -63,8 +67,8 @@ class Sprofile extends Controller {
             $this->getSessionID($email, $password);
         }
 
-        // Once the sessions variables have been set, redirect them to the landing page / home page.
-        header('Location: ' . URL);
+        // Once the sessions variables have been set, redirect them to the current page.
+        header('Location: ' . URL . $_POST['url']);
     }
 
     //Get the Session ID 
@@ -74,19 +78,29 @@ class Sprofile extends Controller {
             // is_auth is important here because we will test this to make sure they can view other pages
             // that are needing credentials.
             $_SESSION['is_auth'] = true;
-            $_SESSION['name'] = $userdetail[0]['FULL_NAME']; //Shown on welcome
             $_SESSION['id'] = $userdetail[0]['ID']; //Use to record transactions
+            $_SESSION['name'] = $userdetail[0]['FULL_NAME']; //Shown on welcome
+            $_SESSION['email'] = $userdetail[0]['EMAIL']; //Shown on profile Page
+            $_SESSION['userTypeId'] = $userdetail[0]['USER_TYPE_ID'];  //Shown on profile Page
+            $_SESSION['createdDate'] = $userdetail[0]['CREATED_DATE']; //Shown on profile Page
+            $_SESSION['userTypeDescription'] = $userdetail[0]['USER_TYPE_DESCRIPTION']; //Shown on profile Page
+
         }
     }
 
     public function logout() {
-        unset($_SESSION['name']);
-        unset($_SESSION['is_auth']);
         unset($_SESSION['id']);
+        unset($_SESSION['is_auth']);
+        unset($_SESSION['name']);
+        unset($_SESSION['email']);
+        unset($_SESSION['userTypeId']);
+        unset($_SESSION['createdDate']);
+        unset($_SESSION['userTypeDescription']);
+
         session_destroy();
 
         header('Location: ' . URL);
-        //header("Location: ".$_SERVER['REQUEST_URI']);
+     
     }
 
 }
