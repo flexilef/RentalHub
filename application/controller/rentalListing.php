@@ -64,7 +64,7 @@ class RentalListing extends Controller {
         try {
 //            $mail->SMTPDebug = 2;                     // enables SMTP debug information (for testing)
             $mail->From = "fuldaproperty@gmail.com";    // enables SMTP debug information (for testing)
-            $mail->FromName = "Osama Nasir";
+            $mail->FromName = "Property Dealer";
             $mail->Host = "smtp.gmail.com";      // sets GMAIL as the SMTP server
             $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
             $mail->Port = 465;                   // set the SMTP port for the GMAIL server
