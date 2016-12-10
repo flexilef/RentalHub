@@ -64,6 +64,43 @@ class SearchResults extends Controller {
         require APP . 'view/_templates/footer.php';
     }
     
+       public function sendEmail() {
+         $ownerEmail = $_REQUEST['email'];
+
+        $mail = new PHPMailer(false); // the true param means it will throw exceptions on errors, which we need to catch
+
+        $mail->IsSMTP(); // telling the class to use SMTP
+
+      
+        try {
+//            $mail->SMTPDebug = 2;                     // enables SMTP debug information (for testing)
+            $mail->From = "fuldaproperty@gmail.com";    // enables SMTP debug information (for testing)
+            $mail->FromName = "Property Dealer";
+            $mail->Host = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+            $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
+            $mail->Port = 465;                   // set the SMTP port for the GMAIL server
+            $mail->SMTPAuth = true;                  // enable SMTP authentication
+            $mail->Username = "fuldaproperty@gmail.com";  // GMAIL username
+            $mail->Password = "echogamma";            // GMAIL password.Donot Misuse it.please keep secret.
+            $mail->AddAddress($ownerEmail, '');
+            $mail->AddReplyTo($_SESSION['email'], $_SESSION['name']);
+            $mail->WordWrap = 50;
+            $mail->IsHTML(true);
+            $mail->Subject = 'Property  Alert';
+            $mail->Body = 'Hello,I am interested in your property.kindly contact me back via email';
+
+            if ($mail->Send()) {
+                echo "Message Sent OK</p>\n";
+            } else {
+                echo "Message Sent Failed</p>\n";
+            }
+        } catch (phpmailerException $e) {
+            echo $e->errorMessage(); //Pretty error messages from PHPMailer
+        } catch (Exception $e) {
+            echo $e->getMessage(); //Boring error messages from anything else!
+        }
+    }
+
     /**
      * Filtered Checks : Get the Query String ,Convert into Key ,Values and
      * Pass it to the Model Class
@@ -103,40 +140,5 @@ class SearchResults extends Controller {
      /**
      * Send Email to Owner
      */
-    public function sendEmail() {
-        $ownerEmail = $_REQUEST['email'];
-
-        $mail = new PHPMailer(true); // the true param means it will throw exceptions on errors, which we need to catch
-
-        $mail->IsSMTP(); // telling the class to use SMTP
-
-        try {
-//            $mail->SMTPDebug = 2;                     // enables SMTP debug information (for testing)
-            $mail->From = "fuldaproperty@gmail.com";    // enables SMTP debug information (for testing)
-            $mail->FromName = "Osama Nasir";
-            $mail->Host = "smtp.gmail.com";      // sets GMAIL as the SMTP server
-            $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-            $mail->Port = 465;                   // set the SMTP port for the GMAIL server
-            $mail->SMTPAuth = true;                  // enable SMTP authentication
-            $mail->Username = "fuldaproperty@gmail.com";  // GMAIL username
-            $mail->Password = "echogamma";            // GMAIL password.Donot Misuse it.please keep secret.
-            $mail->AddAddress($ownerEmail, '');
-            $mail->AddReplyTo($_SESSION['email'], $_SESSION['name']);
-            $mail->WordWrap = 50;
-            $mail->IsHTML(true);
-            $mail->Subject = 'Property  Alert';
-            $mail->Body = 'Hello,I am interested in your property.kindly contact me back via email';
-
-            if ($mail->Send()) {
-                echo "Message Sent OK</p>\n";
-            } else {
-                echo "Message Sent Failed</p>\n";
-            }
-        } catch (phpmailerException $e) {
-            echo $e->errorMessage(); //Pretty error messages from PHPMailer
-        } catch (Exception $e) {
-            echo $e->getMessage(); //Boring error messages from anything else!
-        }
-    }
-
+ 
 }
