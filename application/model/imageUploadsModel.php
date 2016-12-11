@@ -28,7 +28,7 @@ class ImageUploadsModel {
              $loginId ="ADMIN";
         }
 
-        $sql = "INSERT INTO IMAGE_UPLOADS (IMAGE_NAME, IMAGE_TYPE, IMAGE_SIZE, PROPERTY_ID,CREATED_BY)" .
+        $sql = "INSERT INTO image_uploads (IMAGE_NAME, IMAGE_TYPE, IMAGE_SIZE, PROPERTY_ID,CREATED_BY)" .
                 "VALUES (:image_name, :image_type, :image_size, :property_id , :createdBy)";
 
 
@@ -45,7 +45,7 @@ class ImageUploadsModel {
      */
     public function getAllImages($rental_listing_id) {
 
-        $sql = "SELECT image_name FROM IMAGE_UPLOADS WHERE PROPERTY_ID = :property_id";
+        $sql = "SELECT image_name FROM image_uploads WHERE PROPERTY_ID = :property_id";
         $query = $this->db->prepare($sql);
         $parameters = array(':property_id' => $rental_listing_id);
         $query->execute($parameters);

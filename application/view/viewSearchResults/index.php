@@ -94,7 +94,7 @@
                                 $image_array = $this->rental_id_to_images[$id][0];
                                 $firstimage = $image_array[0];
                                 ?>
-                                <img class="cardImg" src="../../../../Property/public/uploads/<?php echo $firstimage; ?>">
+                                <img class="cardImg" src="./../uploads/<?php echo $firstimage; ?>">
                                 <div class="caption">
                                     <h4 class="title">
                                         <?php
@@ -108,8 +108,18 @@
                                         echo $price;
                                         ?>
                                     </p>
-                                    <a href="<?php echo URL . 'rentalListing/index?rental_listing_id=' . $id . '&search_string=' . $this->search_string; ?>" class="btn btn-info btn-lg" role="button">View</a>
-                                    <a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $id ?>')">Rent</a>
+                                    <a href="<?php echo URL . 'rentalListing/index?rental_listing_id=' . $id . '&search_string=' . $this->search_string; ?>" target="_blank" class="btn btn-info btn-lg" role="button">View</a>
+                                    <?php
+                                    if (isset($_SESSION['is_auth'])) {
+                                        ?>
+                                        <a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Rent</a>
+                                        <?php
+                                    }else {
+                                        ?>
+                                        <a href="#" class="btn btn-default btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Rent</a>
+                                        <?php
+                                    }
+                                    ?>
                                     <div id="<?php echo $id ?>" style="font-size:20px;color:green;font-weight:bold;"></div>
                                 </div>
                             </div>
@@ -152,7 +162,5 @@
     </div>
 </div>
 <!--Modal ends here--->
-
-
 
 

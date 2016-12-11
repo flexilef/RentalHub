@@ -24,7 +24,7 @@ class Sinmodel {
      * @param type $landlord
      * Return: Success or Failure i.e true or false
      */
-    public function registerUser($fname, $email, $password, $verify, $student, $landlord) {
+    public function registerUser($fname, $email, $password, $student, $landlord) {
 
         //Set ID for Student or LandLord
         //student ID in defination type detail is 4
@@ -56,7 +56,7 @@ class Sinmodel {
      * @return type Null if result 0 otherwise Result Set
      */
     public function signIn($email, $password) {
-       $sql = "SELECT 	ID,FULL_NAME, EMAIL, PASSWORD " . "FROM USERS " .
+       $sql = "SELECT 	ID,FULL_NAME, EMAIL, PASSWORD " . "FROM users " .
                 "WHERE EMAIL = :email and PASSWORD= :password";
         $query = $this->db->prepare($sql);
         $parameters = array(':email' => $email, ':password' => $password);

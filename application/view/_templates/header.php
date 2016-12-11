@@ -20,7 +20,7 @@
 
         <!-- Extra icons -->
         <script src="https://use.fontawesome.com/c8d876cc7d.js"></script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
     </head>
     <header>
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -119,7 +119,7 @@
                         <input type="submit" name="sign-in" class="modal-submit" value="Sign In" >
                       </form>
                     </div>
-                    <div class="modal-footer">
+                   <div class="modal-footer">
                         Don't have an account? <a href="#" type="button" data-toggle="modal" data-target="#sign-up-modal" data-dismiss="modal">Register</a>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                         <input type="submit" class="form-control" name="register" class="modal-submit" value="Register">
                       </form>
                     </div>
-                    <div class="modal-footer">
+                   <div class="modal-footer">
                         Already have an account? <a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal" data-dismiss="modal">Sign In</a>
                     </div>
                 </div>
