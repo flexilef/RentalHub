@@ -17,6 +17,12 @@ body {
     }
 }
 
+.carousel-image {
+    height: 600px !important;
+    width: auto;
+}
+
+/* Begin navigation CSS */
 .navigation {
     margin-left: 33px;
 
@@ -37,6 +43,45 @@ body {
         background: transparent;
     }
 }
+/* End navigation CSS */
+
+/* Begin listing page CSS */
+#listing-information, #gmap_canvas {
+    margin: 20px;
+    height: 400px
+}
+
+#listing-title {
+    text-align: center;
+}
+
+#listing-contact {
+    text-align: center;
+
+    #contact-btn {
+        margin-top: 20px;
+    }
+}
+
+#listing-photos {
+
+    height: 400px;
+    position: relative;
+
+    #cover-image {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+        height: 100%;
+    }
+
+    #view-photos-btn {
+        bottom: 20px;
+        left: 20px;
+        position: absolute;
+    }
+}
+/* End listing page CSS */
 
 .container {
     border: 1px solid #ddd;

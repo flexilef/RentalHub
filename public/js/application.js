@@ -1,43 +1,4 @@
 $(function() {
-
-    // just a super-simple JS demo
-
-    var demoHeaderBox;
-
-    // simple demo to show create something via javascript on the page
-    if ($('#javascript-header-demo-box').length !== 0) {
-    	demoHeaderBox = $('#javascript-header-demo-box');
-    	demoHeaderBox
-    		.hide()
-    		.text('Hello from JavaScript! This line has been added by public/js/application.js')
-    		.css('color', 'green')
-    		.fadeIn('slow');
-    }
-
-    // if #javascript-ajax-button exists
-    if ($('#javascript-ajax-button').length !== 0) {
-
-        $('#javascript-ajax-button').on('click', function(){
-
-            // send an ajax-request to this URL: current-server.com/songs/ajaxGetStats
-            // "url" is defined in views/_templates/footer.php
-            $.ajax(url + "/songs/ajaxGetStats")
-                .done(function(result) {
-                    // this will be executed if the ajax-call was successful
-                    // here we get the feedback from the ajax-call (result) and show it in #javascript-ajax-result-box
-                    $('#javascript-ajax-result-box').html(result);
-                })
-                .fail(function() {
-                    // this will be executed if the ajax-call had failed
-                })
-                .always(function() {
-                    // this will ALWAYS be executed, regardless if the ajax-call was success or not
-                });
-        });
-    }
-	
-
-
     $('#priceSorting').change(function() {
         if ($(this).val() === '2') {
             document.getElementById("filter").href = document.getElementById("filter").href + '&price=asc'
@@ -128,18 +89,21 @@ var imgs = document.getElementsByClassName('myImg');
 var cardimgs = document.getElementsByClassName('cardImg');
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
-var myFunction = function() {
+var displayModal = function() {
     modal.style.display = "block";
     modalImg.src = this.src;
     captionText.innerHTML = this.alt;
 };
 
+var viewPhotosButton = document.getElementById('view-photos-btn');
+viewPhotosButton.addEventListener('click', displayModal, false);
+
 for (var i = 0; i < imgs.length; i++) {
-    imgs[i].addEventListener('click', myFunction, false);
+    imgs[i].addEventListener('click', displayModal, false);
 }
 
 for (var i = 0; i < cardimgs.length; i++) {
-    cardimgs[i].addEventListener('click', myFunction, false);
+    cardimgs[i].addEventListener('click', displayModal, false);
 }
 
 // Get the <span> element that closes the modal
