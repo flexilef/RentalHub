@@ -159,17 +159,12 @@
                           <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                           <div class="form-group has-feedback"></div>
                         </div>
-                        <div class="form-group">
-                          <p>I am a:</p>
-                          <label class="radio-inline">
-                            <input type="radio" class="form-control" name="student" value="student"> 
-                            <p>Student looking to rent</p>
-                          </label>
-                          <br>
-                          <label class="radio-inline">
-                            <input type="radio" class="form-control" name="landLord" value="landlord">
-                            <p>Landlord looking to lease</p>
-                          </label>
+                        <div class="form-group has-feedback">
+                          <input type="radio" name="registerType" value="student" required/> I am a student who wants to rent.
+                          <br><br>
+                          <input type="radio" name="registerType" value="landlord" required/> I am a landlord who wants to post.
+                          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                          <div class="help-block with-errors"></div>
                         </div>
                         <input type="hidden" name="url" value="<?php echo str_replace("&","?",explode('=', $_SERVER['QUERY_STRING'], 2)[1]);?>" >
                         <input type="submit" class="form-control" name="register" class="modal-submit" value="Register">
