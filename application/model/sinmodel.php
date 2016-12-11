@@ -41,7 +41,6 @@ class Sinmodel {
             $userTypeId = 15;
         }
         
-        echo ($userTypeId);
 
         $sql = "INSERT INTO users (FULL_NAME,EMAIL,PASSWORD,USER_TYPE_ID)" .
                 " VALUES (:fname,:email, :password,:userTypeId)";
