@@ -8,7 +8,13 @@
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+        
+        <!-- JQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+        
+        <!-- Bootstrap Validator -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.7/validator.js" integrity="sha256-ZrJ1ZbedU+b0jUh9nHnV3GagEOUeckZ2DY0BV0lF3pg=" crossorigin="anonymous"></script>
+        
         <!-- CSS -->
         <link href="<?php echo URL; ?>css/style.less" rel="stylesheet/less">
 
@@ -97,15 +103,23 @@
                         <h4 class="modal-title">Sign In</h4>
                     </div>
                     <div class="modal-body">
+                      <form id="sign_in_form" class="sign-in-form" action="<?php echo URL . "sprofile/index"; ?>" method="post" enctype="multipart/form-data" data-toggle="validator">
+                        <input type="hidden" name="fname" >
+                        <div class="form-group has-feedback">
+                          <input type="email" class="form-control" name="email" placeholder="You@Provider.com" data-error="Please provide a valid E-mail!" required >
+                          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <input type="password" class="form-control" name="password" placeholder="Password" data-minlength="8"required >
+                          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <input type="hidden" name="url" value="<?php echo str_replace("&","?",explode('=', $_SERVER['QUERY_STRING'], 2)[1]);?>" >
+                        <input type="submit" name="sign-in" class="modal-submit" value="Sign In" >
+                      </form>
                     </div>
-                    <form class="sign-in-form"  action="<?php echo URL . "sprofile/index"; ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="fname">
-                        <input type="email" name="email" placeholder="You@Provider.com">
-                        <input type="password" name="password" placeholder="Password">
-                        <input type="hidden" name="url" value="<?php echo str_replace("&","?",explode('=', $_SERVER['QUERY_STRING'], 2)[1]);?>" />
-                        <input type="submit" name="sign-in" class="modal-submit" value="Sign In">
-                    </form>
-                    <div class="modal-footer">
+                   <div class="modal-footer">
                         Don't have an account? <a href="#" type="button" data-toggle="modal" data-target="#sign-up-modal" data-dismiss="modal">Register</a>
                     </div>
                 </div>
@@ -120,27 +134,43 @@
                         <h4 class="modal-title">Sign Up</h4>
                     </div>
                     <div class="modal-body">
+                      <form class="sign-up-form" action="<?php echo URL . "sprofile/index"; ?>" method="post" enctype="multipart/form-data" data-toggle="validator" >
+                        <div class="form-group has-feedback">
+                          <label for="input_name">Full Name:</label>
+                          <input type="text" id="input_name"class="form-control" name="fname" placeholder="" required >
+                          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <label for="input_email">Email:</label>
+                          <input type="email" id="input_email"class="form-control" name="email" placeholder="You@Provider.com" data-error="Please provide a valid E-mail!" required >
+                          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <label for="input_password">Password:</label>
+                          <input type="password" id="input_password" class="form-control" name="password" data-minlength="8" required >
+                          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                          <div class="help-block with-errors">Must have at least 8 characters</div>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <label for="input_verify_password">Verify Password:</label>
+                          <input type="password" id="input_verify_password" class="form-control" name="verifyPassword" data-match="#input_password" data-match-error="Passwords do not match" required >
+                          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                          <div class="form-group has-feedback"></div>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <input type="radio" name="registerType" value="student" required/> I am a student who wants to rent.
+                          <br><br>
+                          <input type="radio" name="registerType" value="landlord" required/> I am a landlord who wants to post.
+                          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                          <div class="help-block with-errors"></div>
+                        </div>
+                        <input type="hidden" name="url" value="<?php echo str_replace("&","?",explode('=', $_SERVER['QUERY_STRING'], 2)[1]);?>" >
+                        <input type="submit" class="form-control" name="register" class="modal-submit" value="Register">
+                      </form>
                     </div>
-                    <form class="sign-up-form" action="<?php echo URL . "sprofile/index"; ?>" method="post" enctype="multipart/form-data">
-                        <p>Full Name:</p>
-                        <input type="text" class="form-control" name="fname" placeholder="">
-                        <br/>
-                        <p>Email:</p>
-                        <input type="email" name="email" placeholder="You@Provider.com">
-                        Password:
-                        <p class="disclaimer">Must have at least 8 characters</p>
-                        <input type="password" name="password"/>
-                        Verify Password:
-                        <input type="password" name="verifyPassword"/>
-                        <br><br>
-                        <input type="radio" name="student" value="student"/> I am a student who wants to rent.
-                        <br><br>
-                        <input type="radio" name="landLord" value="landlord"/> I am a landlord who wants to post.
-                        <br><br>
-                        <input type="hidden" name="url" value="<?php echo str_replace("&","?",explode('=', $_SERVER['QUERY_STRING'], 2)[1]);?>" />
-                        <input type="submit" name="register" class="modal-submit" value="Register">
-                    </form>
-                    <div class="modal-footer">
+                   <div class="modal-footer">
                         Already have an account? <a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal" data-dismiss="modal">Sign In</a>
                     </div>
                 </div>
