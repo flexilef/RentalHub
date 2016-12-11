@@ -35,12 +35,14 @@ $(function() {
                 });
         });
     }
+	
+
 
     $('#priceSorting').change(function() {
-        if ($(this).val() === '3') {
+        if ($(this).val() === '2') {
             document.getElementById("filter").href = document.getElementById("filter").href + '&price=asc'
         }
-        if ($(this).val() === '2') {
+        if ($(this).val() === '3') {
             document.getElementById("filter").href = document.getElementById("filter").href + '&price=desc'
         }
     });
@@ -60,6 +62,49 @@ $(function() {
         }
         if ($(this).val() === '2') {
             document.getElementById("filter").href = document.getElementById("filter").href + '&title=desc'
+        }
+    });
+	
+	//Added By Osama
+	$('#rentType').change(function() {
+        if ($(this).val() === '2') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&rentType=Bedroom'
+        }
+        
+		if ($(this).val() === '3') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&rentType=Apartment'
+        }
+		
+		if ($(this).val() === '4') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&rentType=House'
+        }
+       
+    });
+	
+	$('#occupants').change(function() {
+        if ($(this).val() === '1') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&occupants=1'
+        }
+		
+		if ($(this).val() === '2') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&occupants=2'
+        }
+		if ($(this).val() === '3') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&occupants=3'
+        }
+		
+		if ($(this).val() === '4') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&occupants=4'
+        }
+       
+    });
+	
+	$('#isPetAllowed').change(function() {
+        if ($(this).val() === '1') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&isPetAllowed=Y'
+        }
+        if ($(this).val() === '2') {
+            document.getElementById("filter").href = document.getElementById("filter").href + '&isPetAllowed=N'
         }
     });
 });

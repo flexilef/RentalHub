@@ -25,7 +25,7 @@
 						$image_array = $this->rental_id_to_images[$this->rental_ids[$i]][0];
 						$firstimage = $image_array[0];
 						?>
-                                            <img class="cardImg" src="../../../../Property/public/uploads/<?php echo $firstimage; ?>">
+                                            <img class="cardImg" src="./uploads/<?php echo $firstimage; ?>">
 						<div class="caption">
 							<h4 class="title">
 								<?php
@@ -40,8 +40,8 @@
 								echo $price;
 								?>
 							</p>
-							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$this->rental_ids[$i]; ?>" class="btn btn-info btn-lg" role="button">View</a>
-							<a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Rent</a>
+							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$this->rental_ids[$i]; ?>" target="_blank" class="btn btn-info btn-lg" role="button">View</a>
+							
                             <div id="<?php echo $this->rental_ids[$i] ?>" style="font-size:20px;color:green;font-weight:bold;"></div>
 						</div>
 					</div>

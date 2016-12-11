@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @author osama
+ */
 class RentalListingModel {
 
     const SEARCH_WEIGHT_TYPE = 4;
@@ -23,6 +26,7 @@ class RentalListingModel {
      *   $id : Property ID 
      */
     public function getTitle($id) {
+
         $sql = "  SELECT TITLE " .
                 " FROM property " .
                 " WHERE ID = :id";
@@ -74,6 +78,27 @@ class RentalListingModel {
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
         return $result[0]['ADDRESS'];
+    }
+
+    /**
+     * Get Property Email on ID;
+     * $id : Property ID 
+     */
+    public function getEmailAddress($id) {
+
+        $sql = " SELECT " .
+                " US.EMAIL as EMAIL " .
+                " FROM " .
+                " property PROP,users US " .
+                " WHERE PROP.ID= :id AND PROP.USER_ID=US.ID";
+
+        $query = $this->db->prepare($sql);
+        $parameters = array(':id' => $id);
+        $query->execute($parameters);
+
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result[0]['EMAIL'];
     }
 
     /**
@@ -203,13 +228,22 @@ class RentalListingModel {
      */
     public function searchRentalListings($search_string) {
 
-     
+
         if (empty($search_string)) {
             $search_string = '';
         }
+
+     //  //Change the Price and check
         $sql = " SELECT id , title , price , CREATED_DATE as date_posted" .
-                " FROM property where upper(TITLE) LIKE upper('%" . $search_string . "%')";
-   
+                " FROM property where UPPER(TITLE) LIKE UPPER('%" . $search_string . "%')";
+        if (is_numeric($search_string)) {//if numeric then check price only
+            $sql = $sql . " OR  UPPER(PRICE) LIKE UPPER('%" . $search_string . "%')";
+        } else {
+            $sql = $sql . " OR  UPPER(DESCRIPTION) LIKE UPPER('%" . $search_string . "%')"
+                        . " OR  UPPER(ADDRESS) LIKE UPPER('%" . $search_string . "%')";
+        }
+
+
         $parameters = array();
         $query = $this->db->prepare($sql);
         $query->execute($parameters);
@@ -218,22 +252,35 @@ class RentalListingModel {
         return $results;
     }
 
-    
     /**
      * Filtering the Selected Results
      * @param string $queryParams Query parameters of Filters
      * @return type Array
      */
-     public function filterRentalListing($queryParams) {
+    public function filterRentalListing($queryParams) {
 
-        $sql = " SELECT id , title , price , CREATED_DATE as date_posted" .
-                " FROM property where 1=1";
+        $sql = " SELECT PROP.id AS id , title , price , CREATED_DATE as date_posted" .
+                " FROM property PROP, defination_type_detail DT where 1=1";
 
-        if (!empty($queryParams["search_string"])) {
-            $sql = $sql . " AND  upper(TITLE) LIKE upper('%" . $queryParams["search_string"] . "%')";
+        if (!empty($queryParams["rentType"])) {
+            $sql = $sql . " AND  UPPER(DT.DESCRIPTION) LIKE UPPER('%" . $queryParams["rentType"] . "%')";
+            $sql = $sql . " AND  PROP.PROP_TYPE_ID=DT.ID";
         }
-        
-        $sql=$sql. " ORDER BY ";
+
+        //Check if equal or greater than 4 
+        if (!empty($queryParams["occupants"]) && ($queryParams["occupants"]) < 4) {
+            $sql = $sql . " AND  NUMBER_OCCUPANTS = " . $queryParams["occupants"] . "";
+        }
+        if (!empty($queryParams["occupants"]) && ($queryParams["occupants"]) >= 4) {
+            $sql = $sql . " AND  NUMBER_OCCUPANTS >= " . $queryParams["occupants"] . "";
+        }
+
+        if (!empty($queryParams["isPetAllowed"])) {
+            $sql = $sql . " AND  IS_PET_ALLOWED= UPPER('" . $queryParams["isPetAllowed"] . "')";
+        }
+
+        $sql = $sql . " ORDER BY ";
+
 
         if (isset($queryParams["price"])) {
             $sql = $sql . " PRICE " . $queryParams["price"] . " ,";
@@ -243,11 +290,7 @@ class RentalListingModel {
             $sql = $sql . " CREATED_DATE " . $queryParams["date"] . " , ";
         }
 
-        if (isset($queryParams["title"])) {
-            $sql = $sql . " TITLE " . $queryParams["title"] . " , ";
-        }
-        
-        $sql=$sql. " ID";
+        $sql = $sql . " ID";
 
         $parameters = array();
         $query = $this->db->prepare($sql);
@@ -257,13 +300,12 @@ class RentalListingModel {
         return $results;
     }
 
-
     /**
      * Insert Property Details 
      * $id : Property ID 
      */
     public function insertRentalListing($title, $description, $address, $price, $type, $number_occupants, $allow_animals) {
-      
+
         if (isset($_SESSION['id'])) {
             $loginId = $_SESSION['id'];
         } else {
@@ -328,23 +370,53 @@ class RentalListingModel {
      * $id : Property ID 
      */
     public function deleteRentalListing($id) {
-        $sql = "DELETE " .
-                "FROM property " .
-                "WHERE ID = :id";
+        $sql = " DELETE " .
+                " FROM property " .
+                " WHERE ID = :id";
 
         $query = $this->db->prepare($sql);
         $parameters = array(':id' => $id);
+        return $query->execute($parameters);
+    }
 
+    /**
+     * Return all Posted Properties
+     * @param type $user_id
+     * @return type Array of Posted Properties if not null
+     */
+    public function getAllPostedProperty($user_id) {
+        $sql = "SELECT ID,TITLE,DESCRIPTION,ADDRESS,PRICE FROM property WHERE USER_ID =" . $user_id;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        return $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getOwner($id) {
+        $sql = " SELECT USER_ID " .
+                " FROM property prop " .
+                " WHERE ID= :id";
+
+        $query = $this->db->prepare($sql);
+        $parameters = array(':id' => $id);
         $query->execute($parameters);
+
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result[0]['USER_ID'];
     }
 
-     public function getOwner($id)
-    {
+    public function getDistance($id) {
+        $sql = " SELECT ADDRESS " .
+                " FROM property  " .
+                " WHERE ID= :id";
 
+        $query = $this->db->prepare($sql);
+        $parameters = array(':id' => $id);
+        $query->execute($parameters);
+
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result[0]['ADDRESS'];
     }
-    
-    public function getDistance($id)
-    {
-        
-    }
+
 }

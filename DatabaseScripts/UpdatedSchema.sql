@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2016 at 12:10 AM
+-- Generation Time: Dec 10, 2016 at 03:10 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -19,6 +19,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `realestate`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `buyer`
+--
+
+CREATE TABLE `buyer` (
+  `USER_ID` varchar(30) NOT NULL,
+  `PROP_TYPE_ID` int(11) NOT NULL,
+  `COUNTRY_ID` int(11) DEFAULT NULL,
+  `CITY_ID` int(11) DEFAULT NULL,
+  `MIN_AREA` varchar(10) DEFAULT NULL,
+  `MAX_AREA` varchar(10) DEFAULT NULL,
+  `MIN_BUDGET` int(11) DEFAULT NULL,
+  `MAX_BUDGET` int(11) DEFAULT NULL,
+  `ACTIVE` char(1) NOT NULL DEFAULT 'Y',
+  `CREATED_DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CREATED_BY` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -133,12 +153,22 @@ CREATE TABLE `users` (
   `PASSWORD` varchar(40) NOT NULL,
   `USER_TYPE_ID` int(10) DEFAULT '4',
   `ACTIVE` char(1) NOT NULL DEFAULT 'Y',
+  `PHONE` varchar(50) DEFAULT NULL,
+  `MOBILE` varchar(50) DEFAULT NULL,
+  `LOCATION` varchar(150) DEFAULT NULL,
   `CREATED_DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `buyer`
+--
+ALTER TABLE `buyer`
+  ADD KEY `USER_ID` (`USER_ID`),
+  ADD KEY `COUNTRY_ID` (`COUNTRY_ID`);
 
 --
 -- Indexes for table `defination_type`
@@ -160,17 +190,26 @@ ALTER TABLE `defination_type_detail`
 --
 ALTER TABLE `image_uploads`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `IMAGE_NAME` (`IMAGE_NAME`);
+  ADD UNIQUE KEY `ID` (`ID`),
+  ADD UNIQUE KEY `ID_2` (`ID`),
+  ADD KEY `IMAGE_NAME` (`IMAGE_NAME`),
+  ADD KEY `PROPERTY_ID` (`PROPERTY_ID`);
 
 --
 -- Indexes for table `property`
 --
 ALTER TABLE `property`
   ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `ID` (`ID`),
+  ADD UNIQUE KEY `ID_2` (`ID`),
   ADD KEY `USER_ID` (`USER_ID`),
   ADD KEY `PROP_TYPE_ID` (`PROP_TYPE_ID`),
   ADD KEY `STATUS_ID` (`STATUS_ID`),
-  ADD KEY `CREATED_DATE` (`CREATED_DATE`);
+  ADD KEY `CREATED_DATE` (`CREATED_DATE`),
+  ADD KEY `ADDRESS` (`ADDRESS`),
+  ADD KEY `PRICE` (`PRICE`),
+  ADD KEY `DESCRIPTION` (`DESCRIPTION`),
+  ADD KEY `TITLE` (`TITLE`);
 
 --
 -- Indexes for table `users`
@@ -198,17 +237,17 @@ ALTER TABLE `defination_type_detail`
 -- AUTO_INCREMENT for table `image_uploads`
 --
 ALTER TABLE `image_uploads`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 --
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

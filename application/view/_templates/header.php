@@ -14,6 +14,7 @@
 
         <!-- Extra icons -->
         <script src="https://use.fontawesome.com/c8d876cc7d.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
     </head>
     <header>
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -29,7 +30,7 @@
             <div class="col-sm-3 col-md-3">
                 <form class="navbar-form" action="<?php echo URL . "searchResults/index"; ?>" method="post">
                     <div class="input-group">
-                        <input type="text" name="rental_search" class="form-control" placeholder="Search">
+                        <input type="text"  name="rental_search" class="form-control" placeholder="Search">
                         <div class="input-group-btn">
                             <button type="submit" name="submit_search" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
@@ -38,7 +39,17 @@
             </div>
             <div class="collapse navbar-collapse pull-right">
                 <ul class="nav navbar-nav">
-                    <li><a href="<?php echo URL; ?>protoController/index">Post a Listing</a></li>
+                    <?php
+                    if (isset($_SESSION['is_auth'])) {
+                        ?>
+                        <li><a href="<?php echo URL; ?>protoController/index">Post a Listing</a></li>
+                        <?php
+                    }else {
+                        ?>
+                        <li><a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal">Post a Listing</a></li>
+                        <?php
+                    }
+                    ?>
                     <li><a href="<?php echo URL; ?>profile/index">Profile & Postings</a></li>
                       <?php 
                             if (!isset($_SESSION['is_auth'])) {?>
@@ -88,9 +99,10 @@
                     <div class="modal-body">
                     </div>
                     <form class="sign-in-form"  action="<?php echo URL . "sprofile/index"; ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="fname">                
+                        <input type="hidden" name="fname">
                         <input type="email" name="email" placeholder="You@Provider.com">
                         <input type="password" name="password" placeholder="Password">
+                        <input type="hidden" name="url" value="<?php echo str_replace("&","?",explode('=', $_SERVER['QUERY_STRING'], 2)[1]);?>" />
                         <input type="submit" name="sign-in" class="modal-submit" value="Sign In">
                     </form>
                     <div class="modal-footer">
@@ -98,7 +110,7 @@
                     </div>
                 </div>
             </div>
-        </div>		
+        </div>
         <!-- Modal for Sign Up -->
         <div id="sign-up-modal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -110,10 +122,10 @@
                     <div class="modal-body">
                     </div>
                     <form class="sign-up-form" action="<?php echo URL . "sprofile/index"; ?>" method="post" enctype="multipart/form-data">
-                        <p>Full Name:</p> 
+                        <p>Full Name:</p>
                         <input type="text" class="form-control" name="fname" placeholder="">
                         <br/>
-                        <p>Email:</p> 
+                        <p>Email:</p>
                         <input type="email" name="email" placeholder="You@Provider.com">
                         Password:
                         <p class="disclaimer">Must have at least 8 characters</p>
@@ -125,6 +137,7 @@
                         <br><br>
                         <input type="radio" name="landLord" value="landlord"/> I am a landlord who wants to post.
                         <br><br>
+                        <input type="hidden" name="url" value="<?php echo str_replace("&","?",explode('=', $_SERVER['QUERY_STRING'], 2)[1]);?>" />
                         <input type="submit" name="register" class="modal-submit" value="Register">
                     </form>
                     <div class="modal-footer">
@@ -132,5 +145,5 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </header>
