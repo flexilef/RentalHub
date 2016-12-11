@@ -44,9 +44,9 @@
         if (isset($_SESSION['is_auth'])) {
             ?>
         <a  id="send_email" class="btn btn-default btn-lg pull-right"  role="button" data-id="<?php echo $owner_email; ?>" href="javascript:void(0)">
-                                                 <i class="glyphicon glyphicon-envelope"></i>
-                                                </a>
-           <?php
+            <i class="glyphicon glyphicon-envelope"></i>
+        </a>
+            <?php
         }else {
             ?>
             <a href="#" class="btn btn-default btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Rent</a>
@@ -86,6 +86,7 @@
     <div id="gmap_canvas" style=" height:400px;">Loading map...</div>
 </div>
 
+
 <!----modal starts here--->
 <div id="contactModal" class="modal fade" role='dialog'>
     <div class="modal-dialog">
@@ -107,3 +108,25 @@
     </div>
 </div>
 <!--Modal ends here--->
+
+<script type="text/javascript">
+    function init_map() {
+        var myOptions = {
+            zoom: 14,
+            center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+        var myCity = new google.maps.Circle({
+        center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
+        radius: 1000,
+        strokeColor: "#0000FF",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#0000FF",
+        fillOpacity: 0.4
+        });
+        myCity.setMap(map);
+    }
+    google.maps.event.addDomListener(window, 'load', init_map);
+</script>

@@ -41,7 +41,17 @@
 								?>
 							</p>
 							<a href="<?php echo  URL . 'rentalListing/index?rental_listing_id='.$this->rental_ids[$i]; ?>" target="_blank" class="btn btn-info btn-lg" role="button">View</a>
-							
+							<?php
+							if (isset($_SESSION['is_auth'])) {
+							    ?>
+                                <a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Rent</a>
+									<?php
+									}else {
+									?>
+                                <a href="#" class="btn btn-default btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Rent</a>
+                                <?php
+									}
+									?>
                             <div id="<?php echo $this->rental_ids[$i] ?>" style="font-size:20px;color:green;font-weight:bold;"></div>
 						</div>
 					</div>

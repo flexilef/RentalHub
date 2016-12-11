@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @author osama
  */
@@ -258,7 +257,6 @@ class RentalListingModel {
      * @return type Array
      */
     public function filterRentalListing($queryParams) {
-
         $sql = " SELECT PROP.id AS id , title , price , CREATED_DATE as date_posted" .
                 " FROM property PROP, defination_type_detail DT where 1=1";
 

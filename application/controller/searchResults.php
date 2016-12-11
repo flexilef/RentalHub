@@ -137,8 +137,4 @@ class SearchResults extends Controller {
 
         $this->rental_ids = array_unique($this->rental_ids);
     }
-     /**
-     * Send Email to Owner
-     */
- 
 }
