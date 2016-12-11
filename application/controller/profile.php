@@ -34,8 +34,7 @@ class Profile extends Controller {
 
             //Password and RePassword Must Match to update the profile
             if (strcmp($password, $verifyPassword) == 0) {
-                // create an MD5 hash of the password
-                $password = md5($password);
+                
                 $status = $this->signin_model->update($fname, $lastName, $phone, $mobile, $email, $location, $password);
                 if ($status == 1) {
                     //Some PopUp Should be called here to display error message
