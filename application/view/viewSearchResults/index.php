@@ -63,7 +63,7 @@
                             </select>
                         </div>
                     </div>
-                    <p class="text-center"><a id="filter" href="<?php echo URL . 'searchResults/index?search_string=' . $this->search_string; ?>" class="btn btn-danger glyphicon glyphicon-search" role="button"></a></p>
+                    <p class="text-center"><a id="filter" href="<?php echo URL . 'searchResults/index?search_string=' . $this->search_string; ?>" class="btn btn-primary glyphicon glyphicon-search" role="button"></a></p>
                 </form>
             </div>
         </div>
@@ -71,7 +71,7 @@
         if (isset($this->rental_id_to_images)) {
             ?>
             <div>
-                <h3>Displaying Search Results</h3>
+                <h3>Displaying <?php $matches = count($this->rental_ids); echo $matches; ?> Search Result<?php if($matches > 1) echo 's';?></h3>
                 <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center">
                     <?php
                     foreach ($this->rental_ids as $id) {
@@ -101,11 +101,11 @@
                                     <?php
                                     if (isset($_SESSION['is_auth'])) {
                                         ?>
-                                        <a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Rent</a>
+                                        <a href="#" class="btn btn-success btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Contact</a>
                                         <?php
                                     }else {
                                         ?>
-                                        <a href="#" class="btn btn-default btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Rent</a>
+                                        <a href="#" class="btn btn-success btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Contact</a>
                                         <?php
                                     }
                                     ?>

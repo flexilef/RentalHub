@@ -1,7 +1,7 @@
 <div class="container">
-	<h2>CSC 848/648 Software Engineering</h2>
-	<h3>Section-2 Group 16</h3>
-	<img src="public/img/San_Francisco_(Evening).jpg" alt="sf" style="width: 90%; height: 90%"> 
+	<h2 class="csclass">CSC 848/648 Software Engineering</h2>
+	<h3 class="csclass">Section-2 Group 16</h3>
+	<img src="public/img/San_Francisco_(Evening)_Compressed.jpg" alt="sf" style="width: 100%; height: 100%"> 
 	<!--https://commons.wikimedia.org/wiki/File:San_Francisco_(Evening).jpg-->
 	<div>
 		Source:
@@ -44,11 +44,11 @@
 							<?php
 							if (isset($_SESSION['is_auth'])) {
 							    ?>
-                                <a href="#" class="btn btn-default btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Rent</a>
+                                <a href="#" class="btn btn-success btn-lg pull-right" role="button" onclick="confirmDeleteModal('<?php echo $this->rental_ids[$i] ?>')">Contact</a>
 									<?php
 									}else {
 									?>
-                                <a href="#" class="btn btn-default btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Rent</a>
+                                <a href="#" class="btn btn-success btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Contact</a>
                                 <?php
 									}
 									?>
