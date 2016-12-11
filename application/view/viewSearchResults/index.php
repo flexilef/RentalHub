@@ -98,18 +98,20 @@
                                         ?>
                                     </p>
                                     <a href="<?php echo URL . 'rentalListing/index?rental_listing_id=' . $id . '&search_string=' . $this->search_string; ?>" target="_blank" class="btn btn-info btn-lg" role="button">View</a>
-                                    <!--                                        TODO: uncomment after FULDA demo-->
-                                    <!--                                    --><?php
-//                                    if (isset($_SESSION['is_auth'])) {
-//                                        ?>
-<!--                                        <a href="#" class="btn btn-success btn-lg pull-right" role="button" onclick="confirmDeleteModal('--><?php //echo $this->rental_ids[$i] ?>//')">Contact</a>
-//                                        <?php
-//                                    }else {
-//                                        ?>
-<!--                                        <a href="#" class="btn btn-success btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Contact</a>-->
-<!--                                        --><?php
-//                                    }
-//                                    ?>
+<!--								TODO: Uncomment after FULDA Demo-->
+<!--							--><?php
+//							if (isset($_SESSION['is_auth'])) {
+//							    ?>
+<!--								<a  id="send_email" class="btn btn-default btn-lg pull-right"  role="button" data-id="--><?php //echo $owner_email; ?><!--" href="javascript:void(0)">-->
+<!--									<i class="glyphicon glyphicon-envelope"></i>-->
+<!--								</a>-->
+<!--								--><?php
+//									}else {
+//									?>
+<!--                                <a href="#" class="btn btn-success btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Contact</a>-->
+<!--                                --><?php
+//									}
+//									?>
                                     <div id="<?php echo $id ?>" style="font-size:20px;color:green;font-weight:bold;"></div>
                                 </div>
                             </div>
