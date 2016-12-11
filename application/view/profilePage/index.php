@@ -1,3 +1,5 @@
+<?php
+if (isset($_SESSION['is_auth'])) {?>
 <hr>
 <div class="container">
     <div class="row">
@@ -143,4 +145,6 @@
 
     </div><!--/col-9-->
 </div><!--/row-->
-
+    <?php
+}
+?>

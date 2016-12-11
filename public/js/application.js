@@ -9,10 +9,10 @@ $(function() {
     });
 
     $('#dateSorting').change(function() {
-        if ($(this).val() === '3') {
+        if ($(this).val() === '2') {
             document.getElementById("filter").href = document.getElementById("filter").href + '&date=asc'
         }
-        if ($(this).val() === '2') {
+        if ($(this).val() === '3') {
             document.getElementById("filter").href = document.getElementById("filter").href + '&date=desc'
         }
     });

@@ -50,7 +50,8 @@
 								<?php
 									}else {
 									?>
-                                <a href="#" class="btn btn-success btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Contact</a>
+<!--								TODO: Uncomment after FULDA Demo-->
+<!--                                <a href="#" class="btn btn-success btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Contact</a>-->
                                 <?php
 									}
 									?>

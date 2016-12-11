@@ -50,8 +50,18 @@
                         <?php
                     }
                     ?>
-                    <li><a href="<?php echo URL; ?>profile/index">Profile & Postings</a></li>
-                      <?php 
+                    <?php
+                    if (isset($_SESSION['is_auth'])) {
+                        ?>
+                        <li><a href="<?php echo URL; ?>profile/index">Profile & Postings</a></li>
+                        <?php
+                    }else {
+                        ?>
+                        <li><a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal">Profile & Postings</a></li>
+                        <?php
+                    }
+                    ?>
+                      <?php
                             if (!isset($_SESSION['is_auth'])) {?>
                             <li><a href="#" type="button" data-toggle="modal" data-target="#sign-up-modal">
                              <?php echo "Sign Up";

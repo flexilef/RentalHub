@@ -105,7 +105,8 @@
                                         <?php
                                     }else {
                                         ?>
-                                        <a href="#" class="btn btn-success btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Contact</a>
+<!--                                        TODO: uncomment after FULDA demo-->
+<!--                                        <a href="#" class="btn btn-success btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Contact</a>-->
                                         <?php
                                     }
                                     ?>
@@ -129,9 +130,6 @@
         ?>
     </div>
 </div>
-
-<<<<<<< HEAD
-=======
 <!----modal starts here--->
 <div id="contactModal" class="modal fade" role='dialog'>
     <div class="modal-dialog">
@@ -153,6 +151,4 @@
     </div>
 </div>
 <!--Modal ends here--->
->>>>>>> d4cab42276b8e66c108145fb0fd4a44ff1e92537
-
 
