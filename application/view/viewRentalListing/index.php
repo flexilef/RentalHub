@@ -10,6 +10,7 @@
     <div id="listing-photos">
         <div id="cover-image" style="background-image:url(./../uploads/<?php echo $image_results[0]["image_name"] ?>)">
         </div>
+        <div id="view-photos-btn" class="btn btn-info btn-lg">View Photos</div>
     </div>
     <div id="listing-information" class="panel panel-primary col-xs-18 col-sm-6 col-md-7">
         <div id="listing-title" class="panel-heading">About this listing</div>
@@ -34,10 +35,7 @@
                 }
                 ?>
             </li>
-            <li><div id="view-photos-btn" class="btn btn-info btn-lg">View Photos</div></li>
         </ul>
-
-
     </div>
     <!-- google map will be shown here -->
     <div id="gmap_canvas" style=" height:400px;">Loading map...</div>
