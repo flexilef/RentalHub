@@ -79,6 +79,7 @@ class Sinmodel {
     }
 
     /**
+     * @author Lloyd
      * Update the User Records
      * @param type $fname
      * @param type $lastName
