@@ -51,6 +51,7 @@ class RentalListing extends Controller {
     }
     /**
      * Send Email to Owner
+     * @author osama
      */
     public function sendEmail() {
         $ownerEmail = $_REQUEST['email'];
