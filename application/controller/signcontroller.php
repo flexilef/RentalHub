@@ -2,6 +2,9 @@
 
 require APP . 'model/sinmodel.php';
 
+ /**
+  * @author ehsan
+  */
 class Signcontroller extends Controller
 {
 
