@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
+        <div class="col-lg-3 col-md-4 col-lg-offset-0">
             <div class="well">
                 <h3 align="center">Search Filter</h3>
                 <form class="form-horizontal">
@@ -76,7 +76,7 @@
                     <?php
                     foreach ($this->rental_ids as $id) {
                         ?>
-                        <div class="col-xs-18 col-sm-6 col-md-3" style="width: 35%">
+                        <div class="col-xs-18 col-sm-18 col-md-6 col-lg-4">
                             <div class="thumbnail">
                                 <?php
                                 //index 0 because there is only one id in this associative array
