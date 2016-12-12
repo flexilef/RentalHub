@@ -2,6 +2,9 @@
 
 require APP . 'model/rentalListingModel.php';
 
+ /**
+  * @author saad, osama
+  */
 class SearchResults extends Controller {
 
     private $search_results;
