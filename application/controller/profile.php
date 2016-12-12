@@ -3,6 +3,10 @@
 require APP . 'model/sinmodel.php';
 require APP . 'model/rentalListingModel.php';
 
+    /**
+     * @author saad
+     */
+     
 class Profile extends Controller {
 
     private $posted_rental_properties;
