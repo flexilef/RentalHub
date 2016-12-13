@@ -24,13 +24,14 @@
                 <?php
                 if (isset($_SESSION['is_auth'])) {
                     ?>
-                    <a  id="contact-btn" class="btn btn-default btn-lg"  role="button" data-id="<?php echo $owner_email; ?>" href="javascript:void(0)">
-                        <i class="glyphicon glyphicon-envelope"></i>
+                    <a  id="contact-btn" class="btn btn-lg btn-info"  role="button" data-id="<?php echo $owner_email; ?>" href="javascript:void(0)">Contact Landlord</a>
                     </a>
                     <?php
                 } else {
                     ?>
-                    <a href="#" id="contact-btn" class="btn btn-success btn-lg" type="button" data-toggle="modal" data-target="#sign-in-modal">Contact Landlord</a>
+                    <a href="#" id="contact-btn" class="btn btn-lg btn-info" type="button" data-toggle="modal" data-target="#sign-in-modal">
+                        <i class="glyphicon glyphicon-envelope"></i><span>Contact Landlord</span>
+                    </a>
                     <?php
                 }
                 ?>
