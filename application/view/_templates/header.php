@@ -8,13 +8,13 @@
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        
+
         <!-- JQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-        
+
         <!-- Bootstrap Validator -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.7/validator.js" integrity="sha256-ZrJ1ZbedU+b0jUh9nHnV3GagEOUeckZ2DY0BV0lF3pg=" crossorigin="anonymous"></script>
-        
+
         <!-- CSS -->
         <link href="<?php echo URL; ?>css/style.less" rel="stylesheet/less">
 
@@ -33,12 +33,12 @@
                 </button>
                 <a class="navbar-brand" href="<?php echo URL; ?>">SFSU Rental Hub</a>
             </div>
-            <div class="col-sm-3 col-md-3">
+            <div class="col-sm-3 col-md-5">
                 <form class="navbar-form" action="<?php echo URL . "searchResults/index"; ?>" method="post">
-                    <div class="input-group">
+                    <div id="search-bar" class="input-group">
                         <input type="text" name="rental_search" class="form-control" placeholder="Address, Price, Listing Type">
                         <div class="input-group-btn">
-                            <button type="submit" name="submit_search" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                            <button type="submit" name="submit_search" id="search-btn" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
                     </div>
                 </form>
@@ -75,7 +75,7 @@
                             ?>
                         </a>
                     </li>
-                    
+
                      <?php
                             if (!isset($_SESSION['is_auth'])) {?>
                              <li><a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal">
@@ -83,19 +83,11 @@
                             }
                             ?></a>
                     </li>
-                    <li> <a href="#" >  
-                          <?php
-                            if (isset($_SESSION['is_auth'])) {
-                                echo "Welcome " . $_SESSION['name'];
-                            }
-                            ?> 
-                        </a>
-                    </li>
-                    
+
                     <li>
                         <a href="<?php echo URL . "sprofile/logout"; ?>">
                             <?php if (isset($_SESSION['is_auth'])) {
-                                echo "Logout"; 
+                                echo "Logout";
                                 }
                             ?>
                         </a>
