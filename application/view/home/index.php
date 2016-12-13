@@ -1,7 +1,7 @@
 <div class="container">
 	<h2 class="csclass">CSC 848/648 Software Engineering</h2>
 	<h3 class="csclass">Section-2 Group 16</h3>
-	<img src="public/img/San_Francisco_(Evening)_Compressed.jpg" alt="sf" class="img-responsive" style="width: 100%; height: auto"> 
+	<img src="public/img/San_Francisco_(Evening)_Compressed.jpg" alt="sf" class="img-responsive" style="width: 100%; height: auto">
 	<!--https://commons.wikimedia.org/wiki/File:San_Francisco_(Evening).jpg-->
 	<div>
 		Source:
@@ -34,7 +34,7 @@
 								?>
 							</h4>
 							<p class="desc">
-                                                 
+
 								<?php
 								$price = $this->rental_id_to_price[$this->rental_ids[$i]];
 								echo $price;
@@ -45,7 +45,7 @@
 							<!--							--><?php
 //							if (isset($_SESSION['is_auth'])) {
 //							    ?>
-<!--								<a  id="send_email" class="btn btn-default btn-lg pull-right"  role="button" data-id="--><?php //echo $owner_email; ?><!--" href="javascript:void(0)">-->
+<!--								<a  id="contact-btn" class="btn btn-default btn-lg pull-right"  role="button" data-id="--><?php //echo $owner_email; ?><!--" href="javascript:void(0)">-->
 <!--									<i class="glyphicon glyphicon-envelope"></i>-->
 <!--								</a>-->
 <!--								--><?php

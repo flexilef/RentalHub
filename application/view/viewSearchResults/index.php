@@ -102,7 +102,7 @@
 <!--							--><?php
 //							if (isset($_SESSION['is_auth'])) {
 //							    ?>
-<!--								<a  id="send_email" class="btn btn-default btn-lg pull-right"  role="button" data-id="--><?php //echo $owner_email; ?><!--" href="javascript:void(0)">-->
+<!--								<a  id="contact-btn" class="btn btn-default btn-lg pull-right"  role="button" data-id="--><?php //echo $owner_email; ?><!--" href="javascript:void(0)">-->
 <!--									<i class="glyphicon glyphicon-envelope"></i>-->
 <!--								</a>-->
 <!--								--><?php
