@@ -4,7 +4,7 @@ require APP . 'model/sinmodel.php';
 require APP . 'model/rentalListingModel.php';
 
     /**
-     * @author saad
+     * @author Lloyd saad
      */
      
 class Profile extends Controller {
