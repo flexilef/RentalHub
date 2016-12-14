@@ -1,7 +1,7 @@
 <div class="container">
 	<h2 class="csclass">CSC 848/648 Software Engineering</h2>
 	<h3 class="csclass">Section-2 Group 16</h3>
-	<img src="public/img/San_Francisco_(Evening)_Compressed.jpg" alt="sf" style="width: 100%; height: 100%"> 
+	<img src="public/img/San_Francisco_(Evening)_Compressed.jpg" alt="sf" class="img-responsive" style="width: 100%; height: auto"> 
 	<!--https://commons.wikimedia.org/wiki/File:San_Francisco_(Evening).jpg-->
 	<div>
 		Source:
@@ -18,7 +18,7 @@
 			for ($i = 0; $i<3; $i++ )
 			{
 				?>
-				<div class="col-xs-18 col-sm-6 col-md-3" style="width: 30%">
+				<div class="col-xs-18 col-sm-6 col-md-4">
 					<div class="thumbnail">
 						<?php
 						//index 0 because there is only one id in this associative array

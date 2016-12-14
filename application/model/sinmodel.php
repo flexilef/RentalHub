@@ -39,11 +39,14 @@ class Sinmodel {
         if (isset($landlord)) {
             $userTypeId = 15;
         }
+        
 
         $sql = "INSERT INTO users (FULL_NAME,EMAIL,PASSWORD,USER_TYPE_ID)" .
                 " VALUES (:fname,:email, :password,:userTypeId)";
         $query = $this->db->prepare($sql);
 
+       
+        
         $parameters = array(':fname' => $fname, ':email' => $email, ':password' => $password,
             ':userTypeId' => $userTypeId);
 
@@ -76,6 +79,7 @@ class Sinmodel {
     }
 
     /**
+     * @author Lloyd
      * Update the User Records
      * @param type $fname
      * @param type $lastName
@@ -92,7 +96,7 @@ class Sinmodel {
                     SET ";
 
         if (!empty($fname) || !empty($lastName)) {
-            $sql = $sql . " FULL_NAME='" . $fname . $lastName . "',";
+            $sql = $sql . " FULL_NAME='" . $fname . " ". $lastName . "',";
         } else {
             $sql = $sql . " FULL_NAME=FULL_NAME ,";
         }
@@ -102,7 +106,8 @@ class Sinmodel {
             $sql = $sql . " EMAIL=EMAIL,";
         }
         if (!empty($password)) {
-            $sql = $sql . " PASSWORD='" . $password . "',";
+            
+            $sql = $sql . " PASSWORD='" . md5($password) . "',";
         } else {
             $sql = $sql . " PASSWORD=PASSWORD,";
         }
@@ -125,6 +130,7 @@ class Sinmodel {
 
         $sql = $sql . "  WHERE  ID =" . $_SESSION['id'];
 
+       
         $query = $this->db->prepare($sql);
 
         return $query->execute();

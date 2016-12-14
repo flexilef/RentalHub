@@ -3,6 +3,10 @@
 require APP . 'model/sinmodel.php';
 require APP . 'model/rentalListingModel.php';
 
+    /**
+     * @author Lloyd saad
+     */
+     
 class Profile extends Controller {
 
     private $posted_rental_properties;
@@ -34,8 +38,7 @@ class Profile extends Controller {
 
             //Password and RePassword Must Match to update the profile
             if (strcmp($password, $verifyPassword) == 0) {
-                // create an MD5 hash of the password
-                $password = md5($password);
+                
                 $status = $this->signin_model->update($fname, $lastName, $phone, $mobile, $email, $location, $password);
                 if ($status == 1) {
                     //Some PopUp Should be called here to display error message
