@@ -43,7 +43,7 @@
                     </div>
                 </form>
             </div>
-            <div class="collapse navbar-collapse pull-right">
+            <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1" >
                 <ul class="nav navbar-nav">
                     <?php
                     if (isset($_SESSION['is_auth'])) {
