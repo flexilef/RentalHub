@@ -34,14 +34,15 @@
                 <a class="navbar-brand" href="<?php echo URL; ?>">SFSU Rental Hub</a>
             </div>
             <div class="col-sm-3 col-md-3">
-                <form class="navbar-form" action="<?php echo URL . "searchResults/index"; ?>" method="post">
-                    <div class="input-group">
-                        <input type="text" pattern="( | [A-z0-9]{1,})" maxlength="25" name="rental_search" class="form-control" placeholder="Address, Price, Listing Type">
-                        <div class="input-group-btn">
-                            <button type="submit" name="submit_search" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                        </div>
-                    </div>
-                </form>
+              <form class="navbar-form" action="<?php echo URL . "searchResults/index"; ?>" method="post">
+                <div class="input-group">
+                  <!-- Regex for : zip code, street# street_name, price, string -->
+                  <input type="text" pattern="([1-9][0-9]{4}|[1-9][0-9]*[\sA-Za-z]*|^\$[0-9]*$|[A-Za-z]+)" maxlength="25" name="rental_search" class="form-control" placeholder="Address, Zip Code, Price, Listing Type">
+                  <div class="input-group-btn">
+                    <button type="submit" name="submit_search" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+                </div>
+              </form>
             </div>
             <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1" >
                 <ul class="nav navbar-nav">
@@ -121,7 +122,7 @@
                           <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group has-feedback">
-                          <input type="password" class="form-control" name="password" placeholder="Password" data-minlength="8"required >
+                          <input type="password" class="form-control" name="password" placeholder="Password" data-minlength="8" required >
                           <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                           <div class="help-block with-errors"></div>
                         </div>
