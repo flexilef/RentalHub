@@ -37,7 +37,7 @@
               <form class="navbar-form" action="<?php echo URL . "searchResults/index"; ?>" method="post">
                 <div class="input-group">
                   <!-- Regex for : zip code, street# street_name, price, string -->
-                  <input type="text" pattern="([1-9][0-9]{4}|[1-9][0-9]*[\sA-Za-z]*|^\$[0-9]*$|[A-Za-z]+)" maxlength="25" name="rental_search" class="form-control" placeholder="Address, Zip Code, Price, Listing Type">
+                  <input type="text" pattern="(\s*[1-9][0-9]{4}|\s*[1-9][0-9]*\s+[A-Za-z][\sA-Za-z]*|\s*[A-Za-z]+[\sA-Za-z]*)" maxlength="25" name="rental_search" class="form-control" required placeholder="Address, Zip Code, Price, Listing Type">
                   <div class="input-group-btn">
                     <button type="submit" name="submit_search" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                   </div>
