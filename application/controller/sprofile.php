@@ -26,15 +26,18 @@ class Sprofile extends Controller {
             $password = $_POST['password'];
             $verify = $_POST['verifyPassword'];
 
-            $landlord = NULL;
-            $student = NULL;
+             $userType = NULL;
+            $student=NULL;
+            $landlord=NULL;
+            $userType=$_POST['registerType'];
+            
+            if (!empty($userType) && (strcmp($userType, "student")==0)) {
+                $student = 4;
+            }
+            if (!empty($userType) && (strcmp($userType, "landlord")==0)) {
+                $landlord = 15;
+            }
 
-            if (isset($_POST['student'])) {
-                $student = $_POST['student'];
-            }
-            if (isset($_POST['landLord'])) {
-                $landlord = $_POST['landLord'];
-            }
 
             // create an MD5 hash of the password
             $password = md5($password);
