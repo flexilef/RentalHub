@@ -50,7 +50,7 @@
                         },
                         danger: {
                             label: "Delete!",
-                            className: "btn-danger",
+                            className: "btn-danger pull-left",
                             callback: function () {
 
                                 /*
@@ -108,7 +108,7 @@
                     buttons: {
                         success: {
                             label: "No",
-                            className: "btn-success",
+                            className: "btn-info pull-left",
                             callback: function () {
                                 $('.bootbox').modal('hide');
                             }

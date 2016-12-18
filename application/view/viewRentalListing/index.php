@@ -42,29 +42,6 @@
     <div id="gmap_canvas" style=" height:400px;">Loading map...</div>
 </div>
 
-
-<!--Contact modal starts here--->
-<div id="contactModal" class="modal fade" role='dialog'>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Share Contact Details </h4>
-            </div>
-            <div class="modal-body">
-                <p>Your contact details will be shared with the owner.</p>
-                <p>Click Ok to continue </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <span id= 'okayButton'></span>
-            </div>
-
-        </div>
-    </div>
-</div>
-<!--Contact modal ends here--->
-
 <!--Slideshow modal starts here--->
 <div id="myModal" class="image-modal">
     <div class="slideshow-container">
