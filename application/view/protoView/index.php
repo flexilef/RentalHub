@@ -11,6 +11,9 @@ if (isset($_SESSION['is_auth'])) {?>
       <h3>Rental Address</h3>
       <input type="text" name="rental_address" placeholder="123 Wall Street"/>
 
+      <h3>Zip code</h3>
+      <input type="number" name="rental_zipcode" placeholder="12345"/>
+
       <h3>Rental Monthly Price in US Dollars</h3>
       <input type="number" name="rental_price" placeholder="1234"/>
 
