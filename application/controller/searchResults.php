@@ -53,6 +53,7 @@ class SearchResults extends Controller {
         //On main search bar @action event , Search only on Title Field.
         if (isset($_POST["rental_search"])) {
 
+            $_SESSION['rental_search'] = $_POST['rental_search'];
             $this->query=$_POST["rental_search"];
             $this->getResultsByTitle($_POST["rental_search"]);
         } else {

@@ -1,5 +1,3 @@
-<?php session_start();
-$_SESSION['rental_search'] = $_POST['rental_search']; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
