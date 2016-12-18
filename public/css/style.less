@@ -58,8 +58,12 @@ body {
 #listing-contact {
     text-align: center;
 
-    #contact-btn {
-        margin-top: 20px;
+    .listing-btn {
+        margin-top: 40px;
+
+        i {
+            margin-right: 10px;
+        }
     }
 }
 
@@ -86,14 +90,13 @@ body {
 .container {
     border: 1px solid #ddd;
     padding: 20px;
-    margin: 33px;
     min-height: 100%;
 
 	.csclass {
 		font-size: 12pt;
 		font-weight: bold;
 	}
-    
+
 	.box {
         border-top: 1px solid #ddd;
         padding-top: 10px;
@@ -167,8 +170,6 @@ footer {
     cursor: pointer;
     transition: 0.3s;
 }
-
-.myImg:hover {opacity: 0.7;}
 
 .modal-content {
     padding: 30px;
@@ -418,6 +419,14 @@ body {font-family: Verdana,sans-serif;margin:0}
     .prev, .next,.text {font-size: 11px}
 }
 
+#search-bar {
+    width: 100%;
+}
+
+#search-btn {
+    padding: 9px 12px;
+}
+
 .search {
     font-size: 30px;
     font-weight: bolder;
@@ -460,8 +469,6 @@ body {font-family: Verdana,sans-serif;margin:0}
 	cursor: pointer;
     transition: 0.3s;
 }
-
-.cardImg:hover {opacity: 0.7;}
 
 .title {
 	overflow : hidden;

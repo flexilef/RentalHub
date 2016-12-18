@@ -8,13 +8,13 @@
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        
+
         <!-- JQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-        
+
         <!-- Bootstrap Validator -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.7/validator.js" integrity="sha256-ZrJ1ZbedU+b0jUh9nHnV3GagEOUeckZ2DY0BV0lF3pg=" crossorigin="anonymous"></script>
-        
+
         <!-- CSS -->
         <link href="<?php echo URL; ?>css/style.less" rel="stylesheet/less">
 
@@ -33,17 +33,18 @@
                 </button>
                 <a class="navbar-brand" href="<?php echo URL; ?>">SFSU Rental Hub</a>
             </div>
-            <div class="col-sm-3 col-md-3">
-                <form class="navbar-form" action="<?php echo URL . "searchResults/index"; ?>" method="post">
-                    <div class="input-group">
-                        <input type="text" name="rental_search" class="form-control" placeholder="Address, Price, Listing Type">
-                        <div class="input-group-btn">
-                            <button type="submit" name="submit_search" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                        </div>
-                    </div>
-                </form>
+            <div class="col-sm-3 col-md-5">
+              <form class="navbar-form" action="<?php echo URL . "searchResults/index"; ?>" method="post">
+                <div id="search-bar" class="input-group">
+                  <!-- Regex for : zip code, street# street_name, price, string -->
+                  <input type="text" pattern="(\s*[1-9][0-9]{4}|\s*[1-9][0-9]*\s+[A-Za-z][\sA-Za-z]*|\s*[A-Za-z]+[\sA-Za-z]*)" maxlength="25" name="rental_search" class="form-control" placeholder="Address, Zip Code, Listing Type" value="<?php echo $_SESSION['rental_search'];?>">
+                  <div class="input-group-btn">
+                    <button type="submit" name="submit_search" id="search-btn" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+                </div>
+              </form>
             </div>
-            <div class="collapse navbar-collapse pull-right">
+            <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1" >
                 <ul class="nav navbar-nav">
                     <?php
                     if (isset($_SESSION['is_auth'])) {
@@ -75,7 +76,7 @@
                             ?>
                         </a>
                     </li>
-                    
+
                      <?php
                             if (!isset($_SESSION['is_auth'])) {?>
                              <li><a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal">
@@ -83,19 +84,11 @@
                             }
                             ?></a>
                     </li>
-                    <li> <a href="#" >  
-                          <?php
-                            if (isset($_SESSION['is_auth'])) {
-                                echo "Welcome " . $_SESSION['name'];
-                            }
-                            ?> 
-                        </a>
-                    </li>
-                    
+
                     <li>
                         <a href="<?php echo URL . "sprofile/logout"; ?>">
                             <?php if (isset($_SESSION['is_auth'])) {
-                                echo "Logout"; 
+                                echo "Logout";
                                 }
                             ?>
                         </a>
@@ -121,7 +114,7 @@
                           <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group has-feedback">
-                          <input type="password" class="form-control" name="password" placeholder="Password" data-minlength="8"required >
+                          <input type="password" class="form-control" name="password" placeholder="Password" data-minlength="8" required >
                           <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                           <div class="help-block with-errors"></div>
                         </div>

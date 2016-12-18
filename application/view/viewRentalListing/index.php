@@ -24,13 +24,14 @@
                 <?php
                 if (isset($_SESSION['is_auth'])) {
                     ?>
-                    <a  id="send_email" class="btn btn-default btn-lg pull-right"  role="button" data-id="<?php echo $owner_email; ?>" href="javascript:void(0)">
-                        <i class="glyphicon glyphicon-envelope"></i>
+                    <a  id="contact-btn" class="btn btn-lg btn-info listing-btn"  role="button" data-id="<?php echo $owner_email; ?>" href="javascript:void(0)">Contact Landlord</a>
                     </a>
                     <?php
                 } else {
                     ?>
-                    <a href="#" class="btn btn-success btn-lg pull-right" type="button" data-toggle="modal" data-target="#sign-in-modal">Contact</a>
+                    <a href="#" class="btn btn-lg btn-info listing-btn" type="button" data-toggle="modal" data-target="#sign-in-modal">
+                        <i class="glyphicon glyphicon-envelope"></i><span>Contact Landlord</span>
+                    </a>
                     <?php
                 }
                 ?>
@@ -40,29 +41,6 @@
     <!-- google map will be shown here -->
     <div id="gmap_canvas" style=" height:400px;">Loading map...</div>
 </div>
-
-
-<!--Contact modal starts here--->
-<div id="contactModal" class="modal fade" role='dialog'>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Share Contact Details </h4>
-            </div>
-            <div class="modal-body">
-                <p>Your contact details will be shared with the owner.</p>
-                <p>Click Ok to continue </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <span id= 'okayButton'></span>
-            </div>
-
-        </div>
-    </div>
-</div>
-<!--Contact modal ends here--->
 
 <!--Slideshow modal starts here--->
 <div id="myModal" class="image-modal">
