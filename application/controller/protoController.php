@@ -28,7 +28,7 @@ class ProtoController extends Controller {
                 $allowAnimals = 1;
 
             $this->rental_listing_model->
-                    insertRentalListing($_POST["rental_title"], $_POST["rental_description"], $_POST["rental_address"], $_POST["rental_price"], $this->rental_listing_model->getRentalType($_POST["rental_type"]), $_POST["rental_occupants"], $allowAnimals);
+                    insertRentalListing($_POST["rental_title"], $_POST["rental_description"], $_POST["rental_address"],$_POST["rental_zipcode"], $_POST["rental_price"], $this->rental_listing_model->getRentalType($_POST["rental_type"]), $_POST["rental_occupants"], $allowAnimals);
 
             $rental_listing_id = $this->rental_listing_model->getLatestId();
 

@@ -231,12 +231,12 @@ class RentalListingModel {
         if (empty($search_string)) {
             $search_string = '';
         }
-
-     //  //Change the Price and check
+       
+        //Change the ZIPCODE and check
         $sql = " SELECT id , title , price , CREATED_DATE as date_posted" .
                 " FROM property where UPPER(TITLE) LIKE UPPER('%" . $search_string . "%')";
-        if (is_numeric($search_string)) {//if numeric then check price only
-            $sql = $sql . " OR  UPPER(PRICE) LIKE UPPER('%" . $search_string . "%')";
+        if (is_numeric($search_string)) {//if numeric then check ZIPCODE only
+            $sql = $sql . " OR  UPPER(ZIP_CODE) LIKE UPPER('%" . $search_string . "%')";
         } else {
             $sql = $sql . " OR  UPPER(DESCRIPTION) LIKE UPPER('%" . $search_string . "%')"
                         . " OR  UPPER(ADDRESS) LIKE UPPER('%" . $search_string . "%')";
@@ -302,7 +302,7 @@ class RentalListingModel {
      * Insert Property Details 
      * $id : Property ID 
      */
-    public function insertRentalListing($title, $description, $address, $price, $type, $number_occupants, $allow_animals) {
+    public function insertRentalListing($title, $description, $address,$zipcode, $price, $type, $number_occupants, $allow_animals) {
 
         if (isset($_SESSION['id'])) {
             $loginId = $_SESSION['id'];
@@ -316,14 +316,14 @@ class RentalListingModel {
             $pet_allowed = 'N';
         }
 
-        $sql = " INSERT INTO property (USER_ID,TITLE, DESCRIPTION ,ADDRESS, PRICE, 
+        $sql = " INSERT INTO property (USER_ID,TITLE, DESCRIPTION ,ADDRESS,ZIP_CODE ,PRICE, 
 		         PROP_TYPE_ID  ,NUMBER_OCCUPANTS , IS_PET_ALLOWED )" .
-                " VALUES (:userId,:title, :description, :address, :price, :type, :number_occupants, :allow_animals)";
+                " VALUES (:userId,:title, :description, :address,:zipcode, :price, :type, :number_occupants, :allow_animals)";
 
         $query = $this->db->prepare($sql);
 
         $parameters = array(':userId' => $loginId, ':title' => $title, ':description' => $description, ':address' => $address,
-            ':price' => $price, ':type' => $type, ':number_occupants' => $number_occupants, ':allow_animals' => $pet_allowed);
+           ':zipcode' => $zipcode, ':price' => $price, ':type' => $type, ':number_occupants' => $number_occupants, ':allow_animals' => $pet_allowed);
 
         $query->execute($parameters);
     }
