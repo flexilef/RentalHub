@@ -97,11 +97,13 @@ class Sinmodel {
 
         if (!empty($fname) || !empty($lastName)) {
             $sql = $sql . " FULL_NAME='" . $fname . " ". $lastName . "',";
+            $_SESSION['name'] = $fname . " ". $lastName;
         } else {
             $sql = $sql . " FULL_NAME=FULL_NAME ,";
         }
         if (!empty($email)) {
             $sql = $sql . " EMAIL ='" . $email . "',";
+            $_SESSION['email'] = $email;
         } else {
             $sql = $sql . " EMAIL=EMAIL,";
         }
