@@ -3,7 +3,12 @@ if (isset($_SESSION['is_auth'])) {?>
 <hr>
 <div class="container">
     <div class="row">
-        <div class="col-sm-10"><h1><?php echo $_SESSION['name'] ?></h1></div>
+        <div class="col-sm-10">
+            <h1><?php echo $_SESSION['name'] ?></h1>
+            <a href="<?php echo URL; ?>protoController/index" class="btn btn-lg btn-info listing-btn pull-right" type="button">
+                <span>Post Listing</span>
+            </a>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-3"><!--left col-->
