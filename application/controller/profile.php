@@ -41,19 +41,15 @@ class Profile extends Controller {
                 
                 $status = $this->signin_model->update($fname, $lastName, $phone, $mobile, $email, $location, $password);
                 if ($status == 1) {
-                    //Some PopUp Should be called here to display error message
-                    echo 'Successfully Updated the records';
+                    echo '<div class="alert alert-success" role="alert"><strong>Success!</strong> Successfully Updated the records.</div>';
                 } else {
-                    //Some PopUp Should be called here to display error message
-                  echo 'UnsuccessFul !,Profile is not updated';
+                    echo '<div class="alert alert-danger" role="alert"><strong>Unsuccessful!</strong> Profile is not updated.</div>';
                 }
             } else {
-                //Some PopUp Should be called here to display error message
-                echo "Passwords doesnot match each other";
+                echo '<div class="alert alert-danger" role="alert"><strong>Error!</strong> Passwords does not match each other.</div>';
             }
-        } else {
-            $this->posted_rental_properties = $this->getPropertyListing();
         }
+        $this->posted_rental_properties = $this->getPropertyListing();
 
         // load views
         require APP . 'view/profilePage/index.php';
