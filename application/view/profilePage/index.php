@@ -45,12 +45,13 @@ if (isset($_SESSION['is_auth'])) {?>
                             <tbody id="items">
 
                                 <?php
+                                $count = 1;
                                 if (!empty($this->posted_rental_properties)) {
                                        foreach ( $this->posted_rental_properties as $value) {
                                         ?>  
                                         <tr>
                                             <td><?php echo $value['ID']; ?></td>
-                                            <td><?php echo $value['TITLE']; ?></td>
+                                            <td><a href="<?php echo URL . 'rentalListing/index?rental_listing_id=' . $value['ID']?>" target="_blank"><?php echo $value['TITLE']; ?></a></td>
                                             <td><?php echo $value['DESCRIPTION']; ?></td>
                                             <td><?php echo $value['ADDRESS']; ?></td>
                                             <td><?php echo $value['PRICE']; ?></td>
@@ -62,6 +63,7 @@ if (isset($_SESSION['is_auth'])) {?>
                                         </tr>
 
                                         <?php
+                                           $count++;
                                     }
                                 } else {
                                     ?>  <tr>
