@@ -51,6 +51,7 @@ class ProtoController extends Controller {
 
                     if (!$image_size || $new_image_size > 1500) {
                         header('Location:' . URL . 'protoController/index?error=largeImage');
+                        return;
                     }
 
                     // make file name in lower case
