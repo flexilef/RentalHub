@@ -50,7 +50,7 @@ if (isset($_SESSION['is_auth'])) {?>
                                        foreach ( $this->posted_rental_properties as $value) {
                                         ?>  
                                         <tr>
-                                            <td><?php echo $value['ID']; ?></td>
+                                            <td><?php echo $count; ?></td>
                                             <td><a href="<?php echo URL . 'rentalListing/index?rental_listing_id=' . $value['ID']?>" target="_blank"><?php echo $value['TITLE']; ?></a></td>
                                             <td><?php echo $value['DESCRIPTION']; ?></td>
                                             <td><?php echo $value['ADDRESS']; ?></td>
